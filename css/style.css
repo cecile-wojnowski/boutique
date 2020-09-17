@@ -35,3 +35,9 @@
 .index_text{
   text-align: justify;
 }
+
+/**** FOOTER ****/
+
+footer{
+  background-color: #68B989 !important;
+}
