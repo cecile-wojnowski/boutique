@@ -11,7 +11,7 @@
       <h1 class="logo col m2"> Boutique en ligne </h1>
 
       <!-- Barre de recherche -->
-      <div class="col m3 offset-m4">
+      <div class="col m3 offset-m5">
         <nav class=" nav_header grey lighten-3">
        <div class="nav-wrapper">
          <form>
