@@ -20,3 +20,6 @@
   text-transform:none !important;
   padding: 10px 16px !important;
 }
+.nav_header2 > .nav-wrapper{
+  background-color: #68B989 !important;
+}

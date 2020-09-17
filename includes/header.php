@@ -29,7 +29,7 @@
 
    </div>
 
- <nav>
+ <nav class="nav_header2">
     <div class="nav-wrapper">
       <ul id="nav-mobile" class="left hide-on-med-and-down">
         <li><a href=""> Catégorie 1</a></li>
