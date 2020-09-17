@@ -23,3 +23,10 @@
 .nav_header2 > .nav-wrapper{
   background-color: #68B989 !important;
 }
+
+/** Section 1 : image **/
+.index_img{
+  width:70% !important;
+  height:30% !important;
+  display: block;
+}

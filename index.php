@@ -13,6 +13,23 @@
     <?php include('includes/header.php'); ?>
 
     <main>
+      <div class="row">
+        <div class="col offset-m3">
+        <img class="index_img" src="img/apples.jpg">
+      </div>
+      </div>
+
+      <section>
+
+      </section>
+
+      <section>
+
+      </section>
+
+      <section>
+
+      </section>
 
     </main>
 
