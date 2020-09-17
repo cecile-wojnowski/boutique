@@ -11,3 +11,11 @@
   font-size:25px !important;
   margin-top: 0 !important;
 }
+.nav_header{
+  height:50px !important;
+}
+.btn{
+  height:50px !important;
+  text-transform:none !important;
+  padding: 10px 16px !important;
+}

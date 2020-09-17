@@ -12,15 +12,17 @@
 
       <!-- Barre de recherche -->
       <div class="col m3 offset-m4">
+        <nav class=" nav_header grey lighten-3">
        <div class="nav-wrapper">
          <form>
            <div class="input-field">
-             <input id="search" type="search" required>
-             <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+             <input id="search" type="search" placeholder ="Rechercher..." required>
+             <label class="label-icon" for="search"><i class="material-icons grey-text text-darken-2">search</i></label>
              <i class="material-icons">close</i>
            </div>
          </form>
        </div>
+     </nav>
       </div>
       <!-- Bouton Panier -->
       <a class="waves-effect waves-green btn grey lighten-3 grey-text text-darken-2"><i class="material-icons left">shopping_cart</i> Panier </a>
