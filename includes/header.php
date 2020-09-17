@@ -1,20 +1,31 @@
 <header>
-  <h1 class="logo"> Boutique en ligne </h1>
-  <p class="p_connexion">
-    <a class="link_header" href="connexion.php"> Connexion </a> ou <a class="link_header" href="inscription.php">créer un compte</a> </p>
+  <div class="row">
+    <div class="row">
+      <p class="p_connexion">
+        <a class="link_header" href="connexion.php"> Connexion </a>
+        ou <a class="link_header" href="inscription.php">créer un compte</a>
+      </p>
+    </div>
 
-<!-- Barre de recherche -->
+    <div class="row">
+      <h1 class="logo"> Boutique en ligne </h1>
 
-   <div class="nav-wrapper">
-     <form>
-       <div class="input-field">
-         <input id="search" type="search" required>
-         <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-         <i class="material-icons">close</i>
+      <!-- Barre de recherche -->
+      <div class="col m3 offset-m4">
+       <div class="nav-wrapper">
+         <form>
+           <div class="input-field">
+             <input id="search" type="search" required>
+             <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+             <i class="material-icons">close</i>
+           </div>
+         </form>
        </div>
-     </form>
-   </div>
+      </div>
+      <!-- Bouton Panier -->
+      <a class="waves-effect waves-green btn grey lighten-3 grey-text text-darken-2"><i class="material-icons left">shopping_cart</i> Panier </a>
 
+   </div>
 
  <nav>
     <div class="nav-wrapper">
@@ -26,4 +37,5 @@
     </div>
   </nav>
 
+</row>
 </header>
