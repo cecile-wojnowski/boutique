@@ -8,7 +8,7 @@
     </div>
 
     <div class="row">
-      <h1 class="logo"> Boutique en ligne </h1>
+      <h1 class="logo col m2"> Boutique en ligne </h1>
 
       <!-- Barre de recherche -->
       <div class="col m3 offset-m4">

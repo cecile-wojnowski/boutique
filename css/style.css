@@ -1,9 +1,13 @@
 /* couleur  grise : #F3F3F3 */
-
+/***** HEADER *****/
 .link_header{
   color: black !important;
   font-weight:bold;
 }
 .p_connexion{
   text-align: right;
+}
+.logo{
+  font-size:25px !important;
+  margin-top: 0 !important;
 }
