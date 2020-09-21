@@ -40,7 +40,11 @@
 .h2_produit{
   font-size:20px !important;
 }
-
+.boutons_produit{
+  display: flex;
+  flex-direction: column !important;
+  width : 150px;
+}
 /**** FOOTER ****/
 
 footer{

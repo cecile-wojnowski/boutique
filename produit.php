@@ -46,9 +46,14 @@
           <p> Quantité </p>
           <p> Elément à insérer ici </p>
 
-          <!-- Bouton Panier -->
+          <!-- Boutons -->
+          <div class= "boutons_produit">
           <a class="waves-effect waves-green btn grey lighten-3 grey-text text-darken-2">
             <i class="material-icons left">shopping_cart</i>Panier</a>
+
+            <a class="waves-effect waves-green btn grey darken-4 lighten-3 white-text">
+              Acheter maintenant</a>
+          </div>
         </div>
 
         <div class="col s3 m3">
