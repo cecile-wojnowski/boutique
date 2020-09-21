@@ -36,6 +36,12 @@
   text-align: justify;
 }
 
+/***** PRODUIT ****/
+.container_produit{
+  display: flex;
+  flex-direction:row;
+}
+
 /**** FOOTER ****/
 
 footer{
