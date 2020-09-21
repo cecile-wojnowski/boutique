@@ -15,15 +15,14 @@
 
     <main>
       <!-- Breadcrumb -->
-      <nav>
         <div class="nav-wrapper">
           <div class="col s12">
-            <a href="#!" class="breadcrumb">Accueil</a>
-            <a href="#!" class="breadcrumb">Nouveautés</a>
-            <a href="#!" class="breadcrumb">Noisettes</a>
+            <a href="#!" class="breadcrumb grey-text">Accueil</a>
+            <a href="#!" class="breadcrumb grey-text">Nouveautés</a>
+            <a href="#!" class="breadcrumb grey-text">Noisettes</a>
           </div>
         </div>
-      </nav>
+
 
 
         <!-- Image -->
