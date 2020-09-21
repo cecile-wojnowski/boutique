@@ -33,6 +33,7 @@ main{
   background-color: #F3F3F3 !important;
   padding:2%;
 }
+/**** INDEX *****/
 /** Section 1 : image **/
 .index_img{
   width:70% !important;
@@ -45,6 +46,22 @@ main{
   text-align: justify;
 }
 
+
+/****** PANIER *****/
+.align-right{
+  display: flex;
+  justify-content: flex-end;
+}
+.row_panier{
+  display: flex;
+  flex-direction: row;
+}
+.row_panier > p{
+  margin: 0 !important;
+}
+.row_panier > h2{
+  margin : 0 !important;
+}
 /***** PRODUIT ****/
 .h2_produit{
   font-size:20px !important;

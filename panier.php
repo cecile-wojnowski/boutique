@@ -37,6 +37,24 @@
           <p> Prix </p>
         </div>
       </div>
+
+      <div class="row">
+        <div class="col m1 offset-m10">
+          <div class="row_panier">
+            <h2 class="h2_produit"> Total </h2>
+            <p> Prix </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col m3 offset-m9">
+        <div class= "boutons_produit">
+          <a class="waves-effect waves-green btn grey darken-4 lighten-3 white-text">
+          Commander </a>
+        </div>
+      </div>
+    </div>
     </main>
 
     <?php include('includes/footer.php'); ?>
