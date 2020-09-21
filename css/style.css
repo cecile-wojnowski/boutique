@@ -3,6 +3,9 @@
 .row{
   margin-bottom: 0 !important;
 }
+a{
+  color:black !important;
+}
 /***** HEADER *****/
 .link_header{
   color: black !important;
