@@ -23,8 +23,6 @@
           </div>
         </div>
 
-
-
         <!-- Image -->
         <div class="row">
           <div class="col s3 m3 offset-m1">
@@ -34,8 +32,6 @@
               </div>
             </div>
           </div>
-
-
 
         <div class="col s3 m3 offset-m1">
           <!-- Elements divers -->
