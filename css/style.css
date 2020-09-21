@@ -37,9 +37,8 @@
 }
 
 /***** PRODUIT ****/
-.container_produit{
-  display: flex;
-  flex-direction:row;
+.h2_produit{
+  font-size:20px !important;
 }
 
 /**** FOOTER ****/

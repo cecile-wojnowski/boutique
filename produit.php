@@ -25,7 +25,7 @@
         </div>
       </nav>
 
-      <div class="container_produit">
+
         <!-- Image -->
         <div class="row">
           <div class="col s3 m3">
@@ -35,9 +35,10 @@
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="">
+
+
+        <div class="col s3 m3">
           <!-- Elements divers -->
           <p>Nom du produit</p>
           <p>Prix du produit</p>
@@ -50,9 +51,9 @@
             <i class="material-icons left">shopping_cart</i>Panier</a>
         </div>
 
-        <div class="">
+        <div class="col s3 m3">
           <!-- Texte -->
-          <h2> Nom du produit </h2>
+          <h2 class="h2_produit"> Nom du produit </h2>
           <p> Description du produit </p>
         </div>
       </div>
