@@ -51,7 +51,10 @@ main{
 .boutons_produit{
   display: flex;
   flex-direction: column !important;
-  width : 150px;
+  width : 180px;
+}
+#bouton_produit1{
+  margin-bottom:5%;
 }
 /* Couleur arrow breadcrumb */
 .breadcrumb:before {
