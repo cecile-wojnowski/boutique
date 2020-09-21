@@ -27,7 +27,7 @@
 
         <!-- Image -->
         <div class="row">
-          <div class="col s3 m3">
+          <div class="col s3 m3 offset-m1">
             <div class="card">
               <div class="card-image">
                 <a href="#"> <img src="img/nuts.jpg"> </a>
@@ -37,7 +37,7 @@
 
 
 
-        <div class="col s3 m3">
+        <div class="col s3 m3 offset-m1">
           <!-- Elements divers -->
           <p>Nom du produit</p>
           <p>Prix du produit</p>
