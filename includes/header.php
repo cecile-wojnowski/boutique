@@ -32,10 +32,12 @@
  <nav class="nav_header2">
     <div class="nav-wrapper">
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href=""> Accueil </a></li>
-        <li><a href=""> Catégorie 1</a></li>
-        <li><a href="">Catégorie 2</a></li>
-        <li><a href="">Catégorie 3</a></li>
+        <li><a href="index.php"> Accueil </a></li>
+        <li><a href=""> Nouveautés </a></li>
+        <li><a href=""> Promotions </a></li>
+        <li><a href=""> Fruits à coque</a></li>
+        <li><a href=""> Légumes </a></li>
+        <li><a href=""> Fruits </a></li>
       </ul>
     </div>
   </nav>
