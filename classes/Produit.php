@@ -5,7 +5,7 @@ Les informations des Produits doivent :
 - être modifiable par l'admin : faut-il ajouter des getter et setter pour que les attributs
 soient accessibles et modifiables ?
 */
-class Produits
+class Produit
 {
   private $id;
   private $nom;
@@ -34,7 +34,6 @@ class Produits
      $this->_id = $id;
    }
  }
-  }
   public function setNom($nom){
     if (is_string($nom))
     {

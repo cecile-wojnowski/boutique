@@ -1,5 +1,5 @@
 <?php
-class Categories
+class Categorie
 {
   private $nom;
   private $liste_produit; # Tableau contenant les produits de la catégorie

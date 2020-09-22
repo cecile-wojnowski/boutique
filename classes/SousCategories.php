@@ -1,5 +1,5 @@
 <?php
-class SousCategories extends Categories
+class SousCategorie extends Categorie
 {
   # La classe SousCategories hérite des méthodes de Categories
   # Mais elle doit avoir un nom et une liste de produits différents
