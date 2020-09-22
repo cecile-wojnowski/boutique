@@ -90,8 +90,9 @@ main{
   margin-top:2% !important;
   margin-bottom: 5% !important;
 }
-.h2_form{
-  text-align: center;
+#bouton_inscription{
+  padding-right:20% !important;
+  padding-left:20% !important;
 }
 /**** FOOTER ****/
 
