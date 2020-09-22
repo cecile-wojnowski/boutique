@@ -39,11 +39,6 @@
           // On admet que le constructeur de la classe appelle chaque setter pour assigner les valeurs qu'on lui a données aux attributs correspondants.
           $produit = new Produit($donnees);
           $produit->hydrate($donnees);
-
-          echo $produit->nom(), $produit->prix(), $produit->description(),
-           $produit->image(), $produit->date_ajout(), $produit->stock();
-
-
         ?>
 
         <!-- Image -->
