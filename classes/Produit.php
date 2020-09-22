@@ -66,7 +66,7 @@ class Produit
    if ($id > 0)
    {
      // Si c'est le cas, c'est tout bon, on assigne la valeur à l'attribut correspondant.
-     $this->_id = $id;
+     $this->id = $id;
    }
  }
   public function setNom($nom){
@@ -109,6 +109,9 @@ class Produit
   }
 
   # Getters : servent à accéder aux attributs en dehors de la classe
+  public function id(){
+    return $this->id;
+  }
   public function nom(){
     return $this->nom;
   }
