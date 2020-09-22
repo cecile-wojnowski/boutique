@@ -24,7 +24,8 @@
     </div>
 
 <!-- Section 2 -->
-
+<section>
+  <h3> Nouveautés </h3>
 <?php
 // On admet que $db est un objet PDO.
 $request = $db->query('SELECT * FROM produits');
@@ -35,12 +36,8 @@ while ($donnees = $request->fetch(PDO::FETCH_ASSOC)) // Chaque entrée sera réc
   // On admet que le constructeur de la classe appelle chaque setter pour assigner les valeurs qu'on lui a données aux attributs correspondants.
   $produit = new Produit($donnees);
   $produit->hydrate($donnees);
-
-  echo $produit->id(), $produit->nom(), $produit->prix(), $produit->description(),
-   $produit->image(), $produit->date_ajout(), $produit->quantite_stock();
 ?>
-      <section>
-        <h3> Nouveautés </h3>
+
         <div class="row">
           <div class="col s3 m3">
             <div class="card">
@@ -54,30 +51,7 @@ while ($donnees = $request->fetch(PDO::FETCH_ASSOC)) // Chaque entrée sera réc
             </div>
           </div>
 <?php } ?>
-          <div class="col s3 m3">
-            <div class="card">
-              <div class="card-image">
-                <a href="#"> <img src="img/nuts-mixed.jpg"> </a>
-              </div>
-              <div class="card-content">
-                <p>Mélange de fruits à coque</p>
-                <p> Prix </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col s3 m3">
-            <div class="card">
-              <div class="card-image">
-                <a href="#"> <img src="img/pistachio.jpg"> </a>
-              </div>
-              <div class="card-content">
-                <p>Pistaches</p>
-                <p> Prix </p>
-              </div>
-            </div>
-          </div>
-
+          
           <div class="col s3 m3">
             <div class="card">
               <div class="card-image">
