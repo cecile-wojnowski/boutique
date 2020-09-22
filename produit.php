@@ -41,7 +41,7 @@
           $produit->hydrate($donnees);
 
           echo $produit->nom(), $produit->prix(), $produit->description(),
-           $produit->image(), $produit->date_ajout(), $produit->quantite_stock();
+           $produit->image(), $produit->date_ajout(), $produit->stock();
 
 
         ?>
@@ -61,7 +61,7 @@
           <p><?php echo $produit->nom(); ?></p>
           <p><?php echo $produit->prix(); ?> euros</p>
 
-          <p> Stock: <?php echo $produit->quantite_stock(); ?> </p>
+          <p> Stock: <?php echo $produit->stock(); ?> </p>
           <p> Elément à insérer ici : ajouter ou soustraire une quantité </p>
 
           <!-- Boutons -->

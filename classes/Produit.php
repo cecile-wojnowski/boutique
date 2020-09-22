@@ -13,7 +13,7 @@ class Produit
   private $description;
   private $image;
   private $date_ajout;
-  private $quantite_stock;
+  private $stock;
   private $est_valorise = false;
 
 # Cette fonction pourrait être simplifiée grâce à des variables
@@ -45,9 +45,9 @@ class Produit
   {
     $this->setDate_ajout($donnees['date_ajout']);
   }
-  if (isset($donnees['quantite_stock']))
+  if (isset($donnees['stock']))
   {
-    $this->setQuantite_stock($donnees['quantite_stock']);
+    $this->setStock($donnees['stock']);
   }
   if (isset($donnees['est_valorise']))
   {
@@ -84,12 +84,12 @@ class Produit
       $this->description = $description;
     }
   }
-  public function setQuantite_stock($quantite_stock){
-    $quantite_stock = (int) $quantite_stock;
+  public function setStock($stock){
+    $stock = (int) $stock;
 
-   if ($quantite_stock >= 0) # Peut être égal à 0, mais ne peut pas être négatif
+   if ($stock >= 0) # Peut être égal à 0, mais ne peut pas être négatif
    {
-     $this->quantite_stock = $quantite_stock;
+     $this->stock = $stock;
    }
   }
   # Conditions à rajouter pour ces setters ?
@@ -123,8 +123,8 @@ class Produit
   public function date_ajout(){
     return $this->date_ajout;
   }
-  public function quantite_stock(){
-    return $this->quantite_stock;
+  public function stock(){
+    return $this->stock;
   }
   public function est_valorise(){
     return $this->est_valorise;
