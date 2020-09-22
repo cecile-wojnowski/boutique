@@ -32,7 +32,7 @@
  <nav class="nav_header2">
     <div class="nav-wrapper">
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href=""> Accueil </a></li>
+        <li><a href="index.php"> Accueil </a></li>
         <li><a href=""> Catégorie 1</a></li>
         <li><a href="">Catégorie 2</a></li>
         <li><a href="">Catégorie 3</a></li>
