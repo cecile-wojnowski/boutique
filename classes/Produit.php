@@ -20,6 +20,8 @@ class Produit
     # Dirige vers la page du produit ?
   }
 
+# Cette fonction pourrait être simplifiée grâce à des variables
+# Voir le cours d'OpenClassrooms : Manipulation de données stockées
   public function hydrate(array $donnees)
   {
     if (isset($donnees['id']))
@@ -32,14 +34,29 @@ class Produit
     $this->setNom($donnees['nom']);
   }
   if (isset($donnees['prix']))
-{
-  $this->setPrix($donnees['prix']);
-}
-
-if (isset($donnees['description']))
-{
-  $this->setDescription($donnees['description']);
-}
+  {
+    $this->setPrix($donnees['prix']);
+  }
+  if (isset($donnees['description']))
+  {
+    $this->setDescription($donnees['description']);
+  }
+  if (isset($donnees['image']))
+  {
+    $this->setImage($donnees['image']);
+  }
+  if (isset($donnees['date_ajout']))
+  {
+    $this->setDate_ajout($donnees['date_ajout']);
+  }
+  if (isset($donnees['quantite_stock']))
+  {
+    $this->setQuantite_stock($donnees['quantite_stock']);
+  }
+  if (isset($donnees['est_valorise']))
+  {
+    $this->setEst_valorise($donnees['est_valorise']);
+  }
   }
   # Setters : servent à modifier les attributs en dehors de la classe
   # peut être faudra-t-il ajouter une requête sql pour que la modification se fasse dans la bdd
@@ -80,7 +97,7 @@ if (isset($donnees['description']))
    }
   }
   # Conditions à rajouter pour ces setters ?
-  public function setImage(){
+  public function setImage($image){
     return $this->image = $image;
   }
   public function setDate_ajout($date_ajout){
