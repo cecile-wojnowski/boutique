@@ -6,6 +6,9 @@
 a{
   color:black !important;
 }
+h2{
+  font-size:30px !important;
+}
 /***** HEADER *****/
 .link_header{
   color: black !important;
@@ -80,6 +83,15 @@ main{
 /* Couleur arrow breadcrumb */
 .breadcrumb:before {
     color: #9e9e9e;
+}
+
+/***** INSCRIPTION *****/
+#form_inscription{
+  margin-top:2% !important;
+  margin-bottom: 5% !important;
+}
+.h2_form{
+  text-align: center;
 }
 /**** FOOTER ****/
 
