@@ -11,7 +11,9 @@
     <script src="https://kit.fontawesome.com/eaf570753d.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <?php include('includes/header.php'); ?>
+    <?php include('includes/header.php');
+    include('includes/bdd.php');
+    include('classes/Produit.php');?>
 
     <main>
       <!-- Section 1 -->
@@ -22,21 +24,37 @@
     </div>
 
 <!-- Section 2 -->
+
+<?php
+// On admet que $db est un objet PDO.
+$request = $db->query('SELECT * FROM produits');
+
+while ($donnees = $request->fetch(PDO::FETCH_ASSOC)) // Chaque entrée sera récupérée et placée dans un array.
+{
+  var_dump($donnees);
+  // On passe les données (stockées dans un tableau) concernant le personnage au constructeur de la classe.
+  // On admet que le constructeur de la classe appelle chaque setter pour assigner les valeurs qu'on lui a données aux attributs correspondants.
+  $produit = new Produit($donnees);
+  $produit->hydrate($donnees);
+
+  echo $produit->id(), $produit->nom(), $produit->prix(), $produit->description(),
+   $produit->image(), $produit->date_ajout(), $produit->quantite_stock();
+?>
       <section>
         <h3> Nouveautés </h3>
         <div class="row">
           <div class="col s3 m3">
             <div class="card">
               <div class="card-image">
-                <a href="#"> <img src="img/nuts.jpg"> </a>
+                <a href="produit.php?id=<?php echo $produit->id(); ?>"> <img src="img/<?php echo $produit->image();?> "> </a>
               </div>
               <div class="card-content">
-                <p> Noisettes </p>
-                <p> Prix </p>
+                <p> <?php echo $produit->nom(); ?> </p>
+                <p> <?php echo $produit->prix(); ?> euros </p>
               </div>
             </div>
           </div>
-
+<?php } ?>
           <div class="col s3 m3">
             <div class="card">
               <div class="card-image">
