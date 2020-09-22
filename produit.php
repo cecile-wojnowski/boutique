@@ -22,11 +22,15 @@
 
       while ($donnees = $request->fetch(PDO::FETCH_ASSOC)) // Chaque entrée sera récupérée et placée dans un array.
       {
+        var_dump($donnees);
+
         // On passe les données (stockées dans un tableau) concernant le personnage au constructeur de la classe.
         // On admet que le constructeur de la classe appelle chaque setter pour assigner les valeurs qu'on lui a données aux attributs correspondants.
-        $perso = new Produit($donnees);
+        $produit = new Produit($donnees);
+        $produit->hydrate($donnees);
 
-        echo $perso->nom(), ' a ', $perso->forcePerso(), ' de force, ', $perso->degats(), ' de dégâts, ', $perso->experience(), ' d\'expérience et est au niveau ', $perso->niveau();
+        echo $produit->nom(), $produit->prix(), $produit->description(),
+         $produit->image(), $produit->date_ajout(), $produit->quantite_stock();
       }
       ?>
       <!-- Breadcrumb -->

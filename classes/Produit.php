@@ -20,8 +20,26 @@ class Produit
     # Dirige vers la page du produit ?
   }
 
-  public function hydrate(){
+  public function hydrate(array $donnees)
+  {
+    if (isset($donnees['id']))
+  {
+    $this->setId($donnees['id']);
+  }
 
+  if (isset($donnees['nom']))
+  {
+    $this->setNom($donnees['nom']);
+  }
+  if (isset($donnees['prix']))
+{
+  $this->setPrix($donnees['prix']);
+}
+
+if (isset($donnees['description']))
+{
+  $this->setDescription($donnees['description']);
+}
   }
   # Setters : servent à modifier les attributs en dehors de la classe
   # peut être faudra-t-il ajouter une requête sql pour que la modification se fasse dans la bdd
@@ -47,7 +65,7 @@ class Produit
      $this->prix = $prix;
    }
   }
-  public function setDescription(){
+  public function setDescription($description){
     if (is_string($description))
     {
       $this->description = $description;
