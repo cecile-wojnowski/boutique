@@ -17,25 +17,6 @@
           ?>
 
     <main>
-      <?php
-      if(isset($_GET['id'])){
-        $id = $_GET['id'];
-      // On admet que $db est un objet PDO.
-      $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      $request = $db->query("SELECT * FROM produits WHERE id = '$id'");
-
-      while ($donnees = $request->fetch(PDO::FETCH_ASSOC)) // Chaque entrée sera récupérée et placée dans un array.
-      {
-        // On passe les données (stockées dans un tableau) concernant le personnage au constructeur de la classe.
-        // On admet que le constructeur de la classe appelle chaque setter pour assigner les valeurs qu'on lui a données aux attributs correspondants.
-        $produit = new Produit($donnees);
-        $produit->hydrate($donnees);
-
-        echo $produit->nom(), $produit->prix(), $produit->description(),
-         $produit->image(), $produit->date_ajout(), $produit->quantite_stock();
-      }
-    }
-      ?>
       <!-- Breadcrumb -->
         <div class="nav-wrapper">
           <div class="col s12">
@@ -45,23 +26,43 @@
           </div>
         </div>
 
+        <?php
+        if(isset($_GET['id'])){
+          $id = $_GET['id'];
+        // On admet que $db est un objet PDO.
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $request = $db->query("SELECT * FROM produits WHERE id = '$id'");
+
+        while ($donnees = $request->fetch(PDO::FETCH_ASSOC)) // Chaque entrée sera récupérée et placée dans un array.
+        {
+          // On passe les données (stockées dans un tableau) concernant le personnage au constructeur de la classe.
+          // On admet que le constructeur de la classe appelle chaque setter pour assigner les valeurs qu'on lui a données aux attributs correspondants.
+          $produit = new Produit($donnees);
+          $produit->hydrate($donnees);
+
+          echo $produit->nom(), $produit->prix(), $produit->description(),
+           $produit->image(), $produit->date_ajout(), $produit->quantite_stock();
+
+
+        ?>
+
         <!-- Image -->
         <div class="row">
           <div class="col s3 m3 offset-m1">
             <div class="card">
               <div class="card-image">
-                <a href="#"> <img src="img/nuts.jpg"> </a>
+                <img src="img/<?php echo $produit->image();?> ">
               </div>
             </div>
           </div>
 
         <div class="col s3 m3 offset-m1">
           <!-- Elements divers -->
-          <p>Nom du produit</p>
-          <p>Prix du produit</p>
+          <p><?php echo $produit->nom(); ?></p>
+          <p><?php echo $produit->prix(); ?> euros</p>
 
-          <p> Quantité </p>
-          <p> Elément à insérer ici </p>
+          <p> Stock: <?php echo $produit->quantite_stock(); ?> </p>
+          <p> Elément à insérer ici : ajouter ou soustraire une quantité </p>
 
           <!-- Boutons -->
           <div class= "boutons_produit">
@@ -75,11 +76,12 @@
 
         <div class="col s3 m3">
           <!-- Texte -->
-          <h2 class="h2_produit"> Nom du produit </h2>
-          <p> Description du produit </p>
+          <h2 class="h2_produit"> <?php echo $produit->nom(); ?></h2>
+          <p> <?php echo $produit->description(); ?> </p>
         </div>
       </div>
-
+<?php }
+} ?>
     </main>
 
 
