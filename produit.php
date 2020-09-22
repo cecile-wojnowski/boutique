@@ -13,12 +13,16 @@
   <body>
     <?php include('includes/header.php');
           include('includes/bdd.php');
-          include('classes/Produit.php');?>
+          include('classes/Produit.php');
+          ?>
 
     <main>
       <?php
+      if(isset($_GET['id'])){
+        $id = $_GET['id'];
       // On admet que $db est un objet PDO.
-      $request = $db->query('SELECT * FROM produits');
+      $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $request = $db->query("SELECT * FROM produits WHERE id = '$id'");
 
       while ($donnees = $request->fetch(PDO::FETCH_ASSOC)) // Chaque entrée sera récupérée et placée dans un array.
       {
@@ -30,6 +34,7 @@
         echo $produit->nom(), $produit->prix(), $produit->description(),
          $produit->image(), $produit->date_ajout(), $produit->quantite_stock();
       }
+    }
       ?>
       <!-- Breadcrumb -->
         <div class="nav-wrapper">

@@ -16,10 +16,6 @@ class Produit
   private $quantite_stock;
   private $est_valorise = false;
 
-  public function afficher_produit(){
-    # Dirige vers la page du produit ?
-  }
-
 # Cette fonction pourrait être simplifiée grâce à des variables
 # Voir le cours d'OpenClassrooms : Manipulation de données stockées
   public function hydrate(array $donnees)
