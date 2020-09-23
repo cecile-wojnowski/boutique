@@ -35,17 +35,16 @@ var_dump($_SESSION['panier']);
         if(isset($_GET['id'])){
           $id = $_GET['id'];
           if(isset($_GET['add_product'])){
-            if (isset($_SESSION['panier'])) {
-              $panier = $_SESSION['panier'];
+            if(isset($_SESSION['panier'])){
+              $panier = unserialize($_SESSION['panier']);
             }else{
-              $panier = new Panier;
+              $panier = new Panier();
             }
+
             $panier->ajouter_produit($id);
             var_dump($panier);
 
-            $_SESSION['panier'] = $panier;
-
-            $_SESSION['panier'] = $panier;
+            $_SESSION['panier'] = serialize($panier);
             $_SESSION['produit'] = $id ;
             $_SESSION['quantite'] = 1; // Devra être modifiable plus tard
             var_dump($_SESSION['produit']);

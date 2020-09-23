@@ -13,7 +13,8 @@ class Panier
   public function ajouter_produit($produit){
     # Ajoute l'id du produit dans le tableau
     # $this->liste_produits[] = $produit;
-    array_push($this->liste_produits, $produit);
+   array_push($this->liste_produits, $produit);
+
   }
   public function afficher_produits(){
     # Afficher tous les produits contenus dans l'array
