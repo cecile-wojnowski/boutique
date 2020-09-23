@@ -17,6 +17,21 @@
           ?>
 
     <main>
+
+      <?php
+      // On admet que $db est un objet PDO.
+      $request = $db->query('SELECT * FROM produit');
+
+      while ($donnees = $request->fetch(PDO::FETCH_ASSOC)) // Chaque entrée sera récupérée et placée dans un array.
+      {
+        // On passe les données (stockées dans un tableau) concernant le personnage au constructeur de la classe.
+        // On admet que le constructeur de la classe appelle chaque setter pour assigner les valeurs qu'on lui a données aux attributs correspondants.
+        $perso = new Produit($donnees);
+
+        echo $perso->nom(), ' a ', $perso->forcePerso(), ' de force, ', $perso->degats(), ' de dégâts, ', $perso->experience(), ' d\'expérience et est au niveau ', $perso->niveau();
+      }
+      ?>
+
       <!-- Breadcrumb -->
         <div class="nav-wrapper">
           <div class="col s12">

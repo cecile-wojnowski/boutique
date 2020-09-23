@@ -4,6 +4,7 @@ class Admin extends Utilisateurs # La classe Admin hérite des propriétés de l
   /****** Gestion des produits ******/
   public function ajouter_produit(){
     # Ajoute un produit dans le site sans nécessairement le mettre dans une catégorie
+    
   }
   public function valoriser_produit(){
     # Permet de mettre en avant un produit
