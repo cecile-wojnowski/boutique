@@ -28,7 +28,7 @@
   <h3> Nouveautés </h3>
     <?php
     // On admet que $db est un objet PDO.
-    $request = $db->query('SELECT * FROM produits');
+    $request = $db->query('SELECT * FROM produits ORDER BY date_ajout LIMIT 4');
 
     while ($donnees = $request->fetch(PDO::FETCH_ASSOC)) // Chaque entrée sera récupérée et placée dans un array.
     {
@@ -55,7 +55,7 @@
       </div>
 </section>
 
-      <!-- Section 2 -->
+      <!-- Section 3 : à remplacer par une boucle exerçant un filtrage -->
       <section>
         <h3> Promotions </h3>
         <div class="row">
