@@ -2,12 +2,21 @@
 class Panier
 {
   private $etat_panier = false; # true = rempli, false = vide
-  private $liste_produits;
+  private $liste_produits = []; # tableau rempli avec les id des produits
   private $quantite_produits;
   private $prix_total = 0; # Prix du panier vide
 
-  public function ajouter_produit(){
+  public function __construct(){
+    $this->etat_panier = true;
+  }
+
+  public function ajouter_produit($produit){
     # Affiche le nom, le prix et l'image du produit
+    # Ajoute l'id du produit dans le tableau
+    $this->liste_produits[] = $produit;
+  }
+  public function afficher_produits(){
+    # Afficher tous les produits contenus dans l'array
   }
 
   public function supprimer_produit(){
@@ -25,6 +34,20 @@ class Panier
     # Simulation de paiement
     # Stocke la commande dans l'historique
     # Vide le panier - Si la commande n'est pas passée, on enregistre le panier
+  }
+
+  # Getters : servent à accéder aux attributs en dehors de la classe
+  public function etat_panier(){
+    return $this->etat_panier;
+  }
+  public function liste_produits(){
+    return $this->liste_produits;
+  }
+  public function quantite_produits(){
+    return $this->quantite_produits;
+  }
+  public function prix_total(){
+    return $this->prix_total;
   }
 }
  ?>
