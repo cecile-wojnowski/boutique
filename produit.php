@@ -1,3 +1,7 @@
+<?php
+session_start();
+var_dump($_SESSION['panier']);
+ ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
@@ -14,6 +18,7 @@
     <?php include('includes/header.php');
           include('includes/bdd.php');
           include('classes/Produit.php');
+          include('classes/Panier.php');
           ?>
 
     <main>
@@ -29,6 +34,22 @@
         <?php
         if(isset($_GET['id'])){
           $id = $_GET['id'];
+          if(isset($_GET['add_product'])){
+            if (isset($_SESSION['panier'])) {
+              $panier = $_SESSION['panier'];
+            }else{
+              $panier = new Panier;
+            }
+            $panier->ajouter_produit($id);
+            var_dump($panier);
+
+            $_SESSION['panier'] = $panier;
+
+            $_SESSION['panier'] = $panier;
+            $_SESSION['produit'] = $id ;
+            $_SESSION['quantite'] = 1; // Devra être modifiable plus tard
+            var_dump($_SESSION['produit']);
+          }
         // On admet que $db est un objet PDO.
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $request = $db->query("SELECT * FROM produits WHERE id = '$id'");
@@ -64,11 +85,6 @@
           <a href="produit.php?id=<?php echo $produit->id(); ?>&add_product=<?php echo $produit->id(); ?>"
             id="bouton_produit1" class="waves-effect waves-green btn grey lighten-3 grey-text text-darken-2">
             <i class="material-icons left">shopping_cart</i>Panier</a>
-
-            <?php
-            if(isset($_GET['add_product'])){
-              echo "Panier";
-            } ?>
 
             <a class="waves-effect waves-green btn grey darken-4 lighten-3 white-text">
               Acheter maintenant</a>
