@@ -13,7 +13,7 @@
   <body>
     <?php include('includes/header.php'); ?>
 
-    <main>
+    <main> <!-- Cette page permet de visualiser le contenu du panier de l'utilisateur -->
       <h2 class="h2_produit"> Mon panier </h2>
 
       <div class="row">
