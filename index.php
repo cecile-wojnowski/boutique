@@ -26,17 +26,17 @@
 <!-- Section 2 -->
 <section>
   <h3> Nouveautés </h3>
-<?php
-// On admet que $db est un objet PDO.
-$request = $db->query('SELECT * FROM produits');
+    <?php
+    // On admet que $db est un objet PDO.
+    $request = $db->query('SELECT * FROM produits');
 
-while ($donnees = $request->fetch(PDO::FETCH_ASSOC)) // Chaque entrée sera récupérée et placée dans un array.
-{
-  // On passe les données (stockées dans un tableau) concernant le personnage au constructeur de la classe.
-  // On admet que le constructeur de la classe appelle chaque setter pour assigner les valeurs qu'on lui a données aux attributs correspondants.
-  $produit = new Produit($donnees);
-  $produit->hydrate($donnees);
-?>
+    while ($donnees = $request->fetch(PDO::FETCH_ASSOC)) // Chaque entrée sera récupérée et placée dans un array.
+    {
+      // On passe les données (stockées dans un tableau) concernant le personnage au constructeur de la classe.
+      // On admet que le constructeur de la classe appelle chaque setter pour assigner les valeurs qu'on lui a données aux attributs correspondants.
+      $produit = new Produit($donnees);
+      $produit->hydrate($donnees);
+      ?>
 
         <div class="row">
           <div class="col s3 m3">
@@ -50,21 +50,10 @@ while ($donnees = $request->fetch(PDO::FETCH_ASSOC)) // Chaque entrée sera réc
               </div>
             </div>
           </div>
-<?php } ?>
-          
-          <div class="col s3 m3">
-            <div class="card">
-              <div class="card-image">
-                <a href="#"> <img src="img/garlic.jpg"></a>
-              </div>
-              <div class="card-content">
-                <p>Ail</p>
-                <p> Prix </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+          <?php
+    }?>
+      </div>
+</section>
 
       <!-- Section 2 -->
       <section>
