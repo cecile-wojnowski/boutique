@@ -59,13 +59,10 @@
       <section>
         <h3> Promotions </h3>
         <?php
-        // On admet que $db est un objet PDO.
         $request = $db->query('SELECT * FROM produits WHERE valorisation = 1 ORDER BY date_ajout LIMIT 4');
 
-        while ($donnees = $request->fetch(PDO::FETCH_ASSOC)) // Chaque entrée sera récupérée et placée dans un array.
+        while ($donnees = $request->fetch(PDO::FETCH_ASSOC))
         {
-          // On passe les données (stockées dans un tableau) concernant le personnage au constructeur de la classe.
-          // On admet que le constructeur de la classe appelle chaque setter pour assigner les valeurs qu'on lui a données aux attributs correspondants.
           $produit = new Produit($donnees);
           $produit->hydrate($donnees);
           ?>
