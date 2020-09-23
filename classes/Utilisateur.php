@@ -5,16 +5,40 @@ class Utilisateurs
   public $nom = "";
   public $prenom = "";
   public $email = "";
+  public $mdp = "";
   private $etat_panier = false; # true = rempli (pas vide), false = vide
   private $admin = false; # Un nouvel utilisateur n'est pas un admin
 
-  public function creer_compte($nom, $prenom, $mail){
-    $inscription = $db->prepare('INSERT INTO utilisateurs(nom, prenom, email) VALUES (:nom, :prenom, :mail)');
+  public function creer_compte($nom, $prenom, $mail, $mdp){
+    // verif si mail (nom utilisateur de la boutique) n'existe pas deja !!
+    $mdp_crypt = password_hash($mdp, PASSWORD_BCRYPT);
+    $inscription = $db->prepare('INSERT INTO utilisateurs (nom, prenom, email, password) VALUES (:nom, :prenom, :mail, :mdp)');
     $insccription->execute(array,
                                   ':nom' => $nom,
                                   ':prenom' => $prenom,
-                                  ':mail' => $mail);
-    echo 'entrée en bdd';
+                                  ':mail' => $mail,
+                                  ':mdp' => $mdp_crypt);
+  }
+
+  public function modifier_nom($new_nom){
+    $update = $db->prepare("UPDATE utilisateurs SET nom = $new_nom WHERE id = $id");
+    $_SESSION['nom'] = $new_nom;
+  }
+
+  public function modifier_prenom($new_prenom){
+    $update = $db->prepare("UPDATE utilisateurs SET prenom = $new_prenom WHERE id = $id");
+    $_SESSION['prenom'] = $new_prenom;
+  }
+
+  public function modifier_email($new_email){
+    $update = $db->prepare("UPDATE utilisateurs SET email = $new_email WHERE id = $id");
+    $_SESSION['email'] = $new_email;
+  }
+
+  public function modifier_mdp($new_mdp){
+    $mdp_up = password_hash($new_mdp, PASSWORD_BCRYPT);
+    $update = $db->prepare("UPDATE utilisateurs SET mdp = $mdp_up WHERE id = $id");
+    $_SESSION['mdp'] = $new_mdp;
   }
 
   public function supprimer_compte(){
