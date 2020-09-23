@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3308
--- Généré le :  ven. 04 sep. 2020 à 13:47
+-- Généré le :  mer. 23 sep. 2020 à 13:23
 -- Version du serveur :  8.0.18
 -- Version de PHP :  7.3.12
 
@@ -32,7 +32,6 @@ DROP TABLE IF EXISTS `categories`;
 CREATE TABLE IF NOT EXISTS `categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) NOT NULL,
-  `id_produit` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -67,8 +66,20 @@ CREATE TABLE IF NOT EXISTS `produits` (
   `date_ajout` datetime NOT NULL,
   `stock` int(11) NOT NULL,
   `valorisation` tinyint(1) NOT NULL,
+  `prix_solde` int(11) NOT NULL,
+  `id_categorie` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `produits`
+--
+
+INSERT INTO `produits` (`id`, `nom`, `prix`, `description`, `image`, `date_ajout`, `stock`, `valorisation`, `prix_solde`, `id_categorie`) VALUES
+(1, 'Noisettes', 10, 'Noisettes bio décortiquées.', 'nuts.jpg', '2020-09-22 10:18:00', 50, 1, 0, 0),
+(2, 'Mélange de fruits à coque', 15, 'Fruits à coque bio.', 'nuts-mixed.jpg', '2020-09-22 13:33:00', 20, 1, 0, 0),
+(3, 'Pistaches', 40, 'Pistaches bio.', 'pistachio.jpg', '2020-09-22 16:45:00', 10, 0, 0, 0),
+(4, 'Ail', 5, 'Tête d\'ail.', 'garlic.jpg', '2020-09-23 11:00:00', 55, 0, 0, 0);
 
 -- --------------------------------------------------------
 
