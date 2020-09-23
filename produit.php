@@ -61,8 +61,14 @@
 
           <!-- Boutons -->
           <div class= "boutons_produit">
-          <a id="bouton_produit1" class="waves-effect waves-green btn grey lighten-3 grey-text text-darken-2">
+          <a href="produit.php?id=<?php echo $produit->id(); ?>&add_product=<?php echo $produit->id(); ?>"
+            id="bouton_produit1" class="waves-effect waves-green btn grey lighten-3 grey-text text-darken-2">
             <i class="material-icons left">shopping_cart</i>Panier</a>
+
+            <?php
+            if(isset($_GET['add_product'])){
+              echo "Panier";
+            } ?>
 
             <a class="waves-effect waves-green btn grey darken-4 lighten-3 white-text">
               Acheter maintenant</a>
