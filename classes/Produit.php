@@ -2,8 +2,7 @@
 /*
 Les informations des Produits doivent :
 - provenir de la base de données (hydratation);
-- être modifiable par l'admin : faut-il ajouter des getter et setter pour que les attributs
-soient accessibles et modifiables ?
+- être modifiables par l'admin
 */
 class Produit
 {
