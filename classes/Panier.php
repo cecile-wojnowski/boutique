@@ -3,7 +3,7 @@ class Panier
 {
   private $etat_panier = false; # true = rempli, false = vide
   private $liste_produits = []; # tableau rempli avec les id des produits
-  private $quantite_produits;
+  private $quantite_produits = 1; # La quantité de base des produits est de 1
   private $prix_total = 0; # Prix du panier vide
 
   public function __construct(){
@@ -36,6 +36,22 @@ class Panier
     # Stocke la commande dans l'historique
     # Vide le panier - Si la commande n'est pas passée, on enregistre le panier
   }
+
+  # Setters permettant de vérifier certaines conditions
+  public function setQuantite_produits($quantite_produits){
+    $quantite_produits = (int) $quantite_produits;
+   if ($quantite_produits > 0)
+   {
+     $this->quantite_produits = $quantite_produits;
+   }
+ }
+ public function setPrix_total($prix_total){
+   $prix_total = (int) $prix_total;
+  if ($prix_total > 0)
+  {
+    $this->prix_total = $prix_total;
+  }
+}
 
   # Getters : servent à accéder aux attributs en dehors de la classe
   public function etat_panier(){
