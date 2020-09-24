@@ -3,17 +3,22 @@ class Panier
 {
   private $etat_panier = false; # true = rempli, false = vide
   private $liste_produits = []; # tableau rempli avec les id des produits
-  private $quantite_produits = 1; # La quantité de base des produits est de 1
+  #private $quantite_produits = 1; # La quantité de base des produits est de 1
   private $prix_total = 0; # Prix du panier vide
 
   public function __construct(){
     $this->etat_panier = true;
   }
 
-  public function ajouter_produit($produit){
+  public function ajouter_produit($produit, $quantite = 1){
     # Ajoute l'id du produit dans le tableau
     # $this->liste_produits[] = $produit;
-   array_push($this->liste_produits, $produit);
+
+    if(isset($this->liste_produits[$produit])) {
+      $this->liste_produits[$produit] = $this->liste_produits[$produit] + $quantite;
+    } else {
+      $this->liste_produits[$produit] = $quantite;
+    }
 
   }
   public function afficher_produits(){
