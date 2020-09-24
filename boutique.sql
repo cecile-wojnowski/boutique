@@ -2,9 +2,9 @@
 -- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3308
--- Généré le :  mer. 23 sep. 2020 à 13:23
--- Version du serveur :  8.0.18
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  mer. 23 sep. 2020 à 14:05
+-- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -44,11 +44,11 @@ CREATE TABLE IF NOT EXISTS `categories` (
 DROP TABLE IF EXISTS `historique`;
 CREATE TABLE IF NOT EXISTS `historique` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nom_produit` varchar(255) NOT NULL,
-  `date_achat` datetime NOT NULL,
+  `id_produit` int(11) NOT NULL,
   `id_utilisateur` int(11) NOT NULL,
+  `date_achat` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -66,10 +66,10 @@ CREATE TABLE IF NOT EXISTS `produits` (
   `date_ajout` datetime NOT NULL,
   `stock` int(11) NOT NULL,
   `valorisation` tinyint(1) NOT NULL,
-  `prix_solde` int(11) NOT NULL,
+  `prix_solde` int(11) DEFAULT NULL,
   `id_categorie` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `produits`
@@ -79,7 +79,7 @@ INSERT INTO `produits` (`id`, `nom`, `prix`, `description`, `image`, `date_ajout
 (1, 'Noisettes', 10, 'Noisettes bio décortiquées.', 'nuts.jpg', '2020-09-22 10:18:00', 50, 1, 0, 0),
 (2, 'Mélange de fruits à coque', 15, 'Fruits à coque bio.', 'nuts-mixed.jpg', '2020-09-22 13:33:00', 20, 1, 0, 0),
 (3, 'Pistaches', 40, 'Pistaches bio.', 'pistachio.jpg', '2020-09-22 16:45:00', 10, 0, 0, 0),
-(4, 'Ail', 5, 'Tête d\'ail.', 'garlic.jpg', '2020-09-23 11:00:00', 55, 0, 0, 0);
+(4, 'Ail', 5, 'Tête d ail.', 'garlic.jpg', '2020-09-23 11:00:00', 55, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `sous_categories` (
   `id_produit` int(11) NOT NULL,
   `id_categorie` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -108,10 +108,11 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
   `nom` varchar(255) NOT NULL,
   `prenom` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `etat_panier` tinyint(1) NOT NULL,
   `admin` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
