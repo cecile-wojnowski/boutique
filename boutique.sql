@@ -67,6 +67,7 @@ CREATE TABLE IF NOT EXISTS `produits` (
   `stock` int(11) NOT NULL,
   `valorisation` tinyint(1) NOT NULL,
   `prix_solde` int(11) DEFAULT NULL,
+  `id_categorie` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
@@ -78,7 +79,7 @@ INSERT INTO `produits` (`id`, `nom`, `prix`, `description`, `image`, `date_ajout
 (1, 'Noisettes', 10, 'Noisettes bio décortiquées.', 'nuts.jpg', '2020-09-22 10:18:00', 50, 1, 0, 0),
 (2, 'Mélange de fruits à coque', 15, 'Fruits à coque bio.', 'nuts-mixed.jpg', '2020-09-22 13:33:00', 20, 1, 0, 0),
 (3, 'Pistaches', 40, 'Pistaches bio.', 'pistachio.jpg', '2020-09-22 16:45:00', 10, 0, 0, 0),
-(4, 'Ail', 5, 'Tête d\'ail.', 'garlic.jpg', '2020-09-23 11:00:00', 55, 0, 0, 0);
+(4, 'Ail', 5, 'Tête d ail.', 'garlic.jpg', '2020-09-23 11:00:00', 55, 0, 0, 0);
 
 -- --------------------------------------------------------
 
