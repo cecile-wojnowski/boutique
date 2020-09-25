@@ -2,8 +2,7 @@
   <div class="row">
     <div class="row">
       <p class="p_connexion">
-        <a class="link_header" href="connexion.php"> Connexion </a>
-        ou <a class="link_header" href="inscription.php">créer un compte</a>
+        <?php include 'includes/co_deco.php' ?>
       </p>
     </div>
 
