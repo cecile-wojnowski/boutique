@@ -1,6 +1,5 @@
 <?php
 session_start();
-var_dump($_SESSION['panier']);
  ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -33,20 +32,25 @@ var_dump($_SESSION['panier']);
 
         <?php
         if(isset($_GET['id'])){
-          $id = $_GET['id'];
+          $id = strval($_GET['id']);
+
           if(isset($_GET['add_product'])){
+
+            $quantite = (int) $_POST['quantite'];
             if(isset($_SESSION['panier'])){
+
               $panier = unserialize($_SESSION['panier']);
-            }else{
+
+            } else {
               $panier = new Panier();
             }
-
-            $panier->ajouter_produit($id);
+            var_dump($id);
+            $panier->ajouter_produit($id, $quantite);
             var_dump($panier);
 
             $_SESSION['panier'] = serialize($panier);
             $_SESSION['produit'] = $id ;
-            $_SESSION['quantite'] = 1; // Devra être modifiable plus tard
+
             var_dump($_SESSION['produit']);
           }
         // On admet que $db est un objet PDO.
@@ -77,17 +81,21 @@ var_dump($_SESSION['panier']);
           <p><?php echo $produit->prix(); ?> euros</p>
 
           <p> Stock: <?php echo $produit->stock(); ?> </p>
-          <p> Elément à insérer ici : ajouter ou soustraire une quantité </p>
 
-          <!-- Boutons -->
-          <div class= "boutons_produit">
-          <a href="produit.php?id=<?php echo $produit->id(); ?>&add_product=<?php echo $produit->id(); ?>"
-            id="bouton_produit1" class="waves-effect waves-green btn grey lighten-3 grey-text text-darken-2">
-            <i class="material-icons left">shopping_cart</i>Panier</a>
+          <form class="" action="produit.php?id=<?php echo $produit->id(); ?>&add_product=<?php echo $produit->id(); ?>" method="post">
+            <p> Elément à insérer ici : <input type="text" name="quantite" value="1" required> </p>
 
-            <a class="waves-effect waves-green btn grey darken-4 lighten-3 white-text">
-              Acheter maintenant</a>
-          </div>
+            <!-- Boutons -->
+            <div class= "boutons_produit">
+              <button id="bouton_produit1" class="waves-effect waves-green btn grey lighten-3 grey-text text-darken-2" type="submit">
+                <i class="material-icons left">shopping_cart</i>Panier
+              </button>
+
+              <a class="waves-effect waves-green btn grey darken-4 lighten-3 white-text">
+                Acheter maintenant</a>
+            </div>
+          </form>
+
         </div>
 
         <div class="col s3 m3">
