@@ -27,7 +27,7 @@ session_start();
     </div>
 
 <!-- Section 2 : requête SQL affichant les derniers produits ajoutés -->
-<section>
+<section class="section_index">
   <h3> Nouveautés </h3>
     <?php
     // On admet que $db est un objet PDO.
@@ -59,7 +59,7 @@ session_start();
 </section>
 
       <!-- Section 3 : requête SQL n'affichant que les produits valorisés -->
-      <section>
+      <section class="section_index">
         <h3> Promotions </h3>
         <?php
         $request = $db->query('SELECT * FROM produits WHERE valorisation = 1 ORDER BY date_ajout LIMIT 4');
