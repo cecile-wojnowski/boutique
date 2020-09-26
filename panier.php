@@ -1,3 +1,5 @@
+<?php
+session_start(); ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
@@ -11,32 +13,54 @@
     <script src="https://kit.fontawesome.com/eaf570753d.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <?php include('includes/header.php'); ?>
+    <?php include('includes/header.php');
+          include('includes/bdd.php');
+          include('classes/Produit.php');
+          include('classes/Panier.php'); ?>
 
     <main> <!-- Cette page permet de visualiser le contenu du panier de l'utilisateur -->
       <h2 class="h2_produit"> Mon panier </h2>
 
+      <!-- Le contenu du panier doit s'affichier à la place du contenu statique -->
       <div class="row">
+      <?php
+      if(isset($_SESSION['panier'])){
+
+        $panier = unserialize($_SESSION['panier']);
+
+        # Il faut récupérer l'id du produit dans le tableau $liste_produits
+        # pour utiliser cet id en faisant une requête sql qui permettra d'afficher les infos du produits.
+        # La quantité, quant à elle, proviendra du tableau lui-même.
+        foreach($panier->liste_produits() as $key => $value){
+          $request = $db->query("SELECT * FROM produits WHERE id = $key");
+          $data = $request->fetch();
+        ?>
+
         <div class="col s1 m2 offset-m1">
           <div class="card">
             <div class="card-image">
-              <a href="#"> <img src="img/nuts.jpg"> </a>
+              <a href="#"> <img src="img/<?= $data["image"] ?>"> </a>
             </div>
           </div>
         </div>
 
         <div class="col s1 m2 offset-m1">
-          <p>Nom du produit</p>
+          <p><?= $data["nom"] ?></p>
         </div>
 
         <div class="col s1 m2 offset-m1">
-          <p>Quantité</p>
+          <p><?= $value ?></p>
         </div>
 
         <div class="col s1 m2 offset-m1">
-          <p> Prix </p>
+          <p><?= $data["prix"] ?> euros</p>
         </div>
-      </div>
+        </div>
+
+        <?php
+            }
+          }
+           ?>
 
       <div class="row">
         <div class="col m1 offset-m10">
