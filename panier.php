@@ -25,13 +25,17 @@ session_start(); ?>
 
         <?php
         if(isset($_SESSION['panier'])){
-
+          var_dump($_SESSION['panier']);
           $panier = unserialize($_SESSION['panier']);
-          var_dump($panier->liste_produits());
+          var_dump($panier->liste_produits()); # Permet de voir le contenu de la liste des produits contenue dans le panier
+          # le problème ici c'est que ça provient de la session qui, elle, n'est pas mise à jour
 
           if(isset($_GET['supp_id'])){
             $key = $_GET['supp_id'];
             $panier->supprimer_produit($key);
+            var_dump($panier->liste_produits());
+            $_SESSION['panier'] = serialize($panier);
+            header('Location:panier.php');
             }
           # Il faut récupérer l'id du produit dans le tableau $liste_produits
           # pour utiliser cet id en faisant une requête sql qui permettra d'afficher les infos du produits.
