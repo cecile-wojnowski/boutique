@@ -48,14 +48,19 @@ session_start(); ?>
           <p><?= $data["nom"] ?></p>
         </div>
 
-        <div class="col s1 m2 offset-m1">
+        <div class="col s1 m2">
           <p><?= $value ?></p>
         </div>
 
-        <div class="col s1 m2 offset-m1">
+        <div class="col s1 m2">
           <p><?= $data["prix"] ?> euros</p>
         </div>
+
+        <!-- Cliquer sur l'icone doit permettre de supprimer le bon index dans le tableau -->
+        <div class="col s1 m2">
+          <a href="panier.php?"> <i class="material-icons">delete</i></a>
         </div>
+      </div>
 
         <?php
             }
