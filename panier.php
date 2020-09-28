@@ -21,14 +21,11 @@ session_start(); ?>
     <main> <!-- Cette page permet de visualiser le contenu du panier de l'utilisateur -->
       <h2 class="h2_produit"> Mon panier </h2>
 
-      <!-- Le contenu du panier doit s'affichier à la place du contenu statique -->
-
         <?php
         if(isset($_SESSION['panier'])){
           var_dump($_SESSION['panier']);
           $panier = unserialize($_SESSION['panier']);
           var_dump($panier->liste_produits()); # Permet de voir le contenu de la liste des produits contenue dans le panier
-          # le problème ici c'est que ça provient de la session qui, elle, n'est pas mise à jour
 
           if(isset($_GET['supp_id'])){
             $key = $_GET['supp_id'];
