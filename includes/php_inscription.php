@@ -3,11 +3,11 @@
     {
         $nom = $_POST['nom'];
         $prenom = $_POST['prenom'];
-        $mail = $_POST['email'];
+        $email = $_POST['email'];
         $mdp = $_POST['password'];
 
         // appel a la classe et ses methodes
-        $utilisateur = new Utilisateurs;
-        $utilisateur->creer_compte($nom, $prenom, $mail, $mdp);
+        $utilisateur = new Utilisateur($db);
+        $utilisateur->creer_compte($nom, $prenom, $email, $mdp);
     }
 ?>

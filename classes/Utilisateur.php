@@ -1,6 +1,7 @@
 <?php
-  class Utilisateurs
-  {
+  class Utilisateur{
+
+    private $db;
     private $id;
     public $nom = "";
     public $prenom = "";
@@ -9,49 +10,59 @@
     private $etat_panier = false; # true = rempli (pas vide), false = vide
     private $admin = false; # Un nouvel utilisateur n'est pas un admin
 
-    
+    public function __construct($db){
+      return $this->db = $db;
+    }
 
-    public function creer_compte($nom, $prenom, $mail, $mdp){
+    public function creer_compte($nom, $prenom, $email, $mdp){
       // verif si mail (nom utilisateur de la boutique) n'existe pas deja !!
-      $mdp_crypt = password_hash($mdp, PASSWORD_BCRYPT);
-      $inscription = $db->prepare('INSERT INTO utilisateurs (nom, prenom, email, password) VALUES (:nom, :prenom, :mail, :mdp)');
-      $insccription->execute(array(
-                                    ':nom' => $nom,
-                                    ':prenom' => $prenom,
-                                    ':mail' => $mail,
-                                    ':mdp' => $mdp_crypt));
+      $req = $this->db->query("SELECT * FROM utilisateurs WHERE email = ?", [$email]);
+      $verif_log = $req->fetch();
+
+      if(empty($verif_log)){
+        $mdp_crypt = password_hash($mdp, PASSWORD_BCRYPT); // cryptage mdp
+
+        $inscription = $this->db->query("INSERT INTO utilisateurs (nom, prenom, email, password) VALUES (?, ?, ?, ?)",
+          [$nom,
+          $prenom,
+          $email,
+          $mdp_crypt]);
+      }
+      else{
+        // systeme de message d'erreur a étudier
+        var_dump('login déjà utilisé');
+      }
     }
 
     public function modifier_nom($new_nom){
-      $update_nom = $db->prepare("UPDATE utilisateurs SET nom = $new_nom WHERE id = $id");
-      $update_nom->execute();
+      $update_nom = $this->db->query("UPDATE utilisateurs SET nom = ? WHERE id = ?", "$new_nom");
+
       $_SESSION['nom'] = $new_nom;
     }
 
     public function modifier_prenom($new_prenom){
-      $update_prenom = $db->prepare("UPDATE utilisateurs SET prenom = $new_prenom WHERE id = $id");
-      $update_prenom->execute();
+      $update_prenom = $this->db->query("UPDATE utilisateurs SET prenom = ? WHERE id = ?", "$new_prenom");
+
       $_SESSION['prenom'] = $new_prenom;
     }
 
     public function modifier_email($new_email){
-      $update_email = $db->prepare("UPDATE utilisateurs SET email = $new_email WHERE id = $id");
-      $update_email->execute();
+      $update_email = $this->db->query("UPDATE utilisateurs SET email = ? WHERE id = ?", "$new_email");
+
       $_SESSION['email'] = $new_email;
     }
 
     public function modifier_mdp($new_mdp){
       $mdp_up = password_hash($new_mdp, PASSWORD_BCRYPT);
-      $update_mdp = $db->prepare("UPDATE utilisateurs SET mdp = $mdp_up WHERE id = $id");
-      $update_mdp->execute();
+      $update_mdp = $this->db->query("UPDATE utilisateurs SET mdp = ? WHERE id = ?", "$mdp_up");
+
       $_SESSION['mdp'] = $new_mdp;
     }
 
-    public function supprimer_compte(){
-      $log = $_SESSION['email'];
-      $supp_utilisateur = $db->prepare("DELETE FROM utilisateurs WHERE email = $log ");
-      $supp_utilisateur->execute(); // supp en cascade dans sql avec historique d'achat
-      // ajouter dans la condition php la supp de la session si supp himself
+    public function supprimer_son_compte(){
+      $id_log = $_SESSION['id'];
+      $supp_utilisateur = $this->db->query("DELETE FROM utilisateurs WHERE id = ? ", "$id_log");
+      //changer les info dans historique d'achat
     }
 
     public function stocker_historique(){
@@ -59,24 +70,23 @@
     }
 
     public function afficher_historique(){
-      $log = $_SESSION['id'];
-      $historique = $db->prepare("SELECT nom_produit, date_achat FROM historique WHERE id_utilisateur = $log");
-      $historique->execute();
-      $historique->fetch(PDO::FETCH_ASSOC);
+      $id_log = $_SESSION['id'];
+      $historique = $this->db->query("SELECT nom_produit, date_achat FROM historique WHERE id_utilisateur = ?", "$id_log");
+      $historique->fetchall(PDO::FETCH_ASSOC);
     }
 
     public function devenir_admin(){
       # Permet de changer le statut de $admin en true
-      $log = $_SESSION['id'];
-      $admin = $db->prepare("UPDATE utilisateurs SET admin = 'true' WHERE id = $log ");
-      $admin->execute();
+      $id_log = $_SESSION['id'];
+      $admin = $this->db->query("UPDATE utilisateurs SET admin = 'true' WHERE id = ?", "$id_log");
+
       $_SESSION['admin'] = true;
     }
 
     public function changer_statut(){
-      $log = $_SESSION['id'];
-      $membre = $db->prepare("UPDATE utilisateurs SET admin = 'false' WHERE id = $log ");
-      $membre->execute();
+      $id_log = $_SESSION['id'];
+      $membre = $this->db->query("UPDATE utilisateurs SET admin = 'false' WHERE id = ? ", "$id_log");
+
       $_SESSION['admin'] = false;
     }
 

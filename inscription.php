@@ -1,4 +1,8 @@
-<?php session_start() ; ?>
+<?php
+  require "classes/autoloader.php";
+
+  $db = App::getDatabase();
+?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
@@ -18,7 +22,6 @@
     <main>
       <?php
         include 'includes/php_inscription.php';
-        require 'classes/Utilisateur.php';
       ?>
       <div class="row">
         <form id="form_inscription" class="col s8 m8 offset-s3 offset-m3" action="" method="POST">
