@@ -37,13 +37,10 @@ session_start(); ?>
             header('Location:panier.php');
             }
 
-              # Modifier la quantité dans le tableau
-
+              # Modifie la quantité dans le tableau
               if(isset($_POST['quantite'])){
                 $post_value = $_POST['quantite'];
                 $panier->modifier_quantite($post_value);
-                var_dump($post_value);
-                var_dump($panier->liste_produits());
                 $_SESSION['panier'] = serialize($panier);
                 header('Location:panier.php');
               }
