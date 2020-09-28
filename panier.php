@@ -27,7 +27,12 @@ session_start(); ?>
         if(isset($_SESSION['panier'])){
 
           $panier = unserialize($_SESSION['panier']);
+          var_dump($panier->liste_produits());
 
+          if(isset($_GET['supp_id'])){
+            $key = $_GET['supp_id'];
+            $panier->supprimer_produit($key);
+            }
           # Il faut récupérer l'id du produit dans le tableau $liste_produits
           # pour utiliser cet id en faisant une requête sql qui permettra d'afficher les infos du produits.
           # La quantité, quant à elle, proviendra du tableau lui-même.
@@ -58,11 +63,6 @@ session_start(); ?>
 
           <!-- Cliquer sur l'icone doit permettre de supprimer le bon index dans le tableau -->
           <div class="col s1 m2">
-            <?php if(isset($_GET['supp_id'])){
-              $key = $_GET['supp_id'];
-              $panier->supprimer_produit($key);
-              }
-            ?>
             <a href="panier.php?supp_id=<?php echo $key ?>"> <i class="material-icons">delete</i></a>
           </div>
         </div>

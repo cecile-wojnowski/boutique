@@ -23,10 +23,14 @@ class Panier
   }
   public function afficher_produits(){
     # Afficher tous les produits contenus dans l'array
+    # mettre le code se trouvant dans panier.php plus tard ici
   }
 
-  public function supprimer_produit(){
+  public function supprimer_produit($key){
     # Retire un produit de la liste
+    var_dump($key);
+    unset($this->liste_produits[$key]);
+    var_dump($this->liste_produits);
   }
 
   public function modifier_quantite(){
