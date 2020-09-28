@@ -53,9 +53,6 @@ session_start(); ?>
           foreach($panier->liste_produits() as $key => $value){
             $request = $db->query("SELECT * FROM produits WHERE id = $key");
             $data = $request->fetch();
-            var_dump($key);
-
-
           ?>
         <div class="row">
           <div class="col s1 m2 offset-m1">

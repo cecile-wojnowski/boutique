@@ -28,20 +28,12 @@ class Panier
 
   public function supprimer_produit($key){
     # Retire un produit de la liste
-    var_dump($key);
     unset($this->liste_produits[$key]);
-    var_dump($this->liste_produits);
   }
 
   public function modifier_quantite($key, $post_value){
-#foreach($this->liste_produits() as $key => $value){
-
-    #if($this->liste_produits[$key] === $key){
-
       $value = (int) $post_value;
       $this->liste_produits[$key] = $value;
-    #}
-
   }
   public function calculer_prix_total(){
     # Additionne le prix de tous les produits
