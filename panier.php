@@ -22,50 +22,57 @@ session_start(); ?>
       <h2 class="h2_produit"> Mon panier </h2>
 
       <!-- Le contenu du panier doit s'affichier à la place du contenu statique -->
-      <div class="row">
-      <?php
-      if(isset($_SESSION['panier'])){
 
-        $panier = unserialize($_SESSION['panier']);
+        <?php
+        if(isset($_SESSION['panier'])){
 
-        # Il faut récupérer l'id du produit dans le tableau $liste_produits
-        # pour utiliser cet id en faisant une requête sql qui permettra d'afficher les infos du produits.
-        # La quantité, quant à elle, proviendra du tableau lui-même.
-        foreach($panier->liste_produits() as $key => $value){
-          $request = $db->query("SELECT * FROM produits WHERE id = $key");
-          $data = $request->fetch();
-        ?>
+          $panier = unserialize($_SESSION['panier']);
 
-        <div class="col s1 m2 offset-m1">
-          <div class="card">
-            <div class="card-image">
-              <a href="#"> <img src="img/<?= $data["image"] ?>"> </a>
+          # Il faut récupérer l'id du produit dans le tableau $liste_produits
+          # pour utiliser cet id en faisant une requête sql qui permettra d'afficher les infos du produits.
+          # La quantité, quant à elle, proviendra du tableau lui-même.
+          foreach($panier->liste_produits() as $key => $value){
+            $request = $db->query("SELECT * FROM produits WHERE id = $key");
+            $data = $request->fetch();
+          ?>
+        <div class="row">
+          <div class="col s1 m2 offset-m1">
+            <div class="card">
+              <div class="card-image">
+                <a href="#"> <img src="img/<?= $data["image"] ?>"> </a>
+              </div>
             </div>
+          </div>
+
+          <div class="col s1 m2 offset-m1">
+            <p><?= $data["nom"] ?></p>
+          </div>
+
+          <div class="col s1 m2">
+            <p><?= $value ?></p>
+          </div>
+
+          <div class="col s1 m2">
+            <p><?= $data["prix"] ?> euros</p>
+          </div>
+
+          <!-- Cliquer sur l'icone doit permettre de supprimer le bon index dans le tableau -->
+          <div class="col s1 m2">
+            <?php if(isset($_GET['supp_id'])){
+              $key = $_GET['supp_id'];
+              $panier->supprimer_produit($key);
+              }
+            ?>
+            <a href="panier.php?supp_id=<?php echo $key ?>"> <i class="material-icons">delete</i></a>
           </div>
         </div>
 
-        <div class="col s1 m2 offset-m1">
-          <p><?= $data["nom"] ?></p>
-        </div>
-
-        <div class="col s1 m2">
-          <p><?= $value ?></p>
-        </div>
-
-        <div class="col s1 m2">
-          <p><?= $data["prix"] ?> euros</p>
-        </div>
-
-        <!-- Cliquer sur l'icone doit permettre de supprimer le bon index dans le tableau -->
-        <div class="col s1 m2">
-          <a href="panier.php?"> <i class="material-icons">delete</i></a>
-        </div>
-      </div>
 
         <?php
             }
           }
            ?>
+
 
       <div class="row">
         <div class="col m1 offset-m10">
