@@ -12,6 +12,9 @@ a{
 h2{
   font-size:30px !important;
 }
+.input_quantite{
+  width:15% !important;
+}
 /***** HEADER *****/
 .link_header{
   color: black !important;
