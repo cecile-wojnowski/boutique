@@ -37,14 +37,15 @@ session_start(); ?>
             header('Location:panier.php');
             }
 
-              # Modifie la quantité dans le tableau
-              if(isset($_POST['quantite'])){
-                $post_value = $_POST['quantite'];
-                $panier->modifier_quantite($post_value);
-                $_SESSION['panier'] = serialize($panier);
-                header('Location:panier.php');
-              }
-
+            if(isset($_POST['quantite'])){
+              if(isset($_GET['modif']))
+              $get_key = $_GET['modif'];
+              var_dump($get_key); # récupérer l'index du tableau dont on modifie la valeur...
+              $post_value = $_POST['quantite'];
+              $panier->modifier_quantite($get_key, $post_value);
+              $_SESSION['panier'] = serialize($panier);
+              header('Location:panier.php');
+            }
 
           # Il faut récupérer l'id du produit dans le tableau $liste_produits
           # pour utiliser cet id en faisant une requête sql qui permettra d'afficher les infos du produits.
@@ -52,6 +53,9 @@ session_start(); ?>
           foreach($panier->liste_produits() as $key => $value){
             $request = $db->query("SELECT * FROM produits WHERE id = $key");
             $data = $request->fetch();
+            var_dump($key);
+
+
           ?>
         <div class="row">
           <div class="col s1 m2 offset-m1">
@@ -67,7 +71,7 @@ session_start(); ?>
           </div>
 
           <div class="col s1 m2">
-            <form class="" action="panier.php?modif=<?php echo $key; ?>" method="post">
+            <form class="" action="panier.php?modif=<?= $key ?>" method="post">
               <p> <input class="input_quantite" type="text" name="quantite" value="<?= $value ?>" required> </p>
             </form>
           </div>
@@ -84,6 +88,7 @@ session_start(); ?>
 
 
         <?php
+
             }
           }
            ?>

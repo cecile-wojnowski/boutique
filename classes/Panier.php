@@ -33,12 +33,15 @@ class Panier
     var_dump($this->liste_produits);
   }
 
-  public function modifier_quantite($post_value){
-    foreach($this->liste_produits() as $key => $value){
+  public function modifier_quantite($key, $post_value){
+#foreach($this->liste_produits() as $key => $value){
+
+    #if($this->liste_produits[$key] === $key){
+
       $value = (int) $post_value;
-      var_dump($value);
       $this->liste_produits[$key] = $value;
-    }
+    #}
+
   }
   public function calculer_prix_total(){
     # Additionne le prix de tous les produits
