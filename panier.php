@@ -38,13 +38,13 @@ session_start(); ?>
             }
 
             if(isset($_POST['quantite'])){
-              if(isset($_GET['modif']))
-              $get_key = $_GET['modif'];
-              var_dump($get_key); # récupérer l'index du tableau dont on modifie la valeur...
-              $post_value = $_POST['quantite'];
-              $panier->modifier_quantite($get_key, $post_value);
-              $_SESSION['panier'] = serialize($panier);
-              header('Location:panier.php');
+              if(isset($_GET['modif'])){
+                $get_key = $_GET['modif'];
+                $post_value = $_POST['quantite'];
+                $panier->modifier_quantite($get_key, $post_value);
+                $_SESSION['panier'] = serialize($panier);
+                header('Location:panier.php');
+              }
             }
 
           # Il faut récupérer l'id du produit dans le tableau $liste_produits
