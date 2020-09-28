@@ -33,7 +33,6 @@ session_start(); ?>
           if(isset($_GET['supp_id'])){
             $key = $_GET['supp_id'];
             $panier->supprimer_produit($key);
-            var_dump($panier->liste_produits());
             $_SESSION['panier'] = serialize($panier);
             header('Location:panier.php');
             }
