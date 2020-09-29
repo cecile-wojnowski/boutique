@@ -23,7 +23,6 @@ session_start(); ?>
 
         <?php
         if(isset($_SESSION['panier'])){
-          var_dump($_SESSION['panier']);
           $panier = unserialize($_SESSION['panier']);
           var_dump($panier->liste_produits()); # Permet de voir le contenu de la liste des produits contenue dans le panier
 
