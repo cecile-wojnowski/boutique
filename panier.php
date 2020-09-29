@@ -43,6 +43,10 @@ session_start(); ?>
               }
             }
 
+            if(isset($_GET['validation'])){
+              $panier->commander($db);
+            }
+
           # Il faut récupérer l'id du produit dans le tableau $liste_produits
           # pour utiliser cet id en faisant une requête sql qui permettra d'afficher les infos du produits.
           # La quantité, quant à elle, proviendra du tableau lui-même.
@@ -92,9 +96,13 @@ session_start(); ?>
           <div class="row_panier">
             <h2 class="h2_produit"> Total </h2>
             <p> <?php
+            if(isset($_SESSION['panier'])){
               /* Calcul du prix total */
               $panier->calculer_prix_total($db);
               ?> euros</p>
+            <?php }
+
+             ?>
           </div>
         </div>
       </div>
@@ -107,9 +115,7 @@ session_start(); ?>
         </div>
       </div>
     </div>
-    <?php if(isset($_GET['validation'])){
-      $panier->commander($db);
-    } ?>
+
 
 
     <?php

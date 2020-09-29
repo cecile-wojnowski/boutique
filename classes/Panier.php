@@ -59,18 +59,25 @@ class Panier
 
   public function commander($db){
     # Simulation de commande
+    # Stocke la commande dans l'historique
     foreach($this->liste_produits() as $key => $value){
       $request = $db->query("INSERT INTO historique (id_produit, date_achat, id_utilisateur)
       VALUES ('$key', NOW(), '$this->id_utilisateur')");
 
 
     }
+    # Si la requête fonctionne, on affiche un message de confirmation
     if($request){
+      $this->liste_produits = [];
+      var_dump($this->liste_produits);
+      unset($_SESSION['panier']);
       echo "Commande validée";
     }
 
-    # Stocke la commande dans l'historique
-    # Vide le panier - Si la commande n'est pas passée, on enregistre le panier
+
+    # Vide le panier = vider le tableau
+
+    # Optionnel : Si la commande n'est pas passée, on enregistre le panier
   }
 
   # Setters permettant de vérifier certaines conditions
