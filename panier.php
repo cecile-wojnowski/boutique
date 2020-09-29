@@ -1,5 +1,13 @@
 <?php
-session_start(); ?>
+session_start();
+include('includes/header.php');
+include('includes/bdd.php');
+include('classes/Produit.php');
+include('classes/Panier.php');
+if(isset($_SESSION["panier"])) {
+  $panier = unserialize($_SESSION['panier']);
+}
+?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
@@ -13,17 +21,12 @@ session_start(); ?>
     <script src="https://kit.fontawesome.com/eaf570753d.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <?php include('includes/header.php');
-          include('includes/bdd.php');
-          include('classes/Produit.php');
-          include('classes/Panier.php'); ?>
 
     <main> <!-- Cette page permet de visualiser le contenu du panier de l'utilisateur -->
       <h2 class="h2_produit"> Mon panier </h2>
 
         <?php
-        if(isset($_SESSION['panier'])){
-          $panier = unserialize($_SESSION['panier']);
+        if(isset($_SESSION['panier']) & !isset($_GET["validation"])){
           var_dump($panier->liste_produits()); # Permet de voir le contenu de la liste des produits contenue dans le panier
 
           if(isset($_GET['supp_id'])){
@@ -31,7 +34,7 @@ session_start(); ?>
             $panier->supprimer_produit($key);
             $_SESSION['panier'] = serialize($panier);
             header('Location:panier.php');
-            }
+          }
 
             if(isset($_POST['quantite'])){
               if(isset($_GET['modif'])){
@@ -43,9 +46,7 @@ session_start(); ?>
               }
             }
 
-            if(isset($_GET['validation'])){
-              $panier->commander($db);
-            }
+
 
           # Il faut récupérer l'id du produit dans le tableau $liste_produits
           # pour utiliser cet id en faisant une requête sql qui permettra d'afficher les infos du produits.
@@ -83,12 +84,7 @@ session_start(); ?>
           </div>
         </div>
 
-
-        <?php
-
-            }
-
-           ?>
+      <?php } ?>
 
 
       <div class="row">
@@ -96,13 +92,10 @@ session_start(); ?>
           <div class="row_panier">
             <h2 class="h2_produit"> Total </h2>
             <p> <?php
-            if(isset($_SESSION['panier'])){
               /* Calcul du prix total */
               $panier->calculer_prix_total($db);
               ?> euros</p>
-            <?php }
 
-             ?>
           </div>
         </div>
       </div>
@@ -116,10 +109,17 @@ session_start(); ?>
       </div>
     </div>
 
-
-
+  <?php
+} elseif(isset($_SESSION["panier"]) & isset($_GET["validation"])) {
+  $panier->commander($db);
+} else {
+    ?>
+    <div class="row">
+      Pas de panier
+    </div>
     <?php
-  } # Portée de l'isset de la session ?>
+  }
+   ?>
     </main>
 
     <?php include 'includes/footer.php'; ?>
