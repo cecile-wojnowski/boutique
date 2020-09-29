@@ -37,18 +37,23 @@ class Panier
   }
   public function calculer_prix_total($db){
     # Additionne le prix de tous les produits
-    # doit récupérer le prix de l'article, et le multiplier par sa quantité
-    # une requête doit récupérer le prix en fonction de l'id...
-    # parcourir le tableau $liste_produits pour à chaque index récupérer le prix ?
+    # Il reste à multiplier le prix par la quantité
 
     # Récupération des prix de chaque produit se trouvant dans le tableau $liste_produits
-    $prix_total = 0;
     foreach($this->liste_produits() as $key => $value){
       $request = $db->query("SELECT prix FROM produits WHERE id = $key");
       $data = $request->fetch();
-      $prix_total += $data["prix"];
+
+      # On stocke dans un tableau le résultat de la multiplication du prix par sa quantité
+      $prix_quantite[] =  $data["prix"] * $value;
     }
-    echo $prix_total;
+
+    # On additionne les prix contenus dans $prix_quantite pour avoir le prix total
+    $prix_total = 0;
+    foreach($prix_quantite as $key => $value){
+      $prix_total += $value;
+    }
+    echo $prix_total; # ou un return pour récupérer la valeur ?
   }
 
   public function commander(){
