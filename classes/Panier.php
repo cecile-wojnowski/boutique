@@ -41,11 +41,14 @@ class Panier
     # une requête doit récupérer le prix en fonction de l'id...
     # parcourir le tableau $liste_produits pour à chaque index récupérer le prix ?
 
+    # Récupération des prix de chaque produit se trouvant dans le tableau $liste_produits
+    $prix_total = 0;
     foreach($this->liste_produits() as $key => $value){
       $request = $db->query("SELECT prix FROM produits WHERE id = $key");
       $data = $request->fetch();
-      echo $data["prix"]."<br>";
+      $prix_total += $data["prix"];
     }
+    echo $prix_total;
   }
 
   public function commander(){

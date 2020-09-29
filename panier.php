@@ -50,11 +50,9 @@ session_start(); ?>
           # Il faut récupérer l'id du produit dans le tableau $liste_produits
           # pour utiliser cet id en faisant une requête sql qui permettra d'afficher les infos du produits.
           # La quantité, quant à elle, proviendra du tableau lui-même.
-
-            # Récupération des prix de chaque produit se trouvant dans le tableau $liste_produits
-            foreach($panier->liste_produits() as $key => $value){
-              $request = $db->query("SELECT * FROM produits WHERE id = $key");
-              $data = $request->fetch();
+          foreach($panier->liste_produits() as $key => $value){
+            $request = $db->query("SELECT * FROM produits WHERE id = $key");
+            $data = $request->fetch();
           ?>
         <div class="row">
           <div class="col s1 m2 offset-m1">
