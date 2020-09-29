@@ -35,12 +35,21 @@ class Panier
       $value = (int) $post_value;
       $this->liste_produits[$key] = $value;
   }
-  public function calculer_prix_total(){
+  public function calculer_prix_total($db){
     # Additionne le prix de tous les produits
+    # doit récupérer le prix de l'article, et le multiplier par sa quantité
+    # une requête doit récupérer le prix en fonction de l'id...
+    # parcourir le tableau $liste_produits pour à chaque index récupérer le prix ?
+
+    foreach($this->liste_produits() as $key => $value){
+      $request = $db->query("SELECT prix FROM produits WHERE id = $key");
+      $data = $request->fetch();
+      echo $data["prix"]."<br>";
+    }
   }
 
   public function commander(){
-    # Simulation de paiement
+    # Simulation de paiement : affichage d'un message de validation
     # Stocke la commande dans l'historique
     # Vide le panier - Si la commande n'est pas passée, on enregistre le panier
   }
