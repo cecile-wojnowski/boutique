@@ -53,7 +53,7 @@ class Panier
     foreach($prix_quantite as $key => $value){
       $prix_total += $value;
     }
-    echo $prix_total; # ou un return pour récupérer la valeur ?
+    echo $prix_total;
   }
 
   public function commander(){

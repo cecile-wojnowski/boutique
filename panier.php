@@ -44,9 +44,6 @@ session_start(); ?>
               }
             }
 
-            /* Calcul du prix total */
-            $panier->calculer_prix_total($db);
-
           # Il faut récupérer l'id du produit dans le tableau $liste_produits
           # pour utiliser cet id en faisant une requête sql qui permettra d'afficher les infos du produits.
           # La quantité, quant à elle, proviendra du tableau lui-même.
@@ -95,7 +92,11 @@ session_start(); ?>
         <div class="col m1 offset-m10">
           <div class="row_panier">
             <h2 class="h2_produit"> Total </h2>
-            <p> Prix </p>
+            <p> <?php
+              /* Calcul du prix total */
+              $panier->calculer_prix_total($db);
+              ?>
+            </p>
           </div>
         </div>
       </div>
