@@ -84,19 +84,18 @@ session_start(); ?>
         <?php
 
             }
-          }
+
            ?>
 
 
       <div class="row">
-        <div class="col m1 offset-m10">
+        <div class="col m1 offset-m9">
           <div class="row_panier">
             <h2 class="h2_produit"> Total </h2>
             <p> <?php
               /* Calcul du prix total */
               $panier->calculer_prix_total($db);
-              ?>
-            </p>
+              ?> euros</p>
           </div>
         </div>
       </div>
@@ -109,6 +108,8 @@ session_start(); ?>
         </div>
       </div>
     </div>
+    <?php
+  } # Portée de l'isset de la session ?>
     </main>
 
     <?php include 'includes/footer.php'; ?>

@@ -50,7 +50,7 @@ class Panier
 
     # On additionne les prix contenus dans $prix_quantite pour avoir le prix total
     $prix_total = 0;
-    foreach($prix_quantite as $key => $value){
+    foreach($prix_quantite as $value){
       $prix_total += $value;
     }
     echo $prix_total;

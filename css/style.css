@@ -67,6 +67,7 @@ main{
 .row_panier{
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 .row_panier > p{
   margin: 0 !important;
