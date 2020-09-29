@@ -69,6 +69,10 @@ main{
   flex-direction: row;
   justify-content: space-between;
 }
+/* Aligne le Total avec le prix */
+#prix_total{
+  width: 10% !important;
+}
 .row_panier > p{
   margin: 0 !important;
 }
