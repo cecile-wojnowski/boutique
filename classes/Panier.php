@@ -1,6 +1,7 @@
 <?php
 class Panier
 {
+  private $id_utilisateur = 1; # valeur temporaire qui devra changer
   private $etat_panier = false; # true = rempli, false = vide
   private $liste_produits = []; # tableau rempli avec les id des produits
   #private $quantite_produits = 1; # La quantité de base des produits est de 1
@@ -23,7 +24,7 @@ class Panier
   }
   public function afficher_produits(){
     # Afficher tous les produits contenus dans l'array
-    # mettre le code se trouvant dans panier.php plus tard ici
+    # mettre le code se trouvant dans panier.php plus tard ici ?
   }
 
   public function supprimer_produit($key){
@@ -56,8 +57,18 @@ class Panier
     echo $prix_total;
   }
 
-  public function commander(){
-    # Simulation de paiement : affichage d'un message de validation
+  public function commander($db){
+    # Simulation de commande
+    foreach($this->liste_produits() as $key => $value){
+      $request = $db->query("INSERT INTO historique (id_produit, date_achat, id_utilisateur)
+      VALUES ('$key', NOW(), '$this->id_utilisateur')");
+
+
+    }
+    if($request){
+      echo "Commande validée";
+    }
+
     # Stocke la commande dans l'historique
     # Vide le panier - Si la commande n'est pas passée, on enregistre le panier
   }
@@ -79,6 +90,9 @@ class Panier
 }
 
   # Getters : servent à accéder aux attributs en dehors de la classe
+  public function id_utilisateur(){
+    return $this->id_utilisateur;
+  }
   public function etat_panier(){
     return $this->etat_panier;
   }

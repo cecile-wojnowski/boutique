@@ -102,11 +102,16 @@ session_start(); ?>
       <div class="row">
         <div class="col m3 offset-m9">
         <div class= "boutons_produit">
-          <a class="waves-effect waves-green btn grey darken-4 lighten-3 white-text">
+          <a href="panier.php?validation" class="waves-effect waves-green btn grey darken-4 lighten-3 white-text">
           Commander </a>
         </div>
       </div>
     </div>
+    <?php if(isset($_GET['validation'])){
+      $panier->commander($db);
+    } ?>
+
+
     <?php
   } # Portée de l'isset de la session ?>
     </main>
