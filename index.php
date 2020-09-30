@@ -17,6 +17,7 @@
     include('classes/Produit.php');?>
 
     <main>
+    <?php var_dump($_SESSION); ?>
       <!-- Section 1 -->
       <div class="row">
         <div class="col offset-m3">

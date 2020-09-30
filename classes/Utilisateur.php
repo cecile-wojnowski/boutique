@@ -27,10 +27,30 @@
           $prenom,
           $email,
           $mdp_crypt]);
+          $location = App::redirect('connexion.php');
       }
       else{
         // systeme de message d'erreur a étudier
         var_dump('login déjà utilisé');
+      }
+    }
+
+    public function se_connecter($email, $mdp){
+      $recup_info = $this->db->query("SELECT * FROM utilisateurs WHERE email = ?", [$email]);
+      $infos = $recup_info->fetch();
+
+      if(!empty($infos) && !empty($email) && !empty($mdp)){
+        if(password_verify($mdp, $infos->password)){
+          $session = new Session;
+          $session->writeSession("id", "$infos->id");
+          $session->writeSession("nom", "$infos->nom");
+          $session->writeSession("prenom", "$infos->prenom");
+          $session->writeSession("email", "$infos->email");
+          $location = App::redirect('index.php');
+        }
+      }
+      else{
+        var_dump('aucun compte chez nous');
       }
     }
 

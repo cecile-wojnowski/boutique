@@ -21,6 +21,7 @@
     ?>
     <main>
       <?php
+        // var_dump($_SESSION);
         include 'includes/php_inscription.php';
       ?>
       <div class="row">
@@ -63,11 +64,13 @@
 
           <div class="row">
             <div class="input-field col m3 s3 offset-m3 offset-s3">
-              <button type="submit" name="inscription">
+              <button class="btn waves-effect waves-light grey darken-4" type="submit" name="inscription">
+                S'inscrire<i class="material-icons right">send</i>
+              </button>
+              <!--
                 <a id="bouton_inscription" class="waves-effect waves-green btn grey darken-4 lighten-3 white-text">
                   S'incrire
-                </a>
-              </button>
+                </a> -->
             </div>
           </div>
         </form>

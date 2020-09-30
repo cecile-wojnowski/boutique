@@ -15,7 +15,7 @@
         }
 
         public function setflash($key, $message){
-            $_SESSION['flash'][$key] = $message,
+            $_SESSION['flash'][$key] = $message;
         }
 
         public function hasFlashes(){

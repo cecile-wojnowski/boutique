@@ -1,5 +1,5 @@
 <?php
-    if(!isset($_SESSION['mail']))
+    if(!isset($_SESSION['email']))
     {
         echo '<a class="link_header" href="connexion.php"> Connexion </a>';
         echo 'ou ';
