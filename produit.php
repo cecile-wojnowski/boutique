@@ -34,7 +34,7 @@ session_start();
         if(isset($_GET['id'])){
           $id = strval($_GET['id']);
 
-          if(isset($_GET['add_product'])){
+          if(isset($_POST['add_product'])){
 
             $quantite = (int) $_POST['quantite'];
             if(isset($_SESSION['panier'])){
@@ -80,10 +80,12 @@ session_start();
           <p><?php echo $produit->nom(); ?></p>
           <p><?php echo $produit->prix(); ?> euros</p>
 
-          <p> Stock: <?php echo $produit->stock(); ?> </p>
+          <p> Il reste <?php echo $produit->stock(); ?> produits en stock.</p>
 
-          <form class="" action="produit.php?id=<?php echo $produit->id(); ?>&add_product=<?php echo $produit->id(); ?>" method="post">
-            <p> Elément à insérer ici : <input type="text" name="quantite" value="1" required> </p>
+          <form class="" action="produit.php?id=<?php echo $produit->id(); ?>" method="post">
+            <input type="text" name="add_product" value="<?php echo $produit->id(); ?>" style="display:none;">
+
+            <p> Quantité <input type="text" name="quantite" value="1" required> </p>
 
             <!-- Boutons -->
             <div class= "boutons_produit">
@@ -100,7 +102,7 @@ session_start();
 
         <div class="col s3 m3">
           <!-- Texte -->
-          <h2 class="h2_produit"> <?php echo $produit->nom(); ?></h2>
+          <h2 class="h2_produit"> Description du produit </h2>
           <p> <?php echo $produit->description(); ?> </p>
         </div>
       </div>

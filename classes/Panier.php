@@ -1,6 +1,7 @@
 <?php
 class Panier
 {
+  private $id_utilisateur = 1; # valeur temporaire qui devra changer
   private $etat_panier = false; # true = rempli, false = vide
   private $liste_produits = []; # tableau rempli avec les id des produits
   #private $quantite_produits = 1; # La quantité de base des produits est de 1
@@ -23,23 +24,60 @@ class Panier
   }
   public function afficher_produits(){
     # Afficher tous les produits contenus dans l'array
+    # mettre le code se trouvant dans panier.php plus tard ici ?
   }
 
-  public function supprimer_produit(){
+  public function supprimer_produit($key){
     # Retire un produit de la liste
+    unset($this->liste_produits[$key]);
   }
 
-  public function modifier_quantite(){
-
+  public function modifier_quantite($key, $post_value){
+      $value = (int) $post_value;
+      $this->liste_produits[$key] = $value;
   }
-  public function calculer_prix_total(){
+  public function calculer_prix_total($db){
     # Additionne le prix de tous les produits
+    # Il reste à multiplier le prix par la quantité
+
+    # Récupération des prix de chaque produit se trouvant dans le tableau $liste_produits
+    foreach($this->liste_produits() as $key => $value){
+      $request = $db->query("SELECT prix FROM produits WHERE id = $key");
+      $data = $request->fetch();
+
+      # On stocke dans un tableau le résultat de la multiplication du prix par sa quantité
+      $prix_quantite[] =  $data["prix"] * $value;
+    }
+
+    # On additionne les prix contenus dans $prix_quantite pour avoir le prix total
+    $prix_total = 0;
+    foreach($prix_quantite as $value){
+      $prix_total += $value;
+    }
+    echo $prix_total;
   }
 
-  public function commander(){
-    # Simulation de paiement
+  public function commander($db){
+    # Simulation de commande
     # Stocke la commande dans l'historique
-    # Vide le panier - Si la commande n'est pas passée, on enregistre le panier
+    foreach($this->liste_produits() as $key => $value){
+      $request = $db->query("INSERT INTO historique (id_produit, date_achat, id_utilisateur)
+      VALUES ('$key', NOW(), '$this->id_utilisateur')");
+
+
+    }
+    # Si la requête fonctionne, on affiche un message de confirmation
+    if($request){
+      $this->liste_produits = [];
+      var_dump($this->liste_produits);
+      unset($_SESSION['panier']);
+      echo "Commande validée";
+    }
+
+
+    # Vide le panier = vider le tableau
+
+    # Optionnel : Si la commande n'est pas passée, on enregistre le panier
   }
 
   # Setters permettant de vérifier certaines conditions
@@ -59,6 +97,9 @@ class Panier
 }
 
   # Getters : servent à accéder aux attributs en dehors de la classe
+  public function id_utilisateur(){
+    return $this->id_utilisateur;
+  }
   public function etat_panier(){
     return $this->etat_panier;
   }

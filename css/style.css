@@ -1,5 +1,8 @@
 /* couleur  grise : #F3F3F3 */
 /**** GENERAL ****/
+.section_index .row .col{
+  padding: 2rem !important;
+}
 .row{
   margin-bottom: 0 !important;
 }
@@ -8,6 +11,9 @@ a{
 }
 h2{
   font-size:30px !important;
+}
+.input_quantite{
+  width:15% !important;
 }
 /***** HEADER *****/
 .link_header{
@@ -61,6 +67,11 @@ main{
 .row_panier{
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+}
+/* Aligne le Total avec le prix */
+#prix_total{
+  width: 10% !important;
 }
 .row_panier > p{
   margin: 0 !important;
