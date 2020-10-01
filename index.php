@@ -1,4 +1,10 @@
-<?php session_start() ?>
+<?php
+  session_start();
+  require "classes/autoloader.php";
+
+  $db = App::getDatabase();
+
+?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
@@ -12,9 +18,11 @@
     <script src="https://kit.fontawesome.com/eaf570753d.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <?php include('includes/header.php');
-    include('includes/bdd.php');
-    include('classes/Produit.php');?>
+    <?php
+      include('includes/header.php');
+      include('includes/bdd.php');
+      include('classes/Produit.php');
+    ?>
 
     <main>
       <!-- Section 1 -->
