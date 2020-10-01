@@ -5,7 +5,7 @@
 
         $utilisateur = new Utilisateur($db);
         $utilisateur->se_connecter($email, $mdp);
-
+        // var_dump($_SESSION);
     }
 
 ?>

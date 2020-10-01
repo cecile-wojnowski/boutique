@@ -1,4 +1,5 @@
 <?php
+  session_start();
   require "classes/autoloader.php";
 
   $db = App::getDatabase();
@@ -21,7 +22,6 @@
     ?>
     <main>
       <?php
-        // var_dump($_SESSION);
         include 'includes/php_inscription.php';
       ?>
       <div class="row">

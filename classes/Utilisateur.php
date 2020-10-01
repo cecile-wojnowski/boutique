@@ -9,6 +9,7 @@
     public $mdp = "";
     private $etat_panier = false; # true = rempli (pas vide), false = vide
     private $admin = false; # Un nouvel utilisateur n'est pas un admin
+    public $errors = [];
 
     public function __construct($db){
       return $this->db = $db;
@@ -31,7 +32,7 @@
       }
       else{
         // systeme de message d'erreur a étudier
-        var_dump('login déjà utilisé');
+        var_dump("Cet email existe déjà chez nous !");
       }
     }
 
@@ -41,47 +42,56 @@
 
       if(!empty($infos) && !empty($email) && !empty($mdp)){
         if(password_verify($mdp, $infos->password)){
-          $session = new Session;
-          $session->writeSession("id", "$infos->id");
-          $session->writeSession("nom", "$infos->nom");
-          $session->writeSession("prenom", "$infos->prenom");
-          $session->writeSession("email", "$infos->email");
-          $location = App::redirect('index.php');
+          // var_dump($infos);
+          $recuperation = get_object_vars($infos);
+          // var_dump($recuperation);
+
+          $_SESSION['id'] = $recuperation['id'];
+          $_SESSION['nom'] = $recuperation['nom'];
+          $_SESSION['prenom'] = $recuperation['prenom'];
+          $_SESSION['email'] = $recuperation['email'];
+          App::redirect('index.php');
         }
       }
       else{
-        var_dump('aucun compte chez nous');
+        var_dump("Vos infos sont déjà utilisé dans notre site, veuillez les modifier !");
       }
     }
 
     public function modifier_nom($new_nom){
-      $update_nom = $this->db->query("UPDATE utilisateurs SET nom = ? WHERE id = ?", "$new_nom");
+      $update_nom = $this->db->query("UPDATE utilisateurs SET nom = ? WHERE id = ?", [$new_nom, $_SESSION['id']]);
 
       $_SESSION['nom'] = $new_nom;
     }
 
     public function modifier_prenom($new_prenom){
-      $update_prenom = $this->db->query("UPDATE utilisateurs SET prenom = ? WHERE id = ?", "$new_prenom");
+      $update_prenom = $this->db->query("UPDATE utilisateurs SET prenom = ? WHERE id = ?", [$new_prenom, $_SESSION['id']]);
 
       $_SESSION['prenom'] = $new_prenom;
     }
 
     public function modifier_email($new_email){
-      $update_email = $this->db->query("UPDATE utilisateurs SET email = ? WHERE id = ?", "$new_email");
-
-      $_SESSION['email'] = $new_email;
+      $reqbdd = $db->query("SELECT * FROM utilisateurs WHERE email = ?", [$new_email]);
+      $result = $reqbdd->fetch();
+      if(empty($result)){
+        $update_email = $this->db->query("UPDATE utilisateurs SET email = ? WHERE id = ?", [$new_email, $_SESSION['id']]);
+        $_SESSION['email'] = $new_email;
+      }
+      else
+      {
+        var_dump("cet email est déjà utilisé chez nous");
+      }
     }
 
     public function modifier_mdp($new_mdp){
       $mdp_up = password_hash($new_mdp, PASSWORD_BCRYPT);
-      $update_mdp = $this->db->query("UPDATE utilisateurs SET mdp = ? WHERE id = ?", "$mdp_up");
+      $update_mdp = $this->db->query("UPDATE utilisateurs SET password = ? WHERE id = ?", [$mdp_up, $_SESSION['id']]);
 
       $_SESSION['mdp'] = $new_mdp;
     }
 
     public function supprimer_son_compte(){
-      $id_log = $_SESSION['id'];
-      $supp_utilisateur = $this->db->query("DELETE FROM utilisateurs WHERE id = ? ", "$id_log");
+      $supp_utilisateur = $this->db->query("DELETE FROM utilisateurs WHERE id = ? ", [$_SESSION['id']]);
       //changer les info dans historique d'achat
     }
 
