@@ -44,4 +44,9 @@
     {
         App::redirect('index.php');
     }
+
+    $historique = $db->query("SELECT * FROM historique INNER JOIN utilisateurs
+                            ON id_utilisateur = utilisateurs.id
+                            WHERE id_utilisateur = $id
+                            ORDER BY date_achat);
 ?>

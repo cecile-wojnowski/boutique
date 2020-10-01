@@ -78,6 +78,23 @@
                 </div>
             </form>
         </div>
+
+        <table>
+            <thead>
+                <th>Produit</th>
+                <th>Quantité</th>
+                <th>Prix</th>
+                <th>Date d'achat</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
     </main>
 
     <?php include 'includes/footer.php'; ?>
