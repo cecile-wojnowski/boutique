@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 23 sep. 2020 à 14:05
+-- Généré le :  ven. 02 oct. 2020 à 13:39
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -49,7 +49,19 @@ CREATE TABLE IF NOT EXISTS `historique` (
   `id_utilisateur` int(11) NOT NULL,
   `date_achat` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `historique`
+--
+
+INSERT INTO `historique` (`id`, `id_produit`, `quantite`, `id_utilisateur`, `date_achat`) VALUES
+(1, 1, 5, 1, '2020-10-02 15:34:03'),
+(2, 2, 10, 1, '2020-10-02 15:34:18'),
+(3, 3, 2, 1, '2020-10-02 15:34:26'),
+(4, 1, 1, 1, '2020-10-02 15:34:50'),
+(5, 4, 50, 1, '2020-10-02 15:34:50'),
+(6, 2, 9, 1, '2020-10-02 15:34:50');
 
 -- --------------------------------------------------------
 
@@ -70,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `produits` (
   `prix_solde` int(11) DEFAULT NULL,
   `id_categorie` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `produits`
@@ -110,10 +122,17 @@ CREATE TABLE IF NOT EXISTS `utilisateurs` (
   `prenom` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `etat_panier` tinyint(1) NOT NULL,
-  `admin` tinyint(1) NOT NULL,
+  `etat_panier` tinyint(1) DEFAULT NULL,
+  `admin` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `utilisateurs`
+--
+
+INSERT INTO `utilisateurs` (`id`, `nom`, `prenom`, `email`, `password`, `etat_panier`, `admin`) VALUES
+(1, 'Siegl', 'Maxime', 'moi@moi.com', '$2y$10$b9jAYYsHku3WwU24/eOd1eeqwJtBUKx5xvXQXs8v18k4xEjwKLrzS', NULL, NULL);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
