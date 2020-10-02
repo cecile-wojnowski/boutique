@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  require "classes/autoloader.php";
+
+  $db = App::getDatabase();
+
+?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
@@ -11,7 +18,11 @@
     <script src="https://kit.fontawesome.com/eaf570753d.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <?php include('includes/header.php'); ?>
+    <?php
+      include('includes/header.php');
+      include('includes/bdd.php');
+      include('classes/Produit.php');
+    ?>
 
     <main>
       <!-- Section 1 -->
@@ -21,113 +32,64 @@
       </div>
     </div>
 
-<!-- Section 2 -->
-      <section>
-        <h3> Nouveautés </h3>
+<!-- Section 2 : requête SQL affichant les derniers produits ajoutés -->
+<section class="section_index">
+  <h3> Nouveautés </h3>
+    <?php
+    // On admet que $db est un objet PDO.
+    $request = $db->query('SELECT * FROM produits ORDER BY date_ajout LIMIT 4');
+
+    while ($donnees = $request->fetch(PDO::FETCH_ASSOC)) // Chaque entrée sera récupérée et placée dans un array.
+    {
+      // On passe les données (stockées dans un tableau) concernant le personnage au constructeur de la classe.
+      // On admet que le constructeur de la classe appelle chaque setter pour assigner les valeurs qu'on lui a données aux attributs correspondants.
+      $produit = new Produit($donnees);
+      $produit->hydrate($donnees);
+      ?>
+
         <div class="row">
           <div class="col s3 m3">
             <div class="card">
               <div class="card-image">
-                <a href="#"> <img src="img/nuts.jpg"> </a>
+                <a href="produit.php?id=<?php echo $produit->id(); ?>"> <img src="img/<?php echo $produit->image();?> "> </a>
               </div>
               <div class="card-content">
-                <p> Noisettes </p>
-                <p> Prix </p>
+                <p> <?php echo $produit->nom(); ?> </p>
+                <p> <?php echo $produit->prix(); ?> euros </p>
               </div>
             </div>
           </div>
+          <?php
+    }?>
+      </div>
+</section>
 
-          <div class="col s3 m3">
-            <div class="card">
-              <div class="card-image">
-                <a href="#"> <img src="img/nuts-mixed.jpg"> </a>
-              </div>
-              <div class="card-content">
-                <p>Mélange de fruits à coque</p>
-                <p> Prix </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col s3 m3">
-            <div class="card">
-              <div class="card-image">
-                <a href="#"> <img src="img/pistachio.jpg"> </a>
-              </div>
-              <div class="card-content">
-                <p>Pistaches</p>
-                <p> Prix </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col s3 m3">
-            <div class="card">
-              <div class="card-image">
-                <a href="#"> <img src="img/garlic.jpg"></a>
-              </div>
-              <div class="card-content">
-                <p>Ail</p>
-                <p> Prix </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Section 2 -->
-      <section>
+      <!-- Section 3 : requête SQL n'affichant que les produits valorisés -->
+      <section class="section_index">
         <h3> Promotions </h3>
-        <div class="row">
-          <div class="col s3 m3">
-            <div class="card">
-              <div class="card-image">
-                <a href="#"> <img src="img/peppers.jpg"> </a>
-              </div>
-              <div class="card-content">
-                <p> Poivrons </p>
-                <p> Prix </p>
-              </div>
-            </div>
-          </div>
+        <?php
+        $request = $db->query('SELECT * FROM produits WHERE valorisation = 1 ORDER BY date_ajout LIMIT 4');
 
-          <div class="col s3 m3">
-            <div class="card">
-              <div class="card-image">
-                <a href="#"> <img src="img/pepper-mix.jpg"> </a>
+        while ($donnees = $request->fetch(PDO::FETCH_ASSOC))
+        {
+          $produit = new Produit($donnees);
+          $produit->hydrate($donnees);
+          ?>
+            <div class="row">
+              <div class="col s3 m3">
+                <div class="card">
+                  <div class="card-image">
+                    <a href="produit.php?id=<?php echo $produit->id(); ?>"> <img src="img/<?php echo $produit->image();?> "> </a>
+                  </div>
+                  <div class="card-content">
+                    <p> <?php echo $produit->nom(); ?> </p>
+                    <p> <?php echo $produit->prix(); ?> euros </p>
+                  </div>
+                </div>
               </div>
-              <div class="card-content">
-                <p>Mélange de baies (poivre)</p>
-                <p> Prix </p>
-              </div>
-            </div>
+              <?php
+        }?>
           </div>
-
-          <div class="col s3 m3">
-            <div class="card">
-              <div class="card-image">
-                <a href="#"> <img src="img/pumpkin2.jpg"> </a>
-              </div>
-              <div class="card-content">
-                <p>Courges</p>
-                <p> Prix </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col s3 m3">
-            <div class="card">
-              <div class="card-image">
-                <a href="#"> <img src="img/tomatoes2.jpg"></a>
-              </div>
-              <div class="card-content">
-                <p>Tomates</p>
-                <p> Prix </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </section>
 
 
@@ -150,6 +112,6 @@
 
     </main>
 
-    <?php include('includes/footer.php'); ?>
+    <?php include 'includes/footer.php'; ?>
   </body>
 </html>
