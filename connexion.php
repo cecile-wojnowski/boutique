@@ -31,13 +31,13 @@
           </div>
           <div class="row">
             <div class="input-field col m8 s8">
-              <input id="email" type="email" name="email" class="validate">
+              <input id="email" type="email" name="email" class="validate" required>
               <label for="email">Email</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col m8 s8">
-              <input id="password" type="password" name="password" class="validate">
+              <input id="password" type="password" name="password" class="validate" required>
               <label for="password">Mot de passe </label>
             </div>
           </div>

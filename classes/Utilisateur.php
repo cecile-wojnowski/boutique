@@ -9,7 +9,6 @@
     public $mdp = "";
     private $etat_panier = false; # true = rempli (pas vide), false = vide
     private $admin = false; # Un nouvel utilisateur n'est pas un admin
-    public $errors = [];
 
     public function __construct($db){
       return $this->db = $db;
@@ -40,7 +39,7 @@
       $recup_info = $this->db->query("SELECT * FROM utilisateurs WHERE email = ?", [$email]);
       $infos = $recup_info->fetch();
 
-      if(!empty($infos) && !empty($email) && !empty($mdp)){
+      if(!empty($infos)){
         if(password_verify($mdp, $infos->password)){
           // var_dump($infos);
           $recuperation = get_object_vars($infos);
@@ -54,7 +53,7 @@
         }
       }
       else{
-        var_dump("Vos infos sont déjà utilisé dans notre site, veuillez les modifier !");
+        var_dump("Vos infos ne figurent pas sur notre site, veuillez les modifier ou vous inscrire !");
       }
     }
 

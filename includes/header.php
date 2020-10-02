@@ -37,6 +37,7 @@
         <li><a href=""> Fruits à coque</a></li>
         <li><a href=""> Légumes </a></li>
         <li><a href=""> Fruits </a></li>
+        <li><a href="profil.php"> Profil </a></li>
       </ul>
     </div>
   </nav>

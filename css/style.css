@@ -21,7 +21,7 @@ h2{
   font-weight:bold;
 }
 .p_connexion{
-  text-align: right;
+  text-align: right !important;
   margin-right: 10%;
 }
 .logo{
