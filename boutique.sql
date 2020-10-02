@@ -45,6 +45,7 @@ DROP TABLE IF EXISTS `historique`;
 CREATE TABLE IF NOT EXISTS `historique` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_produit` int(11) NOT NULL,
+  `quantite` int(11) NOT NULL,
   `id_utilisateur` int(11) NOT NULL,
   `date_achat` datetime NOT NULL,
   PRIMARY KEY (`id`)

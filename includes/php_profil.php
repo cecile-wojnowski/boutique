@@ -44,33 +44,7 @@
     {
         App::redirect('index.php');
     }
-
-    $requete = $db->query("SELECT * FROM historique INNER JOIN produits
-                                    ON id_produit = produits.id
-                                    WHERE id_utilisateur = 3
-                                    ORDER BY date_achat DESC");
-    $historique = $requete->fetchall(PDO::FETCH_ASSOC);
-
-    // afficher résultat dans un tab
-    var_dump($historique);
-    echo '<table>';
-    echo '<thead>';
-    echo '<th> Produit </th>';
-    echo '<th> Prix </th>';
-    echo '<th> Quantité </th>';
-    echo '<th> Date d\'Achat </th>';
-    echo '</thead>';
-    echo '<tbody>';
-    foreach($historique as $recap)
-    {
-        var_dump($recap);
-        echo '<tr>';
-        echo '<td>'.$recap['nom'].'</td>';
-        echo '<td>'.$recap['prix'].'</td>';
-        echo '<td>'.$recap['quantite'].'</td>';
-        echo '<td>'.$recap['date_achat'].'</td>';
-        echo '</tr>';
-    }
-    echo '</tbody>';
-    echo '</table>';
+    // $id = $_SESSION['id'];
+    // $utilisateur = new Utilisateur($db);
+    // $utilisateur->stocker_historique($id);
 ?>
