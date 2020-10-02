@@ -96,14 +96,14 @@
 
     public function stocker_historique($id_utilisateur){
       // Insertion de l'achat dans la table sql
-      $requete = $db->query("SELECT * FROM historique INNER JOIN produits
+      $requete = $this->db->query("SELECT * FROM historique INNER JOIN produits
                               ON id_produit = produits.id
                               WHERE id_utilisateur = ?
                               ORDER BY date_achat DESC", [$id_utilisateur]);
       $historique = $requete->fetchall(PDO::FETCH_ASSOC);
 
       // afficher résultat dans un tab
-      var_dump($historique);
+      // var_dump($historique);
       echo '<table>';
       echo '<thead>';
       echo '<th> Produit </th>';
@@ -114,7 +114,7 @@
       echo '<tbody>';
       foreach($historique as $recap)
       {
-      var_dump($recap);
+      // var_dump($recap);
       echo '<tr>';
       echo '<td>'.$recap['nom'].'</td>';
       echo '<td>'.$recap['prix'].'</td>';
