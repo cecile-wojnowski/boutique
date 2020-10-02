@@ -1,18 +1,18 @@
 <?php
-session_start();
-include('includes/header.php');
-include('includes/bdd.php');
-include('classes/Produit.php');
-include('classes/Panier.php');
-if(isset($_SESSION["panier"])) {
-  $panier = unserialize($_SESSION['panier']);
-}
+  session_start();
+
+  include('includes/bdd.php');
+  include('classes/Produit.php');
+  include('classes/Panier.php');
+  if(isset($_SESSION["panier"])) {
+    $panier = unserialize($_SESSION['panier']);
+  }
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Boutique / Panier</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -21,7 +21,7 @@ if(isset($_SESSION["panier"])) {
     <script src="https://kit.fontawesome.com/eaf570753d.js" crossorigin="anonymous"></script>
   </head>
   <body>
-
+    <?php include('includes/header.php'); ?>
     <main> <!-- Cette page permet de visualiser le contenu du panier de l'utilisateur -->
       <h2 class="h2_produit"> Mon panier </h2>
 

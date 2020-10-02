@@ -1,90 +1,140 @@
 <?php
-class Utilisateurs
-{
-  private $id;
-  public $nom = "";
-  public $prenom = "";
-  public $email = "";
-  public $mdp = "";
-  private $etat_panier = false; # true = rempli (pas vide), false = vide
-  private $admin = false; # Un nouvel utilisateur n'est pas un admin
+  class Utilisateur{
 
-  public function creer_compte($nom, $prenom, $mail, $mdp){
-    // verif si mail (nom utilisateur de la boutique) n'existe pas deja !!
-    $mdp_crypt = password_hash($mdp, PASSWORD_BCRYPT);
-    $inscription = $db->prepare('INSERT INTO utilisateurs (nom, prenom, email, password) VALUES (:nom, :prenom, :mail, :mdp)');
-    $insccription->execute(array,
-                                  ':nom' => $nom,
-                                  ':prenom' => $prenom,
-                                  ':mail' => $mail,
-                                  ':mdp' => $mdp_crypt);
-  }
+    private $db;
+    private $id;
+    public $nom = "";
+    public $prenom = "";
+    public $email = "";
+    public $mdp = "";
+    private $etat_panier = false; # true = rempli (pas vide), false = vide
+    private $admin = false; # Un nouvel utilisateur n'est pas un admin
+    public $errors = [];
 
-  public function modifier_nom($new_nom){
-    $update = $db->prepare("UPDATE utilisateurs SET nom = $new_nom WHERE id = $id");
-    $_SESSION['nom'] = $new_nom;
-  }
+    public function __construct($db){
+      return $this->db = $db;
+    }
 
-  public function modifier_prenom($new_prenom){
-    $update = $db->prepare("UPDATE utilisateurs SET prenom = $new_prenom WHERE id = $id");
-    $_SESSION['prenom'] = $new_prenom;
-  }
+    public function creer_compte($nom, $prenom, $email, $mdp){
+      // verif si mail (nom utilisateur de la boutique) n'existe pas deja !!
+      $req = $this->db->query("SELECT * FROM utilisateurs WHERE email = ?", [$email]);
+      $verif_log = $req->fetch();
 
-  public function modifier_email($new_email){
-    $update = $db->prepare("UPDATE utilisateurs SET email = $new_email WHERE id = $id");
-    $_SESSION['email'] = $new_email;
-  }
+      if(empty($verif_log)){
+        $mdp_crypt = password_hash($mdp, PASSWORD_BCRYPT); // cryptage mdp
 
-  public function modifier_mdp($new_mdp){
-    $mdp_up = password_hash($new_mdp, PASSWORD_BCRYPT);
-    $update = $db->prepare("UPDATE utilisateurs SET mdp = $mdp_up WHERE id = $id");
-    $_SESSION['mdp'] = $new_mdp;
-  }
+        $inscription = $this->db->query("INSERT INTO utilisateurs (nom, prenom, email, password) VALUES (?, ?, ?, ?)",
+          [$nom,
+          $prenom,
+          $email,
+          $mdp_crypt]);
+          $location = App::redirect('connexion.php');
+      }
+      else{
+        // systeme de message d'erreur a étudier
+        var_dump("Cet email existe déjà chez nous !");
+      }
+    }
 
-  public function supprimer_compte(){
-    $supp_utilisateur = $db->prepare("DELETE FROM utilisateurs WHERE email = $_SESSION['mail'] ");
-    $supp_utilisateur->execute(); // supp en cascade dans sql avec historique d'achat
-    // ajouter dans la condition php la supp de la session si supp himself
-  }
+    public function se_connecter($email, $mdp){
+      $recup_info = $this->db->query("SELECT * FROM utilisateurs WHERE email = ?", [$email]);
+      $infos = $recup_info->fetch();
 
-  public function stocker_historique(){
-    # Insertion de l'achat dans la table sql
-  }
+      if(!empty($infos) && !empty($email) && !empty($mdp)){
+        if(password_verify($mdp, $infos->password)){
+          // var_dump($infos);
+          $recuperation = get_object_vars($infos);
+          // var_dump($recuperation);
 
-  public function afficher_historique(){
-    $historique = $db->prepare("SELECT nom_produit, date_achat FROM historique WHERE id_utilisateur = $_SESSION['id']");
-    $historique->execute();
-    $historique->fetch(PDO::FETCH_ASSOC);
-  }
+          $_SESSION['id'] = $recuperation['id'];
+          $_SESSION['nom'] = $recuperation['nom'];
+          $_SESSION['prenom'] = $recuperation['prenom'];
+          $_SESSION['email'] = $recuperation['email'];
+          App::redirect('index.php');
+        }
+      }
+      else{
+        var_dump("Vos infos sont déjà utilisé dans notre site, veuillez les modifier !");
+      }
+    }
 
-  public function devenir_admin(){
-    # Permet de changer le statut de $admin en true
-    $admin = $db->prepare("UPDATE utilisateurs SET admin = 'true' WHERE id = $_SESSION['id'] ");
-    $admin->execute();
-    $_SESSION['admin'] = true;
-  }
+    public function modifier_nom($new_nom){
+      $update_nom = $this->db->query("UPDATE utilisateurs SET nom = ? WHERE id = ?", [$new_nom, $_SESSION['id']]);
 
-  public function changer_statut(){
-    $membre = $db->prepare("UPDATE utilisateurs SET admin = 'false' WHERE id = $_SESSION['id'] ");
-    $membre->execute();
-    $_SESSION['admin'] = false,
-  }
+      $_SESSION['nom'] = $new_nom;
+    }
 
-  //geteur de recupération
-  public function getid(){
-    return $this->id;
-  }
+    public function modifier_prenom($new_prenom){
+      $update_prenom = $this->db->query("UPDATE utilisateurs SET prenom = ? WHERE id = ?", [$new_prenom, $_SESSION['id']]);
 
-  public function getnom(){
-    return $this->nom;
-  }
+      $_SESSION['prenom'] = $new_prenom;
+    }
 
-  public function getprenom(){
-    return $this->prenom;
-  }
+    public function modifier_email($new_email){
+      $reqbdd = $db->query("SELECT * FROM utilisateurs WHERE email = ?", [$new_email]);
+      $result = $reqbdd->fetch();
+      if(empty($result)){
+        $update_email = $this->db->query("UPDATE utilisateurs SET email = ? WHERE id = ?", [$new_email, $_SESSION['id']]);
+        $_SESSION['email'] = $new_email;
+      }
+      else
+      {
+        var_dump("cet email est déjà utilisé chez nous");
+      }
+    }
 
-  public function getemail(){
-    return $this->email;
+    public function modifier_mdp($new_mdp){
+      $mdp_up = password_hash($new_mdp, PASSWORD_BCRYPT);
+      $update_mdp = $this->db->query("UPDATE utilisateurs SET password = ? WHERE id = ?", [$mdp_up, $_SESSION['id']]);
+
+      $_SESSION['mdp'] = $new_mdp;
+    }
+
+    public function supprimer_son_compte(){
+      $supp_utilisateur = $this->db->query("DELETE FROM utilisateurs WHERE id = ? ", [$_SESSION['id']]);
+      //changer les info dans historique d'achat
+    }
+
+    public function stocker_historique(){
+      # Insertion de l'achat dans la table sql
+    }
+
+    public function afficher_historique(){
+      $id_log = $_SESSION['id'];
+      $historique = $this->db->query("SELECT nom_produit, date_achat FROM historique WHERE id_utilisateur = ?", "$id_log");
+      $historique->fetchall(PDO::FETCH_ASSOC);
+    }
+
+    public function devenir_admin(){
+      # Permet de changer le statut de $admin en true
+      $id_log = $_SESSION['id'];
+      $admin = $this->db->query("UPDATE utilisateurs SET admin = 'true' WHERE id = ?", "$id_log");
+
+      $_SESSION['admin'] = true;
+    }
+
+    public function changer_statut(){
+      $id_log = $_SESSION['id'];
+      $membre = $this->db->query("UPDATE utilisateurs SET admin = 'false' WHERE id = ? ", "$id_log");
+
+      $_SESSION['admin'] = false;
+    }
+
+    //geteur de recupération
+    public function getid(){
+      return $this->id;
+    }
+
+    public function getnom(){
+      return $this->nom;
+    }
+
+    public function getprenom(){
+      return $this->prenom;
+    }
+
+    public function getemail(){
+      return $this->email;
+    }
   }
-}
 ?>
