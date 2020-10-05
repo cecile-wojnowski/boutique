@@ -58,15 +58,18 @@ class Panier
   }
 
   public function commander($db){
-    # Simulation de commande
     # Stocke la commande dans l'historique
     foreach($this->liste_produits() as $key => $value){
       $request = $db->query("INSERT INTO historique (id_produit, quantite, date_achat, id_utilisateur)
       VALUES ('$key', '$value', NOW(), '$this->id_utilisateur')");
 
+      # On soustrait du stock la quantité achetée
+      $query = $db->query("UPDATE produits SET stock = stock - '$value' WHERE id = '$key'");
     }
-    # Si la requête fonctionne, on affiche un message de confirmation
+
+    # Si la requête fonctionne, on affiche un message de confirmation et on vide le panier
     if($request){
+
       $this->liste_produits = [];
       var_dump($this->liste_produits);
       unset($_SESSION['panier']);
