@@ -1,5 +1,8 @@
 /* couleur  grise : #F3F3F3 */
 /**** GENERAL ****/
+.ancien_prix{
+  text-decoration: line-through;
+}
 .row{
   margin-bottom: 0 !important;
 }
