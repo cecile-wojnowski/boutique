@@ -94,7 +94,7 @@
       //changer les info dans historique d'achat
     }
 
-    public function stocker_historique($id_utilisateur){
+    public function afficher_historique($id_utilisateur){
       // Insertion de l'achat dans la table sql
       $requete = $this->db->query("SELECT * FROM historique INNER JOIN produits
                               ON id_produit = produits.id
@@ -124,12 +124,6 @@
       }
       echo '</tbody>';
       echo '</table>';
-    }
-
-    public function afficher_historique(){
-      $id_log = $_SESSION['id'];
-      $historique = $this->db->query("SELECT nom_produit, date_achat FROM historique WHERE id_utilisateur = ?", "$id_log");
-      $historique->fetchall(PDO::FETCH_ASSOC);
     }
 
     public function devenir_admin(){

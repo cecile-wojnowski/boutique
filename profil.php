@@ -70,10 +70,6 @@
                     <button class="btn waves-effect waves-light grey darken-4" type="submit" name="modifier">
                         Modifier<i class="material-icons right">cloud</i>
                     </button>
-                    <!--
-                        <a id="bouton_inscription" class="waves-effect waves-green btn grey darken-4 lighten-3 white-text">
-                        S'incrire
-                        </a> -->
                     </div>
                 </div>
             </form>

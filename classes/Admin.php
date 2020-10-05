@@ -2,34 +2,23 @@
 class Admin extends Utilisateurs # La classe Admin hérite des propriétés de la classe Utilisateurs
 {
   /****** Gestion des produits ******/
-  public function ajouter_produit($nom, $prix, $description, $image, $date_ajout, $stock){
+  public function ajouter_produit($nom, $prix, $description, $image, $stock, $valorisation, $date_ajout){
     # Ajoute un produit dans le site sans nécessairement le mettre dans une catégorie
-    // cibler l'id du produit dans le panier valider
-    $produits = $db->prepare("INSERT INTO nom, prix, description, image, date_ajout, stock VALUES (:nom, :prix, :description, :image, :date_ajout, :stock) ");
-    $produits->execute(array,
-                              ':nom' => $nom,
-                              ':prix' => $prix,
-                              ':description' => $description,
-                              ':image' => $image,
-                              ':date_ajout' => $date_ajout,
-                              ':stock' => $stock);
-    $result = $produits->fetch(PDO::FETCH_ASSOC);
+    $produits = $db->query("INSERT INTO nom, prix, description, image, date_ajout, stock, valorisation VALUES (?, ?, ?, ?, ?, ?, ?) ", [$nom, $prix, $description, $image, $stock, $valorisation, $date_ajout]);
   }
   public function valoriser_produit($id_produit){
     # Permet de mettre en avant un produit
     # La valorisation peut être une catégorie à part
-    $valorisation = $db->prepare("UPDATE produits SET valorisation = 'promotion' WHERE id = $id_produit");
-    $valorisation->execute();
+    $valorisation = $db->query("UPDATE produits SET valorisation = 'promotion' WHERE id = ?", [$id_produit]);
   }
 
   public function supprimer_produit($id_produit_supp){
-    $supp_produit = $db->prepare("DELETE FROM produits WHERE id = $id_produit_supp");
-    $supp_produit->execute();
+    $supp_produit = $db->query("DELETE FROM produits WHERE id = ?", [$id_produit_supp]);
   }
 
   /***** Gestion des catégories *****/
   public function creer_categorie($nom_categorie){
-    $categorie = $db->prepare("INSERT INTO categories (nom) VALUES ('$nom_categorie')")
+    $categorie = $db->query("INSERT INTO categories (nom) VALUES ('$nom_categorie')")
     $categorie->exectue();
   }
 
