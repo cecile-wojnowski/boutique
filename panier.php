@@ -68,7 +68,7 @@
 
           <div class="col s1 m2">
             <form class="" action="panier.php?modif=<?= $key ?>" method="post">
-              <p> <input class="input_quantite" type="text" name="quantite" value="<?= $value ?>" required> </p>
+              <input class="input_quantite" type="text" name="quantite" value="<?= $value ?>" required>
             </form>
           </div>
 
