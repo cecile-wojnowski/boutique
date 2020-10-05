@@ -21,15 +21,6 @@ session_start();
           ?>
 
     <main>
-      <!-- Breadcrumb : doit s'adapter au nom du produit ET à sa catégorie-->
-        <div class="nav-wrapper">
-          <div class="col s12">
-            <a href="#!" class="breadcrumb grey-text">Accueil</a>
-            <a href="#!" class="breadcrumb grey-text">Nouveautés</a>
-            <a href="#!" class="breadcrumb grey-text">Noisettes</a>
-          </div>
-        </div>
-
         <?php
         if(isset($_GET['id'])){
           $id = strval($_GET['id']);
@@ -62,7 +53,14 @@ session_start();
           $produit = new Produit($donnees);
           $produit->hydrate($donnees);
         ?>
-
+        <!-- Breadcrumb : doit s'adapter à sa catégorie-->
+          <div class="nav-wrapper">
+            <div class="col s12">
+              <a href="#!" class="breadcrumb grey-text">Accueil</a>
+              <a href="#!" class="breadcrumb grey-text">Nouveautés</a> <!-- Cette partie devra varier aussi -->
+              <a href="#!" class="breadcrumb grey-text"><?= $produit->nom(); ?></a>
+            </div>
+          </div>
         <!-- Image -->
         <div class="row">
           <div class="col s3 m3 offset-m1">
