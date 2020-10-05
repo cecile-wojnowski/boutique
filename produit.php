@@ -57,7 +57,16 @@ session_start();
           <div class="nav-wrapper">
             <div class="col s12">
               <a href="#!" class="breadcrumb grey-text">Accueil</a>
-              <a href="#!" class="breadcrumb grey-text">Nouveautés</a> <!-- Cette partie devra varier aussi -->
+              <a href="#!" class="breadcrumb grey-text">
+                <?php
+                  # Affiche un nom différent en fonction de l'origine du lien sur lequel on a cliqué
+                  if(isset($_GET["new"])){
+                    echo "Nouveautés";
+                  }elseif(isset($_GET["promotion"])){
+                    echo "Promotions";
+                  }
+                  ?>
+                </a> <!-- Cette partie devra varier aussi -->
               <a href="#!" class="breadcrumb grey-text"><?= $produit->nom(); ?></a>
             </div>
           </div>
