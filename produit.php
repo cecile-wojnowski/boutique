@@ -21,7 +21,7 @@ session_start();
           ?>
 
     <main>
-      <!-- Breadcrumb -->
+      <!-- Breadcrumb : doit s'adapter au nom du produit ET à sa catégorie-->
         <div class="nav-wrapper">
           <div class="col s12">
             <a href="#!" class="breadcrumb grey-text">Accueil</a>
@@ -44,7 +44,6 @@ session_start();
             } else {
               $panier = new Panier();
             }
-            var_dump($id);
             $panier->ajouter_produit($id, $quantite);
             var_dump($panier);
 
@@ -53,14 +52,13 @@ session_start();
 
             var_dump($_SESSION['produit']);
           }
+
         // On admet que $db est un objet PDO.
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $request = $db->query("SELECT * FROM produits WHERE id = '$id'");
 
         while ($donnees = $request->fetch(PDO::FETCH_ASSOC)) // Chaque entrée sera récupérée et placée dans un array.
         {
-          // On passe les données (stockées dans un tableau) concernant le personnage au constructeur de la classe.
-          // On admet que le constructeur de la classe appelle chaque setter pour assigner les valeurs qu'on lui a données aux attributs correspondants.
           $produit = new Produit($donnees);
           $produit->hydrate($donnees);
         ?>
@@ -80,7 +78,7 @@ session_start();
           <p><?php echo $produit->nom(); ?></p>
           <p><?php echo $produit->prix(); ?> euros</p>
 
-          <p> Il reste <?php echo $produit->stock(); ?> produits en stock.</p>
+          <p> <?php echo $produit->stock(); ?></p>
 
           <form class="" action="produit.php?id=<?php echo $produit->id(); ?>" method="post">
             <input type="text" name="add_product" value="<?php echo $produit->id(); ?>" style="display:none;">

@@ -23,7 +23,6 @@ class Produit
   {
     $this->setId($donnees['id']);
   }
-
   if (isset($donnees['nom']))
   {
     $this->setNom($donnees['nom']);
@@ -53,6 +52,7 @@ class Produit
     $this->setEst_valorise($donnees['est_valorise']);
   }
   }
+
   # Setters : servent à modifier les attributs en dehors de la classe
   # peut être faudra-t-il ajouter une requête sql pour que la modification se fasse dans la bdd
   public function setId($id){
@@ -123,7 +123,13 @@ class Produit
     return $this->date_ajout;
   }
   public function stock(){
-    return $this->stock;
+    if($this->stock > 0){
+      return "Il reste" . " " . $this->stock . " " . "produits en stock.";
+    }else
+    {
+      echo "Le stock est vide.";
+    }
+
   }
   public function est_valorise(){
     return $this->est_valorise;

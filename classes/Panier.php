@@ -64,20 +64,19 @@ class Panier
       VALUES ('$key', '$value', NOW(), '$this->id_utilisateur')");
 
       # On soustrait du stock la quantité achetée
-      $query = $db->query("UPDATE produits SET stock = stock - '$value' WHERE id = '$key'");
+      $query = $db->query("UPDATE produits SET stock = stock - '$value' WHERE id = '$key' AND stock > 0");
+
+
+
     }
 
     # Si la requête fonctionne, on affiche un message de confirmation et on vide le panier
     if($request){
-
       $this->liste_produits = [];
       var_dump($this->liste_produits);
       unset($_SESSION['panier']);
       echo "Commande validée";
     }
-
-
-    # Vide le panier = vider le tableau
 
     # Optionnel : Si la commande n'est pas passée, on enregistre le panier
   }
