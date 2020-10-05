@@ -78,22 +78,31 @@ session_start();
           <p><?php echo $produit->nom(); ?></p>
           <p><?php echo $produit->prix(); ?> euros</p>
 
-          <p> <?php echo $produit->stock(); ?></p>
+          <p> <?php echo $produit->stock(); ?> </p>
 
           <form class="" action="produit.php?id=<?php echo $produit->id(); ?>" method="post">
-            <input type="text" name="add_product" value="<?php echo $produit->id(); ?>" style="display:none;">
 
-            <p> Quantité <input type="text" name="quantite" value="1" required> </p>
 
             <!-- Boutons -->
-            <div class= "boutons_produit">
-              <button id="bouton_produit1" class="waves-effect waves-green btn grey lighten-3 grey-text text-darken-2" type="submit">
-                <i class="material-icons left">shopping_cart</i>Panier
-              </button>
+            <?php
+            if($produit->stock() !== NULL){ ?>
+              <input type="text" name="add_product" value="<?php echo $produit->id(); ?>" style="display:none;">
 
-              <a class="waves-effect waves-green btn grey darken-4 lighten-3 white-text">
-                Acheter maintenant</a>
-            </div>
+              <p> Quantité <input type="text" name="quantite" value="1" required> </p>
+
+              <div class= "boutons_produit">
+                <button id="bouton_produit1" class="waves-effect waves-green btn grey lighten-3 grey-text text-darken-2" type="submit">
+                  <i class="material-icons left">shopping_cart</i>Panier
+                </button>
+
+                <a class="waves-effect waves-green btn grey darken-4 lighten-3 white-text">
+                  Acheter maintenant</a>
+              </div>
+
+            <?php }else{
+              echo "Le stock est vide.";
+            } ?>
+
           </form>
 
         </div>

@@ -122,14 +122,12 @@ class Produit
   public function date_ajout(){
     return $this->date_ajout;
   }
+
+  # Affiche un message différent en fonction de la valeur de $stock
   public function stock(){
     if($this->stock > 0){
       return "Il reste" . " " . $this->stock . " " . "produits en stock.";
-    }else
-    {
-      echo "Le stock est vide.";
     }
-
   }
   public function est_valorise(){
     return $this->est_valorise;
