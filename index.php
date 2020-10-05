@@ -52,11 +52,11 @@
             <div class="card">
               <div class="card-image">
                 <a href="produit.php?id=<?php echo $produit->id(); ?>"> <img src="img/<?php echo $produit->image();?> "> </a>
-              </div>
-              <div class="card-content">
-                <p> <?php echo $produit->nom(); ?> </p>
-                <p> <?php echo $produit->prix(); ?> euros </p>
-              </div>
+              </div>  
+            </div>
+            <div class="card-content">
+              <p> <?php echo $produit->nom(); ?> </p>
+              <p> <?php echo $produit->prix(); ?> euros </p>
             </div>
           </div>
           <?php
@@ -81,10 +81,11 @@
                   <div class="card-image">
                     <a href="produit.php?id=<?php echo $produit->id(); ?>"> <img src="img/<?php echo $produit->image();?> "> </a>
                   </div>
-                  <div class="card-content">
-                    <p> <?php echo $produit->nom(); ?> </p>
-                    <p> <?php echo $produit->prix(); ?> euros </p>
-                  </div>
+
+                </div>
+                <div class="card-content">
+                  <p> <?php echo $produit->nom(); ?> </p>
+                  <p> <?php echo $produit->prix(); ?> euros </p>
                 </div>
               </div>
               <?php

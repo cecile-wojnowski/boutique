@@ -1,8 +1,5 @@
 /* couleur  grise : #F3F3F3 */
 /**** GENERAL ****/
-.section_index .row .col{
-  padding: 2rem !important;
-}
 .row{
   margin-bottom: 0 !important;
 }
@@ -11,6 +8,9 @@ a{
 }
 h2{
   font-size:30px !important;
+}
+h3{
+  font-size:25px !important;
 }
 .input_quantite{
   width:15% !important;
