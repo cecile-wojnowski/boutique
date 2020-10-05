@@ -48,8 +48,8 @@ main{
 /**** INDEX *****/
 /** Section 1 : image **/
 .index_img{
-  width:70% !important;
-  height:30% !important;
+  width:80% !important;
+  height:500px !important;
   display: block;
 }
 

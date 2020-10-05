@@ -27,7 +27,7 @@
     <main>
       <!-- Section 1 -->
       <div class="row">
-        <div class="col offset-m3">
+        <div class="col offset-m2">
         <img class="index_img" src="img/apples.jpg">
       </div>
     </div>
