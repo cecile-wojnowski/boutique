@@ -83,7 +83,16 @@ session_start();
         <div class="col s3 m3 offset-m1">
           <!-- Elements divers -->
           <p><?php echo $produit->nom(); ?></p>
-          <p><?php echo $produit->prix(); ?> euros</p>
+          <p>
+            <?php
+              if($produit->prix_solde() > 0){
+                echo "<span class='ancien_prix'>" . $produit->prix() . " " ." euros" . "</span>" . "<br>";
+                echo $produit->prix_solde() . " " ."euros";
+              }else{
+                echo $produit->prix() . " " ."euros";
+              }
+            ?>
+          </p>
 
           <p> <?php echo $produit->stock(); ?> </p>
 
