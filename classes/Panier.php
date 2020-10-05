@@ -4,7 +4,6 @@ class Panier
   private $id_utilisateur = 1; # valeur temporaire qui devra changer
   private $etat_panier = false; # true = rempli, false = vide
   private $liste_produits = []; # tableau rempli avec les id des produits
-  #private $quantite_produits = 1; # La quantité de base des produits est de 1
   private $prix_total = 0; # Prix du panier vide
 
   public function __construct(){
@@ -13,8 +12,6 @@ class Panier
 
   public function ajouter_produit($produit, $quantite = 1){
     # Ajoute l'id du produit dans le tableau
-    # $this->liste_produits[] = $produit;
-
     if(isset($this->liste_produits[$produit])) {
       $this->liste_produits[$produit] = $this->liste_produits[$produit] + $quantite;
     } else {
@@ -65,9 +62,6 @@ class Panier
 
       # On soustrait du stock la quantité achetée
       $query = $db->query("UPDATE produits SET stock = stock - '$value' WHERE id = '$key' AND stock > 0");
-
-
-
     }
 
     # Si la requête fonctionne, on affiche un message de confirmation et on vide le panier

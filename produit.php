@@ -36,12 +36,9 @@ session_start();
               $panier = new Panier();
             }
             $panier->ajouter_produit($id, $quantite);
-            var_dump($panier);
 
             $_SESSION['panier'] = serialize($panier);
             $_SESSION['produit'] = $id ;
-
-            var_dump($_SESSION['produit']);
           }
 
         // On admet que $db est un objet PDO.
