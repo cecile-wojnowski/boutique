@@ -51,12 +51,21 @@
           <div class="col s3 m3">
             <div class="card">
               <div class="card-image">
-                <a href="produit.php?id=<?php echo $produit->id(); ?>"> <img src="img/<?php echo $produit->image();?> "> </a>
-              </div>  
+                <a href="produit.php?id=<?php echo $produit->id(); ?>&new"> <img src="img/<?php echo $produit->image();?> "> </a>
+              </div>
             </div>
             <div class="card-content">
-              <p> <?php echo $produit->nom(); ?> </p>
-              <p> <?php echo $produit->prix(); ?> euros </p>
+              <p>
+                <?php
+                  echo $produit->nom() . "<br>";
+                  if($produit->prix_solde() > 0){
+                    echo "<span class='ancien_prix'>" . $produit->prix() . " " ." euros" . "</span>" . "<br>";
+                    echo $produit->prix_solde() . " " ."euros";
+                  }else{
+                    echo $produit->prix() . " " ."euros";
+                  }
+                ?>
+              </p>
             </div>
           </div>
           <?php
@@ -79,13 +88,20 @@
               <div class="col s3 m3">
                 <div class="card">
                   <div class="card-image">
-                    <a href="produit.php?id=<?php echo $produit->id(); ?>"> <img src="img/<?php echo $produit->image();?> "> </a>
+                    <a href="produit.php?id=<?php echo $produit->id(); ?>&promotion"> <img src="img/<?php echo $produit->image();?> "> </a>
                   </div>
 
                 </div>
                 <div class="card-content">
-                  <p> <?php echo $produit->nom(); ?> </p>
-                  <p> <?php echo $produit->prix(); ?> euros </p>
+                  <p>
+                    <?php
+                      echo $produit->nom() . "<br>";
+                      if($produit->prix_solde() > 0){
+                        echo "<span class='ancien_prix'>" . $produit->prix() . " " ." euros" . "</span>" . "<br>";
+                        echo $produit->prix_solde() . " " ."euros";
+                      }
+                    ?>
+                  </p>
                 </div>
               </div>
               <?php
