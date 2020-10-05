@@ -9,6 +9,7 @@ class Produit
   private $id;
   private $nom;
   private $prix;
+  private $prix_solde;
   private $description;
   private $image;
   private $date_ajout;
@@ -17,6 +18,7 @@ class Produit
 
 # Cette fonction pourrait être simplifiée grâce à des variables
 # Voir le cours d'OpenClassrooms : Manipulation de données stockées
+# Hydratation des attributs
   public function hydrate(array $donnees)
   {
     if (isset($donnees['id']))
@@ -30,6 +32,10 @@ class Produit
   if (isset($donnees['prix']))
   {
     $this->setPrix($donnees['prix']);
+  }
+  if (isset($donnees['prix_solde']))
+  {
+    $this->setPrixSolde($donnees['prix_solde']);
   }
   if (isset($donnees['description']))
   {
@@ -77,6 +83,13 @@ class Produit
      $this->prix = $prix;
    }
   }
+  public function setPrixSolde($prix_solde){
+    $prix = (int) $prix_solde;
+   if ($prix_solde > 0)
+   {
+     $this->prix_solde = $prix_solde;
+   }
+  }
   public function setDescription($description){
     if (is_string($description))
     {
@@ -112,6 +125,9 @@ class Produit
   }
   public function prix(){
     return $this->prix;
+  }
+  public function prix_solde(){
+    return $this->prix_solde;
   }
   public function description(){
     return $this->description;
