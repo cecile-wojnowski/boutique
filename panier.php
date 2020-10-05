@@ -27,8 +27,6 @@
 
         <?php
         if(isset($_SESSION['panier']) & !isset($_GET["validation"])){
-          var_dump($panier->liste_produits()); # Permet de voir le contenu de la liste des produits contenue dans le panier
-
           if(isset($_GET['supp_id'])){
             $key = $_GET['supp_id'];
             $panier->supprimer_produit($key);
