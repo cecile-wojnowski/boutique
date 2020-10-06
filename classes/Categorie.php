@@ -43,11 +43,11 @@ class Categorie
   }
 
   public function afficher_sous_categories($db, $id_categorie){
-    # Déroule les sous-catégories liées à la catégorie
+    # Affiche les sous-catégories liées à la catégorie sous forme de liens
     $query = $db->prepare("SELECT * FROM sous_categories WHERE id_categorie = '$id_categorie'");
     $query->execute();
     while ($donnees = $query->fetch(PDO::FETCH_ASSOC)){
-       echo $donnees['nom'] . " ";
+       echo "<a href='categories.php?id=" . $id_categorie . "&souscategorie=" . $donnees['id'] . "'>" . $donnees['nom'] . "</a>" . "<br> ";
 
     }
   }

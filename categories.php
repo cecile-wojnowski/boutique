@@ -25,24 +25,27 @@
         $categorie = new Categorie();
         $categorie->recuperer_produits($db, $id_categorie);
 
-
-        $sousCategorie = new SousCategorie();
-        $sousCategorie->recuperer_produits($db, $id_categorie);
-        $sousCategorie->afficher_produits($db);
-
         # Permet l'affichage du nom de la catégorie
         $query = $db->prepare("SELECT nom_header FROM categories WHERE id = '$id_categorie'");
         $query->execute();
         while ($donnees = $query->fetch(PDO::FETCH_ASSOC)){?>
           <h2>  <?= $donnees['nom_header']; ?>  </h2>
           <?php
-        } ?>
+        }
 
-        <?php
         # Afficher les sous-catégories liées à la catégorie
         $categorie->afficher_sous_categories($db, $id_categorie);
-         ?>
 
+        if(isset($_GET['souscategorie'])){
+          $id_sous_categorie = $_GET['souscategorie'];
+          $sousCategorie = new SousCategorie();
+          $sousCategorie->recuperer_produits($db, $id_sous_categorie); ?>
+          <div class="row">
+            <?php
+              $sousCategorie->afficher_produits($db); ?>
+          </div>
+
+        <?php } ?>
 
 
         <!-- Affiche les produits -->
