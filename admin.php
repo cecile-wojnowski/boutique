@@ -15,7 +15,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://kit.fontawesome.com/eaf570753d.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontawesome.com/eaf570753d.js" crossorigin="anonymous"></script> -->
 </head>
 <body>
     <?php include 'includes/header.php'; ?>
@@ -29,17 +29,16 @@
             <div class="col s4 m4 offset-s2 offset-m2">
               <h2 > Ajouter un Produit </h2>
             </div>
-
           </div>
           <div class="row">
             <div class="input-field col m8 s8">
                     <span class="btn btn-file">
                         <i class="material-icons left">cloud_upload</i>
-                        Télécharger Image du Produit<input type="file">
+                        Télécharger Image du Produit<input type="file" name="image" id="image">
+                    </span>
                 </div>
             </div>
           </div>
-
           <div class="row">
             <div class="input-field col m8 s8">
               <input id="nom" type="text" class="validate" name="nom" required>
@@ -47,10 +46,48 @@
             </div>
           </div>
           <div class="row">
-            <div class="input-field col m8 s8">
+            <div class="input-field col s8">
               <textarea name="description" id="description" class="validate" cols="30" rows="10"></textarea>
               <label for="description">Description</label>
-            </div>
+          </div>
+          <div class="input-field col s8">
+            <label for="categorie"></label>
+              <select class="browser-default" name="categorie" id="categorie">
+                <option value="" disabled selected>Choisir une Catégorie</option>
+                <option value="1">Fruits</option>
+                <option value="2">Légumes</option>
+                <option value="3">Fruits à Coque</option>
+                <option value="">Création d'une catégorie</option>
+              </select>
+          </div>
+          <div class="input-field col s8">
+            <input type="text" name="categorie" id="categorie">
+            <label for="categorie">Nouvelle Catégorie</label>
+          </div>
+
+          <div class="input-field col s8">
+            <label for="sous_categorie"></label>
+              <select class="browser-default" name="sous_categorie" id="sous_categorie">
+                <option value="" disabled selected>Choisir une Sous-Catégorie</option>
+                <optgroup label="Fruits">
+                  <option value="5">Pommes</option>
+                  <option value="6">Fraises</option>
+                </optgroup>
+                <optgroup label="Légumes">
+                  <option value="3">Courgettes</option>
+                  <option value="4">Tomates</option>
+                  <option value="7">Oignons</option>
+                </optgroup>
+                <optgroup label="Fruits à Coque">
+                  <option value="1">Amandes</option>
+                  <option value="2">Noisettes</option>
+                </optgroup>
+                <option value="">Création d'une sous-catégorie</option>
+              </select>
+          </div>
+          <div class="input-field col s8">
+            <input type="text" name="sous_categorie" id="sous_categorie">
+            <label for="sous_categorie">Nouvelle sous-catégorie</label>
           </div>
           <div class="row">
             <div class="input-field col m8 s8">
@@ -85,7 +122,7 @@
 
           <div class="row">
             <div class="input-field col m3 s3 offset-m3 offset-s3">
-              <button class="btn waves-effect waves-light grey darken-4" type="submit" name="ajouter">
+              <button class="btn waves-effect waves-light grey darken-4" type="submit" name="ajouter_produit">
                 Ajouter<i class="material-icons right">create</i>
               </button>
             </div>

@@ -76,7 +76,22 @@
     // var_dump($produits);
 
     if(isset($_POST['ajouter_produit'])){
-        $gestion = new Admin;
-        $gestion->ajouter_produit($nom, $prix, $description, $image, $stock, $valorisation, $date_ajout);
+        var_dump('ajout du produit ?');
+        var_dump($_POST);
+        $nom = $_POST['nom'];
+        $prix = $_POST['prix'];
+        $description = $_POST['description'];
+        $image = $_POST['image'];
+        $stock = $_POST['stock'];
+        $recup_valo = $_POST['valorisation'];
+        // if($recup_valo == )
+        $date_ajout = date("Y-m-d H:i:s");
+        var_dump($date_ajout);
+        $id_categorie = $_POST['categorie'];
+        $id_sous_categorie = $_POST['sous_categorie'];
+
+        $ajout_produit = new Admin($db);
+
+        $ajout_produit->ajouter_produit($nom, $prix, $description, $image, $stock, $valorisation, $id_categorie, $id_sous_categorie, $date_ajout);
     }
 ?>
