@@ -19,7 +19,9 @@ class SousCategorie extends Categorie
     while ($donnees = $query->fetch(PDO::FETCH_ASSOC)){
       # On place les id des produits dans le tableau
       $this->liste_produits[] = $donnees['id'];
+      echo $donnees['nom'];
     }
 }
 
 }
+// id=" . $id_categorie . "&

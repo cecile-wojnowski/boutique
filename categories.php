@@ -5,7 +5,7 @@
   include('classes/Produit.php');
   include('classes/Panier.php');
   include('classes/Categorie.php');
-  include('classes/SousCategorie.php')
+  include('classes/SousCategorie.php');
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -19,6 +19,7 @@
     <?php include('includes/header.php'); ?>
     <main>
       <?php
+      if(!isset($_GET['souscategorie'])){
       if(isset($_GET['id'])){
         # Lie l'id provenant d'un GET et l'id de la catégorie
         $id_categorie = $_GET['id'];
@@ -36,26 +37,35 @@
         # Afficher les sous-catégories liées à la catégorie
         $categorie->afficher_sous_categories($db, $id_categorie);
 
-        if(isset($_GET['souscategorie'])){
-          $id_sous_categorie = $_GET['souscategorie'];
-          $sousCategorie = new SousCategorie();
-          $sousCategorie->recuperer_produits($db, $id_sous_categorie); ?>
-          <div class="row">
-            <?php
-              $sousCategorie->afficher_produits($db); ?>
-          </div>
-
-        <?php } ?>
-
+        #$sousCategorie = new SousCategorie();
+        #$sousCategorie->afficher_produits($db); # test ?>
 
         <!-- Affiche les produits -->
         <div class='row'>
         <?php  $categorie->afficher_produits($db); ?>
        </div>
+
        <?php
-      }else{
-        header('Location:index.php'); # Redirige si on tente d'aller sur cette page sans avoir choisi une catégorie
-      } ?>
+     }
+   }
+
+     if(isset($_GET['id']) AND isset($_GET['souscategorie'])){
+         $id_sous_categorie = $_GET['souscategorie'];
+
+         $sousCategorie = new SousCategorie();
+         $sousCategorie->recuperer_produits($db, $id_sous_categorie); ?>
+         <div class="row">
+           <?php
+             $sousCategorie->afficher_produits($db); # ne fonctionne pas, pb d'héritage ?>
+         </div>
+
+
+        <?php
+      }#else{
+        #header('Location:index.php'); # Redirige si on tente d'aller sur cette page sans avoir choisi une catégorie
+
+
+     ?>
 
     </main>
     <?php include 'includes/footer.php'; ?>
