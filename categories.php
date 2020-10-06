@@ -17,19 +17,25 @@
   <body>
     <?php include('includes/header.php'); ?>
     <main>
-      <h2> Catégorie choisie (remplacer par le nom de la catégorie) </h2>
-
       <?php
-      $categorie = new Categorie();
+      if(isset($_GET['id'])){
+        # L'id provenant de GET permet d'afficher les produits de la catégorie ayant cet id
+        $id_categorie = $_GET['id'];
+        $categorie = new Categorie();
+        $categorie->recuperer_produits($db, $id_categorie); ?>
 
-      $id_categorie = 3; # doit devenir variable en provenant d'un get !
-      $categorie->recuperer_produits($db, $id_categorie); ?>
+        <h2>  Nom catégorie  </h2>
+        <div class='row'>
+        <?php  $categorie->afficher_produits($db); ?>
+       </div>
+       <?php
+      }else{
+        header('Location:index.php'); # Redirige si on tente d'aller sur cette page sans avoir choisi une catégorie
+      } ?>
 
-      <div class='row'>
-      <?php  $categorie->afficher_produits($db);
 
-       ?>
-     </div>
+
+
 
 
 
