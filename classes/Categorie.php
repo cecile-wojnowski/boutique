@@ -13,15 +13,9 @@ class Categorie
     $query->execute();
 
     while ($donnees = $query->fetch(PDO::FETCH_ASSOC)){
-      echo $donnees['id'] . " ";
-      echo $donnees['nom'] . "<br>";
-
       # On place les id des produits dans le tableau
       $this->liste_produits[] = $donnees['id'];
     }
-
-    var_dump($this->liste_produits);
-
   }
 
   public function afficher_produits(){

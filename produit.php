@@ -45,7 +45,7 @@ session_start();
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $request = $db->query("SELECT * FROM produits WHERE id = '$id'");
 
-        while ($donnees = $request->fetch(PDO::FETCH_ASSOC)) // Chaque entrée sera récupérée et placée dans un array.
+        while ($donnees = $request->fetch(PDO::FETCH_ASSOC))
         {
           $produit = new Produit($donnees);
           $produit->hydrate($donnees);
