@@ -25,11 +25,13 @@ class Categorie
       $request = $db->query("SELECT * FROM produits WHERE id = $value");
       $data = $request->fetch();
 
+
       echo
         "<div class='col s1 m2 offset-m1'>
           <div class='card'>
             <div class='card-image'>
-              <img src='img/" . $data['image']. "'>
+            <a href='produit.php?id=" . $value . "'>" .
+              "<img src='img/" . $data['image']. "'></a>
             </div>
           </div>"
 
