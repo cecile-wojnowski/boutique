@@ -42,8 +42,14 @@ class Categorie
     }
   }
 
-  public function afficher_sous_categories(){
+  public function afficher_sous_categories($db, $id_categorie){
     # Déroule les sous-catégories liées à la catégorie
+    $query = $db->prepare("SELECT * FROM sous_categories WHERE id_categorie = '$id_categorie'");
+    $query->execute();
+    while ($donnees = $query->fetch(PDO::FETCH_ASSOC)){
+       echo $donnees['nom'] . " ";
+
+    }
   }
 
   // Hydratation
