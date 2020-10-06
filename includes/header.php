@@ -3,6 +3,7 @@
     <div class="row">
       <p class="p_connexion">
         <?php include 'includes/co_deco.php' ?>
+        <?php include('bdd.php'); ?>
       </p>
     </div>
 
