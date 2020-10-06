@@ -18,8 +18,26 @@ class Categorie
     }
   }
 
-  public function afficher_produits(){
-    # Permet de montrer les produits appartenant à la catégorie
+  public function afficher_produits($db){
+    # Récupérer les id du tableau $liste_produits et aller chercher les informations dans la table produits
+    # Parcourt le tableau $liste_produits
+    foreach($this->liste_produits() as $value){
+      $request = $db->query("SELECT * FROM produits WHERE id = $value");
+      $data = $request->fetch();
+
+      echo
+        "<div class='col s1 m2 offset-m1'>
+          <div class='card'>
+            <div class='card-image'>
+              <img src='img/" . $data['image']. "'>
+            </div>
+          </div>"
+
+          ."<div class='card-content'>"
+              . $data["nom"] .
+            "</div>
+        </div>";
+    }
   }
 
   public function afficher_sous_categories(){
@@ -42,8 +60,8 @@ class Categorie
   // Setters
   public function setId($id){
     $id = (int) $id;
-    if ($id > 0)
-    {
+    if ($id > 0){
+
      $this->id = $id;
     }
   }
