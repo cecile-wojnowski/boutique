@@ -19,12 +19,18 @@
     <main>
       <?php
       if(isset($_GET['id'])){
-        # L'id provenant de GET permet d'afficher les produits de la catégorie ayant cet id
+        # Lie l'id provenant d'un GET et l'id de la catégorie
         $id_categorie = $_GET['id'];
         $categorie = new Categorie();
-        $categorie->recuperer_produits($db, $id_categorie); ?>
+        $categorie->recuperer_produits($db, $id_categorie);
 
-        <h2>  Nom catégorie  </h2>
+        # Permet l'affichage du nom de la catégorie
+        $query = $db->prepare("SELECT nom_header FROM categories WHERE id = '$id_categorie'");
+        $query->execute();
+        while ($donnees = $query->fetch(PDO::FETCH_ASSOC)){?>
+        <h2>  <?= $donnees['nom_header']; ?>  </h2> <?php } ?>
+
+        <!-- Affiche les produits -->
         <div class='row'>
         <?php  $categorie->afficher_produits($db); ?>
        </div>
