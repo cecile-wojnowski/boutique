@@ -24,8 +24,16 @@
 
       <div class="row">
         <?php
-          if(isset($_POST['search'])){ ?>
+          if(isset($_POST['search']) AND !empty($_POST['search'])){ ?>
             <h2> Vos résultats de recherche </h2>
+            <div class="row">
+            <div class="col m3 offset-m5">
+            <form class="barre_recherche" method="post" action="recherche.php">
+              <input id="search" type="search" name="search" placeholder ="Rechercher...">
+              <label class="label-icon" for="search"></label>
+            </form>
+          </div>
+        </div>
             <?php
             $recherche = $_POST['search'];
             rechercher($db, $recherche);
@@ -33,13 +41,11 @@
             <h2> Effectuer une recherche </h2>
             <div class="col m3 offset-m5">
             <form class="barre_recherche" method="post" action="recherche.php">
-              <div class="input-field">
-                <input id="search" type="search" name="search" placeholder ="Rechercher..." required>
-                <label class="label-icon" for="search"></label>
-                <i class="material-icons">close</i>
-              </div>
+              <input id="search" type="search" name="search" placeholder ="Rechercher...">
+              <label class="label-icon" for="search"></label>
             </form>
           </div>
+
           <?php }
         ?>
       </div>
