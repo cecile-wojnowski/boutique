@@ -46,6 +46,7 @@
 
         <?php }
          ?>
+        <li><a href="profil.php"> Profil </a></li>
       </ul>
     </div>
   </nav>

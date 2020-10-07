@@ -9,7 +9,6 @@
     public $mdp = "";
     private $etat_panier = false; # true = rempli (pas vide), false = vide
     private $admin = false; # Un nouvel utilisateur n'est pas un admin
-    public $errors = [];
 
     public function __construct($db){
       return $this->db = $db;
@@ -40,7 +39,7 @@
       $recup_info = $this->db->query("SELECT * FROM utilisateurs WHERE email = ?", [$email]);
       $infos = $recup_info->fetch();
 
-      if(!empty($infos) && !empty($email) && !empty($mdp)){
+      if(!empty($infos)){
         if(password_verify($mdp, $infos->password)){
           // var_dump($infos);
           $recuperation = get_object_vars($infos);
@@ -54,7 +53,7 @@
         }
       }
       else{
-        var_dump("Vos infos sont déjà utilisé dans notre site, veuillez les modifier !");
+        var_dump("Vos infos ne figurent pas sur notre site, veuillez les modifier ou vous inscrire !");
       }
     }
 
@@ -95,8 +94,36 @@
       //changer les info dans historique d'achat
     }
 
-    public function stocker_historique(){
-      # Insertion de l'achat dans la table sql
+    public function stocker_historique($id_utilisateur){
+      // Insertion de l'achat dans la table sql
+      $requete = $this->db->query("SELECT * FROM historique INNER JOIN produits
+                              ON id_produit = produits.id
+                              WHERE id_utilisateur = ?
+                              ORDER BY date_achat DESC", [$id_utilisateur]);
+      $historique = $requete->fetchall(PDO::FETCH_ASSOC);
+
+      // afficher résultat dans un tab
+      // var_dump($historique);
+      echo '<table>';
+      echo '<thead>';
+      echo '<th> Produit </th>';
+      echo '<th> Prix </th>';
+      echo '<th> Quantité </th>';
+      echo '<th> Date d\'Achat </th>';
+      echo '</thead>';
+      echo '<tbody>';
+      foreach($historique as $recap)
+      {
+      // var_dump($recap);
+      echo '<tr>';
+      echo '<td>'.$recap['nom'].'</td>';
+      echo '<td>'.$recap['prix'].'</td>';
+      echo '<td>'.$recap['quantite'].'</td>';
+      echo '<td>'.$recap['date_achat'].'</td>';
+      echo '</tr>';
+      }
+      echo '</tbody>';
+      echo '</table>';
     }
 
     public function afficher_historique(){
