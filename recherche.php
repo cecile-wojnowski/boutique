@@ -25,9 +25,9 @@
       <div class="row">
         <?php
           if(isset($_POST['search']) AND !empty($_POST['search'])){ ?>
-            <h2> Vos résultats de recherche </h2>
+            <h3> Vos résultats de recherche </h3>
             <div class="row">
-            <div class="col m3 offset-m5">
+            <div class="col m4 offset-m4">
             <form class="barre_recherche" method="post" action="recherche.php">
               <input id="search" type="search" name="search" placeholder ="Rechercher...">
               <label class="label-icon" for="search"></label>
@@ -35,11 +35,21 @@
           </div>
         </div>
             <?php
-            $recherche = $_POST['search'];
-            rechercher($db, $recherche);
+            $recherche = $_POST['search']; ?>
+            <div class="row">
+              <?php
+            echo "<p>Votre recherche \"" . $recherche . "\" a donné les résultats suivants :</p>"; ?>
+          </div>
+
+          <div class="row">
+            <?php
+            rechercher($db, $recherche); ?>
+          </div>
+
+          <?php
           }else{ ?>
-            <h2> Effectuer une recherche </h2>
-            <div class="col m3 offset-m5">
+            <h3> Effectuer une recherche </h3>
+            <div class="col m4 offset-m4">
             <form class="barre_recherche" method="post" action="recherche.php">
               <input id="search" type="search" name="search" placeholder ="Rechercher...">
               <label class="label-icon" for="search"></label>

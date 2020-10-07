@@ -1,5 +1,8 @@
 /* couleur  grise : #F3F3F3 */
 /**** GENERAL ****/
+.barre_recherche input::placeholder {
+  color: grey !important;
+}
 .card-image img{
   max-height:200px;
 }
