@@ -16,7 +16,6 @@ class Categorie
       # On place les id des produits dans le tableau
       $this->liste_produits[] = $donnees['id'];
     }
-
   }
 
   public function afficher_produits($db, $tableau = null){
