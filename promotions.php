@@ -20,9 +20,12 @@
   <body>
     <?php include('includes/header.php'); ?>
     <main>
-      <?php
-      afficher_promotions($db);
-      ?>
+      <h2> Promotions </h2>
+      <div class="row">
+        <?php
+        afficher_promotions($db);
+        ?>
+      </div>
     </main>
 
     <?php include 'includes/footer.php'; ?>
