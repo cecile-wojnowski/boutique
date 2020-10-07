@@ -29,26 +29,42 @@
     }
 
     function afficher_nouveautes($db){
-      $query = $db->prepare("SELECT * FROM produits ORDER BY date_ajout DESC LIMIT 8");
+      $query = $db->prepare("SELECT * FROM produits ORDER BY date_ajout DESC LIMIT 4");
       $query->execute();
 
       while ($donnees = $query->fetch(PDO::FETCH_ASSOC)){
-        echo
-          "<div class='col s2 m3'>
-            <div class='card'>
-              <div class='card-image'>
-              <a href='produit.php?id=" . $donnees['id'] . "'>" .
-                "<img src='img/" . $donnees['image']. "'></a>
+        if($donnees['valorisation'] == 1){
+          echo
+            "<div class='col s2 m3'>
+              <div class='card'>
+                <div class='card-image'>
+                  <a href='produit.php?id=" . $donnees['id'] . "'>" .
+                  "<img src='img/" . $donnees['image']. "'></a>
+                </div>
               </div>
-            </div>
 
-            <div class='card-content'>"
-                . $donnees["nom"] . "<br>"
-                . "<span class='ancien_prix'>" . $donnees["prix"] . " " . "euros" . "</span>" . "<br>"
-                . $donnees["prix_solde"] . " " . "euros".
+              <div class='card-content'>"
+                  . $donnees["nom"] . "<br>
+                  <span class='ancien_prix'>" . $donnees["prix"] . " euros</span><br>"
+                  . $donnees["prix_solde"] . " euros
+              </div>
+            </div>";
+        }else{
+          echo
+            "<div class='col s2 m3'>
+              <div class='card'>
+                <div class='card-image'>
+                  <a href='produit.php?id=" . $donnees['id'] . "'>" .
+                  "<img src='img/" . $donnees['image']. "'></a>
+                </div>
+              </div>
 
-              "</div>
-          </div>";
+              <div class='card-content'>"
+                  . $donnees["nom"] . "<br>"
+                  . $donnees["prix"] . " euros
+              </div>
+            </div>";
+        }
       }
     }
 
