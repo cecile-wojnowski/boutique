@@ -7,7 +7,7 @@ class Categorie
   private $liste_produits = []; # Tableau contenant les produits de la catégorie
   private $liste_sous_categories; # Tableau contenant les sous-catégories liées à la catégorie
 
-  public function recuperer_produits($db, $id_categorie){
+  public function __construct($db, $id_categorie) {
     # Remplir la liste de produits avec tous les produits ayant le bon id dans la bdd
     $query = $db->prepare("SELECT id, nom FROM produits WHERE id_categorie = '$id_categorie'");
     $query->execute();
@@ -16,15 +16,18 @@ class Categorie
       # On place les id des produits dans le tableau
       $this->liste_produits[] = $donnees['id'];
     }
+
   }
 
-  public function afficher_produits($db){
+  public function afficher_produits($db, $tableau = null){
+    if(is_null($tableau)) {
+      $tableau = $this->liste_produits;
+    }
     # Récupérer les id du tableau $liste_produits et aller chercher les informations dans la table produits
     # Parcourt le tableau $liste_produits
-    foreach($this->liste_produits() as $value){
+    foreach($tableau as $value){
       $request = $db->query("SELECT * FROM produits WHERE id = $value");
       $data = $request->fetch();
-
 
       echo
         "<div class='col s1 m2 offset-m1'>

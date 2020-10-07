@@ -23,8 +23,7 @@
       if(isset($_GET['id'])){
         # Lie l'id provenant d'un GET et l'id de la catégorie
         $id_categorie = $_GET['id'];
-        $categorie = new Categorie();
-        $categorie->recuperer_produits($db, $id_categorie);
+        $categorie = new Categorie($db, $id_categorie);
 
         # Permet l'affichage du nom de la catégorie
         $query = $db->prepare("SELECT nom_header FROM categories WHERE id = '$id_categorie'");
@@ -35,10 +34,8 @@
         }
 
         # Afficher les sous-catégories liées à la catégorie
-        $categorie->afficher_sous_categories($db, $id_categorie);
+        $categorie->afficher_sous_categories($db, $id_categorie); ?>
 
-        #$sousCategorie = new SousCategorie();
-        #$sousCategorie->afficher_produits($db); # test ?>
 
         <!-- Affiche les produits -->
         <div class='row'>
@@ -52,8 +49,8 @@
      if(isset($_GET['id']) AND isset($_GET['souscategorie'])){
          $id_sous_categorie = $_GET['souscategorie'];
 
-         $sousCategorie = new SousCategorie();
-         $sousCategorie->recuperer_produits($db, $id_sous_categorie); ?>
+         $sousCategorie = new SousCategorie($db, $id_sous_categorie);
+       ?>
          <div class="row">
            <?php
              $sousCategorie->afficher_produits($db); # ne fonctionne pas, pb d'héritage ?>
