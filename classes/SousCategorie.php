@@ -31,7 +31,7 @@ class SousCategorie extends Categorie
     $query->execute();
 
     while ($donnees = $query->fetch(PDO::FETCH_ASSOC)){
-      echo $donnees['nom_header'];
+      echo "<a href='categories.php?id=" . $donnees['id']. "'>" . $donnees['nom_header'] . "</a>";
     }
   }
 

@@ -50,12 +50,12 @@
         $id_sous_categorie = $_GET['souscategorie'];
         $sousCategorie = new SousCategorie($db, $id_sous_categorie);
 
-        # Afficher la catégorie parente (dans un breadcrumb ?)
-        $sousCategorie->afficher_categorie_parente($db, $id_sous_categorie);
-       ?>
+        # Afficher la catégorie parente (dans un breadcrumb ?) ?>
+        <h3>Catégorie parente : <?php $sousCategorie->afficher_categorie_parente($db, $id_sous_categorie); ?> </h3>
+        
          <div class="row">
            <?php
-             $sousCategorie->afficher_produits($db); # ne fonctionne pas, pb d'héritage ?>
+             $sousCategorie->afficher_produits($db); ?>
          </div>
 
         <?php
