@@ -33,8 +33,8 @@
     <div class="nav-wrapper">
       <ul id="nav-mobile" class="left hide-on-med-and-down">
         <li><a href="index.php"> Accueil </a></li>
-        <li><a href=""> Nouveautés </a></li>
-        <li><a href=""> Promotions </a></li>
+        <li><a href="nouveautes.php"> Nouveautés </a></li>
+        <li><a href="promotions.php"> Promotions </a></li>
 
         <?php
         $query = $db->prepare("SELECT * FROM categories");
