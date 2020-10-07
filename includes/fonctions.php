@@ -29,7 +29,7 @@
     }
 
     function afficher_nouveautes($db){
-      $query = $db->prepare("SELECT * FROM produits ORDER BY date_ajout DESC LIMIT 4");
+      $query = $db->prepare("SELECT * FROM produits ORDER BY date_ajout DESC LIMIT 8");
       $query->execute();
 
       while ($donnees = $query->fetch(PDO::FETCH_ASSOC)){
@@ -45,7 +45,7 @@
 
               <div class='card-content'>"
                   . $donnees["nom"] . "<br>
-                  <span class='ancien_prix'>" . $donnees["prix"] . " euros</span><br>"
+                  <span class='ancien_prix'>" . $donnees["prix"] . " euros</span> "
                   . $donnees["prix_solde"] . " euros
               </div>
             </div>";
