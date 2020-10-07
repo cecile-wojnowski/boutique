@@ -30,7 +30,7 @@ class Categorie
       $data = $request->fetch();
 
       echo
-        "<div class='col s1 m2 offset-m1'>
+        "<div class='col s2 m3'>
           <div class='card'>
             <div class='card-image'>
             <a href='produit.php?id=" . $value . "'>" .

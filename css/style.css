@@ -1,5 +1,8 @@
 /* couleur  grise : #F3F3F3 */
 /**** GENERAL ****/
+.card-image img{
+  max-height:200px;
+}
 .ancien_prix{
   text-decoration: line-through;
 }
