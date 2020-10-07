@@ -59,22 +59,41 @@
       $resultats->execute();
       if($resultats->rowCount() > 0) {
       while ($donnees = $resultats->fetch(PDO::FETCH_ASSOC)){
-        echo
-          "<div class='col s2 m3'>
-            <div class='card'>
-              <div class='card-image'>
-                <a href='produit.php?id=" . $donnees['id'] . "'>" .
-                "<img src='img/" . $donnees['image']. "'></a>
+        if($donnees['valorisation'] == 1){
+          echo
+            "<div class='col s2 m3'>
+              <div class='card'>
+                <div class='card-image'>
+                  <a href='produit.php?id=" . $donnees['id'] . "'>" .
+                  "<img src='img/" . $donnees['image']. "'></a>
+                </div>
               </div>
-            </div>
 
-            <div class='card-content'>"
-                . $donnees["nom"] . "<br>
-            </div>
-          </div>";
+              <div class='card-content'>"
+                  . $donnees["nom"] . "<br>
+                  <span class='ancien_prix'>" . $donnees["prix"] . " euros</span><br>"
+                  . $donnees["prix_solde"] . " euros
+              </div>
+            </div>";
+        }else{
+          echo
+            "<div class='col s2 m3'>
+              <div class='card'>
+                <div class='card-image'>
+                  <a href='produit.php?id=" . $donnees['id'] . "'>" .
+                  "<img src='img/" . $donnees['image']. "'></a>
+                </div>
+              </div>
+
+              <div class='card-content'>"
+                  . $donnees["nom"] . "<br>"
+                  . $donnees["prix"] . " euros
+              </div>
+            </div>";
         }
-      }else{
-        echo "Aucun résultat ne correspond à votre recherche.";
       }
+    }else{
+      echo "Aucun résultat ne correspond à votre recherche.";
     }
+  }
 ?>
