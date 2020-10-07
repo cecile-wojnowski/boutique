@@ -53,53 +53,37 @@
           <div class="input-field col s8">
             <label for="categorie"></label>
               <select class="browser-default" name="categorie" id="categorie">
-                <option value="" disabled selected>Choisir une Catégorie</option>
-                <option value="1">Fruits</option>
-                <option value="2">Légumes</option>
-                <option value="3">Fruits à Coque</option>
-                <option value="">Création d'une catégorie</option>
+                <option value="" selected>Choisir une Catégorie</option>
+                <?php require 'includes/foreach_categorie.php'; ?>
               </select>
           </div>
           <div class="input-field col s8">
-            <input type="text" name="categorie" id="categorie">
-            <label for="categorie">Nouvelle Catégorie</label>
+            <input type="text" name="new_categorie" id="new_categorie">
+            <label for="new_categorie">Nouvelle Catégorie</label>
           </div>
 
           <div class="input-field col s8">
             <label for="sous_categorie"></label>
               <select class="browser-default" name="sous_categorie" id="sous_categorie">
-                <option value="" disabled selected>Choisir une Sous-Catégorie</option>
-                <optgroup label="Fruits">
-                  <option value="5">Pommes</option>
-                  <option value="6">Fraises</option>
-                </optgroup>
-                <optgroup label="Légumes">
-                  <option value="3">Courgettes</option>
-                  <option value="4">Tomates</option>
-                  <option value="7">Oignons</option>
-                </optgroup>
-                <optgroup label="Fruits à Coque">
-                  <option value="1">Amandes</option>
-                  <option value="2">Noisettes</option>
-                </optgroup>
-                <option value="">Création d'une sous-catégorie</option>
+                <option value="" selected>Choisir une Sous-Catégorie</option>
+                <?php require 'includes/foreach_sous_categorie.php'; ?>
               </select>
           </div>
           <div class="input-field col s8">
-            <input type="text" name="sous_categorie" id="sous_categorie">
-            <label for="sous_categorie">Nouvelle sous-catégorie</label>
+            <input type="text" name="new_sous_categorie" id="new_sous_categorie">
+            <label for="new_sous_categorie">Nouvelle sous-catégorie</label>
           </div>
           <div class="row">
             <div class="input-field col m8 s8">
               <input id="stock" type="text" class="validate" name="stock" required>
-              <label for="stock"> Quantité </label>
+              <label for="stock"> Quantité en Kg</label>
             </div>
           </div>
 
           <div class="row">
             <div class="input-field col m8 s8">
               <input id="prix" type="text" class="validate" name="prix">
-              <label for="prix"> Prix </label>
+              <label for="prix"> Prix en €/Kg </label>
             </div>
           </div>
 
@@ -107,13 +91,13 @@
             <div class="input-field col m8 s8">
                 <p>
                     <label>
-                        <input class="with-gap validate" name="valorisation" type="radio" required/>
+                        <input class="with-gap validate" id="valorisation" name="valorisation" type="radio" value="1" required/>
                         <span>Produit Valorisé</span>
                     </label>
                 </p>
                 <p>
                     <label>
-                        <input class="with-gap validate" name="valorisation" type="radio" required/>
+                        <input class="with-gap validate" id="non" name="valorisation" type="radio" value="0" required/>
                         <span>Produit normal</span>
                     </label>
                 </p>

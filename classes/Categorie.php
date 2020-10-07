@@ -12,5 +12,6 @@ class Categorie
   public function afficher_sous_categories(){
     # Déroule les sous-catégories liées à la catégorie
   }
+
 }
  ?>
