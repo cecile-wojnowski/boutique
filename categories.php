@@ -47,20 +47,19 @@
    }
 
      if(isset($_GET['id']) AND isset($_GET['souscategorie'])){
-         $id_sous_categorie = $_GET['souscategorie'];
+        $id_sous_categorie = $_GET['souscategorie'];
+        $sousCategorie = new SousCategorie($db, $id_sous_categorie);
 
-         $sousCategorie = new SousCategorie($db, $id_sous_categorie);
+        # Afficher la catégorie parente (dans un breadcrumb ?)
+        $sousCategorie->afficher_categorie_parente($db, $id_sous_categorie);
        ?>
          <div class="row">
            <?php
              $sousCategorie->afficher_produits($db); # ne fonctionne pas, pb d'héritage ?>
          </div>
 
-
         <?php
-      }#else{
-        #header('Location:index.php'); # Redirige si on tente d'aller sur cette page sans avoir choisi une catégorie
-
+      }
 
      ?>
 

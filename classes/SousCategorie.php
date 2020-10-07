@@ -24,8 +24,15 @@ class SousCategorie extends Categorie
 
   }
 
-  public function afficher_categorie_parente(){
-    # Récupère le nom de la catégorie à laquelle appartient la sous-catégorie
+  public function afficher_categorie_parente($db, $id_sous_categorie){
+    # Récupère l'id de la catégorie parente et affiche son nom : jointure sql
+    $query = $db->prepare("SELECT * FROM sous_categories INNER JOIN categories ON sous_categories.id_categorie = categories.id
+    WHERE sous_categories.id = '$id_sous_categorie'");
+    $query->execute();
+
+    while ($donnees = $query->fetch(PDO::FETCH_ASSOC)){
+      echo $donnees['nom_header'];
+    }
   }
 
 }
