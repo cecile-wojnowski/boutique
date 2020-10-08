@@ -21,6 +21,9 @@ h2{
 }
 h3{
   font-size:25px !important;
+  text-align: center !important;
+  margin-top:5%;
+  margin-bottom:2%;
 }
 .input_quantite{
   width:15% !important;

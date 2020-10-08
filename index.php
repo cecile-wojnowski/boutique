@@ -105,20 +105,15 @@
           </div>
       </section>
 
-
       <div class="row">
         <div class="col m4 offset-m4">
           <h3> Qui sommes nous ?</h3>
           <p class="index_text">
-            Lorem ipsum dolor sit amet,
-            consetetur sadipscing elitr,
-            sed diam nonumy eirmod tempor invidunt ut
-            labore et dolore magna aliquyam erat, sed diam voluptua.
-            At vero eos et accusam et justo duo dolores et ea rebum.
-            Stet clita kasd gubergren, no sea takimata sanctus est
-            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-            consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-            invidunt ut labore et dolore magna aliquyam erat, sed diam
+            Nous mettons à dispositions d'agriculteurs bio une plateforme leur permettant de faire de
+            la vente directe. Les consommateurs peuvent directement commander des produits frais sur le site,
+            et ceux-ci leur seront livrés directement chez eux. Nous proposons ainsi une manière de supprimer les
+            intermédiaires entre les agriculteurs et les consommateurs : c'est à la fois une plus grande marge pour les
+            agriculteurs, et des prix moins élevés pour les consommateurs.
           </p>
         </div>
       </div>
