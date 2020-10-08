@@ -13,7 +13,11 @@ a{
   color:black !important;
 }
 a:hover{
-  color:grey !important;
+  color:white !important;
+}
+.link_color:hover{
+  font-weight:bold;
+  color:black !important;
 }
 h2{
   font-size:30px !important;
@@ -29,6 +33,9 @@ h3{
   width:15% !important;
 }
 /***** HEADER *****/
+header{
+  background-color: #5AA176;
+}
 .link_header{
   color: black !important;
   font-weight:bold;
@@ -36,6 +43,8 @@ h3{
 .p_connexion{
   text-align: right;
   margin-right: 10%;
+  margin-top:0;
+  padding-top:2%;
 }
 .logo{
   font-size:25px !important;

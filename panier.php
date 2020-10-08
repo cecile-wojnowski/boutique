@@ -111,7 +111,7 @@
     <div class="row">
       <p class="p_panier"> Le panier est actuellement vide. </p>
 
-      <p class="lien_panier"><a href="index.php"> Retourner vers la boutique. </a></p>
+      <p class="lien_panier"><a class="link_color" href="index.php"> Retourner vers la boutique. </a></p>
     </div>
     <?php
   }
