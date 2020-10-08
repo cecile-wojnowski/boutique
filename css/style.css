@@ -3,6 +3,10 @@
 .barre_recherche input::placeholder {
   color: grey !important;
 }
+.barre_recherche{
+  margin-top:5%;
+  margin-bottom:15%;
+}
 .card-image img{
   max-height:200px;
 }
@@ -53,11 +57,14 @@ h3{
   background-color: #68B989 !important;
   margin-top:1%;
 }
+
 /****** MAIN ******/
 main{
   background-color: #F3F3F3 !important;
   padding:2%;
 }
+
+
 /**** INDEX *****/
 /** Section 1 : image **/
 .index_img{
