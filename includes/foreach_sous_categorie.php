@@ -7,7 +7,7 @@
 
     for($i=1; $i<=count($result); $i++){
         echo '<optgroup label="">';
-
+        
         echo '</optgroup>';
     }
 ?>
