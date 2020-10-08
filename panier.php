@@ -19,7 +19,7 @@
   <body>
     <?php include('includes/header.php'); ?>
     <main> <!-- Cette page permet de visualiser le contenu du panier de l'utilisateur -->
-      <h2 class="h2_produit"> Mon panier </h2>
+      <h2> Mon panier </h2>
 
         <?php
         if(isset($_SESSION['panier']) & !isset($_GET["validation"])){
@@ -109,7 +109,9 @@
 } else {
     ?>
     <div class="row">
-      Pas de panier
+      <p class="p_panier"> Le panier est actuellement vide. </p>
+
+      <p class="lien_panier"><a href="index.php"> Retourner vers la boutique. </a></p>
     </div>
     <?php
   }

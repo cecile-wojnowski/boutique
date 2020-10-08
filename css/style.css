@@ -15,8 +15,12 @@
 a{
   color:black !important;
 }
+a:hover{
+  color:grey !important;
+}
 h2{
   font-size:30px !important;
+  text-align: center !important;
 }
 h3{
   font-size:25px !important;
@@ -78,6 +82,15 @@ main{
   flex-direction: row;
   justify-content: space-between;
 }
+.p_panier{
+  text-align: center;
+  font-size: 18px;
+  margin-top:3%;
+}
+.lien_panier{
+  text-align: center;
+  margin-bottom:8%;
+}
 /* Aligne le Total avec le prix */
 #prix_total{
   width: 10% !important;
@@ -89,9 +102,6 @@ main{
   margin : 0 !important;
 }
 /***** PRODUIT ****/
-.h2_produit{
-  font-size:20px !important;
-}
 .boutons_produit{
   display: flex;
   flex-direction: column !important;
