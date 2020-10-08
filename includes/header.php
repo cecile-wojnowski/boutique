@@ -26,7 +26,7 @@
      </nav>
       </div>
       <!-- Bouton Panier -->
-      <a href="panier.php" class="waves-effect waves-green btn grey lighten-3 grey-text text-darken-2"><i class="material-icons left">shopping_cart</i> Panier </a>
+      <a href="panier.php" class="btn grey lighten-3 grey-text text-darken-2"><i class="material-icons left">shopping_cart</i> Panier </a>
 
    </div>
 

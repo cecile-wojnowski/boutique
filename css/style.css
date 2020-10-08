@@ -1,12 +1,5 @@
 /* couleur  grise : #F3F3F3 */
 /**** GENERAL ****/
-.barre_recherche input::placeholder {
-  color: grey !important;
-}
-.barre_recherche{
-  margin-top:5%;
-  margin-bottom:15%;
-}
 .card-image img{
   max-height:200px;
 }
@@ -78,6 +71,17 @@ main{
   text-align: justify;
 }
 
+/**** RECHERCHE ****/
+.barre_recherche input::placeholder {
+  color: grey !important;
+}
+.barre_recherche{
+  margin-top:5%;
+  margin-bottom:15%;
+}
+.nav_header > .nav-wrapper i{
+  line-height:50px !important;
+}
 
 /****** PANIER *****/
 .align-right{
