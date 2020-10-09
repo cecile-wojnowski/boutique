@@ -8,11 +8,16 @@
     else
     {
         echo 'Bonjour '.$_SESSION['prenom'].' !';
+        if($_SESSION['admin'] == 1){
+            echo '<div class="row">';
+            echo '<a class="link_header" href="admin.php"> Page Admin </a>';
+        }
         echo '<form action="" method="POST" class="p_connexion">';
         echo '<button type="submit" name="deconnexion" id="deconnexion" class="link_header">';
         echo 'Déconnexion';
         echo '</button>';
         echo '</form>';
+        echo '</div>';
     }
 
     if (isset($_POST['deconnexion']))
