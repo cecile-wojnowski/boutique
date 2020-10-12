@@ -49,7 +49,8 @@ class Categorie
     $query = $db->prepare("SELECT * FROM sous_categories WHERE id_categorie = '$id_categorie'");
     $query->execute();
     while ($donnees = $query->fetch(PDO::FETCH_ASSOC)){
-       echo "<a href='categories.php?id=" . $id_categorie . "&souscategorie=" . $donnees['id'] . "'>" . $donnees['nom'] . "</a>" . "<br> ";
+       echo "<a id='button_sous_categ' class='waves-effect waves-light btn  grey darken-3 white-text' 
+       href='categories.php?id=" . $id_categorie . "&souscategorie=" . $donnees['id'] . "'>" . $donnees['nom'] . "</a>";
 
     }
   }

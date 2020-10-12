@@ -49,7 +49,7 @@ session_start();
         <!-- Breadcrumb : doit s'adapter à sa catégorie-->
           <div class="nav-wrapper">
             <div class="col s12">
-              <a href="#!" class="breadcrumb grey-text">Accueil</a>
+              <a href="index.php" class="breadcrumb grey-text">Accueil</a>
               <a href="#!" class="breadcrumb grey-text">
                 <?php
                   # Affiche un nom différent en fonction de l'origine du lien sur lequel on a cliqué

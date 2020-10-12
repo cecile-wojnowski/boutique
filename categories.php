@@ -31,11 +31,13 @@
         while ($donnees = $query->fetch(PDO::FETCH_ASSOC)){?>
           <h2>  <?= $donnees['nom_header']; ?>  </h2>
           <?php
-        }
+        } ?>
 
-        # Afficher les sous-catégories liées à la catégorie
-        $categorie->afficher_sous_categories($db, $id_categorie); ?>
-
+        <div class="row" id="placement_sous_categories">
+          <?php
+          # Afficher les sous-catégories liées à la catégorie
+          $categorie->afficher_sous_categories($db, $id_categorie); ?>
+        </div>
 
         <!-- Affiche les produits -->
         <div class='row'>
@@ -52,7 +54,7 @@
 
         # Afficher la catégorie parente (dans un breadcrumb ?) ?>
         <h3>Catégorie parente : <?php $sousCategorie->afficher_categorie_parente($db, $id_sous_categorie); ?> </h3>
-        
+
          <div class="row">
            <?php
              $sousCategorie->afficher_produits($db); ?>

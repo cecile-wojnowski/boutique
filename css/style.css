@@ -11,6 +11,7 @@
 }
 a{
   color:black !important;
+  transition: color .2s ease-in-out;
 }
 a:hover{
   color:white !important;
@@ -137,7 +138,21 @@ main{
 .breadcrumb:before {
     color: #9e9e9e;
 }
-
+#placement_sous_categories{
+  text-align: center;
+}
+#button_sous_categ{
+  margin-right:2%;
+}
+#button_sous_categ:hover{
+  background-color: black !important;
+}
+.link_categ_parente{
+  transition: color .2s ease-in-out;
+}
+.link_categ_parente:hover{
+  color:grey !important;
+}
 /***** INSCRIPTION *****/
 #form_inscription{
   margin-top:2% !important;
