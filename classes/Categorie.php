@@ -28,19 +28,40 @@ class Categorie
       $request = $db->query("SELECT * FROM produits WHERE id = $value");
       $data = $request->fetch();
 
-      echo
-        "<div class='col s2 m3'>
-          <div class='card'>
-            <div class='card-image'>
-            <a href='produit.php?id=" . $value . "&categorie=" .$data['id_categorie'] ."'>" .
-              "<img src='img/" . $data['image']. "'></a>
+      if($data['valorisation'] == 1){
+        echo
+          "<div class='col s2 m3'>
+            <div class='card'>
+              <div class='card-image'>
+                <a href='produit.php?id=" . $data['id'] . "&new '>" .
+                "<img src='img/" . $data['image']. "'></a>
+              </div>
             </div>
-          </div>"
 
-          ."<div class='card-content'>"
-              . $data["nom"] .
-            "</div>
-        </div>";
+            <div class='card-content'>"
+                . $data["nom"] . "<br>
+                <span class='ancien_prix'>" . $data["prix"] . " euros</span> "
+                . $data["prix_solde"] . " euros
+            </div>
+          </div>";
+      }else{
+        echo
+          "<div class='col s2 m3'>
+            <div class='card'>
+              <div class='card-image'>
+                <a href='produit.php?id=" . $data['id'] . "'>" .
+                "<img src='img/" . $data['image']. "'></a>
+              </div>
+            </div>
+
+            <div class='card-content'>"
+                . $data["nom"] . "<br>"
+                . $data["prix"] . " euros
+            </div>
+          </div>";
+      }
+
+    
     }
   }
 
@@ -49,7 +70,7 @@ class Categorie
     $query = $db->prepare("SELECT * FROM sous_categories WHERE id_categorie = '$id_categorie'");
     $query->execute();
     while ($donnees = $query->fetch(PDO::FETCH_ASSOC)){
-       echo "<a id='button_sous_categ' class='waves-effect waves-light btn  grey darken-3 white-text' 
+       echo "<a id='button_sous_categ' class='waves-effect waves-light btn  grey darken-3 white-text'
        href='categories.php?id=" . $id_categorie . "&souscategorie=" . $donnees['id'] . "'>" . $donnees['nom'] . "</a>";
 
     }
