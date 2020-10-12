@@ -13,7 +13,7 @@
           "<div class='col s2 m3'>
             <div class='card'>
               <div class='card-image'>
-              <a href='produit.php?id=" . $donnees['id'] . "'>" .
+              <a href='produit.php?id=" . $donnees['id'] ."&promotion '>" .
                 "<img src='img/" . $donnees['image']. "'></a>
               </div>
             </div>
@@ -38,7 +38,7 @@
             "<div class='col s2 m3'>
               <div class='card'>
                 <div class='card-image'>
-                  <a href='produit.php?id=" . $donnees['id'] . "'>" .
+                  <a href='produit.php?id=" . $donnees['id'] . "&new '>" .
                   "<img src='img/" . $donnees['image']. "'></a>
                 </div>
               </div>
