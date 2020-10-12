@@ -57,9 +57,11 @@ session_start();
                     echo "Nouveautés";
                   }elseif(isset($_GET["promotion"])){
                     echo "Promotions";
+                  }else{
+                    echo "Produits";
                   }
                   ?>
-                </a> <!-- Cette partie devra varier aussi -->
+                </a>
               <a href="#!" class="breadcrumb grey-text"><?= $produit->nom(); ?></a>
             </div>
           </div>
