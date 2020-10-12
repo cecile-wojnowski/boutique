@@ -57,6 +57,13 @@ session_start();
                     echo "Nouveautés";
                   }elseif(isset($_GET["promotion"])){
                     echo "Promotions";
+                  }elseif(isset($_GET['categorie'])){
+                    # On récupère l'id de la catégorie du produit pour afficher son nom dans le breadcrumb
+                    $id_categorie = $_GET['categorie'];
+                    $query = $db->query("SELECT * FROM categories WHERE id = '$id_categorie'");
+                    while ($data = $query->fetch(PDO::FETCH_ASSOC)){
+                      echo $data['nom_header'];
+                    }
                   }else{
                     echo "Produits";
                   }
