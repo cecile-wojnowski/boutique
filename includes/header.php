@@ -17,12 +17,12 @@
 
       <!-- Barre de recherche -->
       <div class="col m4 offset-m3">
-        <nav class=" nav_header grey lighten-3" style="margin-right:2%">
+        <nav class=" nav_header grey darken-2" style="margin-right:2%">
          <div class="nav-wrapper">
            <form class="header_recherche" method="post" action="recherche.php">
              <div class="input-field">
                <input id="search" type="search" name="search" placeholder ="Rechercher...">
-               <label class="label-icon" for="search"><i class="material-icons grey-text text-darken-2">search</i></label>
+               <label class="label-icon" for="search"><i class="material-icons grey-text text-lighten-2">search</i></label>
              </div>
            </form>
          </div>
@@ -30,7 +30,7 @@
      </div>
      <div class="col m2">
      <!-- Bouton Panier -->
-     <a href="panier.php" class="btn grey lighten-3 grey-text text-darken-2"><i class="material-icons left">shopping_cart</i>Panier</a>
+     <a href="panier.php" class="btn grey darken-2 grey-text text-lighten-2"><i class="material-icons left">shopping_cart</i>Panier</a>
       </div>
 
 
