@@ -53,7 +53,7 @@
           <div class="col s1 m2 offset-m1">
             <div class="card">
               <div class="card-image">
-                <a href="#"> <img src="img/<?= $data["image"] ?>"> </a>
+                <a href="produit.php?id=<?php echo $key; ?>"> <img src="img/<?= $data["image"] ?>"> </a>
               </div>
             </div>
           </div>
