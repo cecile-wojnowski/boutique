@@ -1,32 +1,38 @@
 <header>
-  <div class="row">
     <div class="row">
+      <div class="col m3">
+        <a href="index.php" id="link_logo">
+          <img src="img/logo_boutique" class="img_header">
+          <h2> Ferme Biologique </h2>
+        </a>
+      </div>
+      <div class="col m3 offset-m5">
       <p class="p_connexion">
         <?php include 'includes/co_deco.php' ?>
         <?php include('bdd.php'); ?>
       </p>
     </div>
 
-    <div class="row">
-      <h1 class="logo col m2"> <a href="index.php"> Boutique en ligne </a></h1>
+
 
       <!-- Barre de recherche -->
-      <div class="col m3 offset-m5">
-        <nav class=" nav_header grey lighten-3">
+      <div class="col m4 offset-m3">
+        <nav class=" nav_header grey lighten-3" style="margin-right:2%">
          <div class="nav-wrapper">
-
            <form class="header_recherche" method="post" action="recherche.php">
              <div class="input-field">
                <input id="search" type="search" name="search" placeholder ="Rechercher...">
                <label class="label-icon" for="search"><i class="material-icons grey-text text-darken-2">search</i></label>
              </div>
            </form>
-
          </div>
      </nav>
+     </div>
+     <div class="col m2">
+     <!-- Bouton Panier -->
+     <a href="panier.php" class="btn grey lighten-3 grey-text text-darken-2"><i class="material-icons left">shopping_cart</i>Panier</a>
       </div>
-      <!-- Bouton Panier -->
-      <a href="panier.php" class="btn grey lighten-3 grey-text text-darken-2"><i class="material-icons left">shopping_cart</i> Panier </a>
+
 
    </div>
 
