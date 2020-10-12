@@ -47,6 +47,12 @@ header > h2{
   color: black !important;
   font-weight:bold;
 }
+.liens_navbar{
+  transition : font-weight .2s ease-in-out;
+}
+.liens_navbar:hover{
+  color:black !important;
+}
 #link_logo{
   color: #f1f7d1 !important;
 }

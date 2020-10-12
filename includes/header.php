@@ -39,16 +39,16 @@
  <nav class="nav_header2">
     <div class="nav-wrapper">
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="index.php"> Accueil </a></li>
-        <li><a href="nouveautes.php"> Nouveautés </a></li>
-        <li><a href="promotions.php"> Promotions </a></li>
+        <li><a href="index.php" class="liens_navbar"> Accueil </a></li>
+        <li><a href="nouveautes.php" class="liens_navbar"> Nouveautés </a></li>
+        <li><a href="promotions.php" class="liens_navbar"> Promotions </a></li>
 
         <?php
         $query = $db->prepare("SELECT * FROM categories");
         $query->execute();
         # Liens s'affichant en fonction des catégories se trouvant en bdd
         while ($donnees = $query->fetch(PDO::FETCH_ASSOC)){ ?>
-          <li><a href="categories.php?id=<?= $donnees['id']; ?>"> <?= $donnees["nom_header"] ?> </a></li>
+          <li><a class="liens_navbar" href="categories.php?id=<?= $donnees['id']; ?>"> <?= $donnees["nom_header"] ?> </a></li>
 
         <?php }
          ?>
