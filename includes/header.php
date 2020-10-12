@@ -3,7 +3,6 @@
       <div class="col m3">
         <a href="index.php" id="link_logo">
           <img src="img/logo_boutique" class="img_header">
-          <h2> Ferme Biologique </h2>
         </a>
       </div>
       <div class="col m3 offset-m5">
