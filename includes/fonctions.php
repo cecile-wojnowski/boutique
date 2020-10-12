@@ -19,7 +19,7 @@
             </div>
 
             <div class='card-content'>"
-                . $donnees["nom"] . "<br>"
+                ."<strong>" . $donnees["nom"] . " </strong><br>"
                 . "<span class='ancien_prix'>" . $donnees["prix"] . " " . "euros" . "</span>" . "<br>"
                 . $donnees["prix_solde"] . " " . "euros".
 
@@ -44,7 +44,7 @@
               </div>
 
               <div class='card-content'>"
-                  . $donnees["nom"] . "<br>
+                  . "<strong>" . $donnees["nom"] . "</strong> <br>
                   <span class='ancien_prix'>" . $donnees["prix"] . " euros</span> "
                   . $donnees["prix_solde"] . " euros
               </div>
@@ -60,7 +60,7 @@
               </div>
 
               <div class='card-content'>"
-                  . $donnees["nom"] . "<br>"
+                  . "<strong>" . $donnees["nom"] . "</strong><br>"
                   . $donnees["prix"] . " euros
               </div>
             </div>";
@@ -86,7 +86,7 @@
               </div>
 
               <div class='card-content'>"
-                  . $donnees["nom"] . "<br>
+                  . "<strong>". $donnees["nom"] . "</strong><br>
                   <span class='ancien_prix'>" . $donnees["prix"] . " euros</span><br>"
                   . $donnees["prix_solde"] . " euros
               </div>
@@ -102,7 +102,7 @@
               </div>
 
               <div class='card-content'>"
-                  . $donnees["nom"] . "<br>"
+                  . "<strong>" . $donnees["nom"] . "</strong><br>"
                   . $donnees["prix"] . " euros
               </div>
             </div>";

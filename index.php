@@ -53,7 +53,7 @@
             <div class="card-content">
               <p>
                 <?php
-                  echo $produit->nom() . "<br>";
+                  echo "<strong>" . $produit->nom() . "</strong><br>";
                   if($produit->prix_solde() > 0){
                     echo "<span class='ancien_prix'>" . $produit->prix() . " " ." euros" . "</span>" . "<br>";
                     echo $produit->prix_solde() . " " ."euros";
@@ -91,7 +91,7 @@
                 <div class="card-content">
                   <p>
                     <?php
-                      echo $produit->nom() . "<br>";
+                      echo "<strong>" . $produit->nom() . "</strong><br>";
                       if($produit->prix_solde() > 0){
                         echo "<span class='ancien_prix'>" . $produit->prix() . " " ." euros" . "</span>" . "<br>";
                         echo $produit->prix_solde() . " " ."euros";

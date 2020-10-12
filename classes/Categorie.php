@@ -39,7 +39,7 @@ class Categorie
             </div>
 
             <div class='card-content'>"
-                . $data["nom"] . "<br>
+                . "<strong>" .$data["nom"] . "</strong><br>
                 <span class='ancien_prix'>" . $data["prix"] . " euros</span> "
                 . $data["prix_solde"] . " euros
             </div>
@@ -55,13 +55,13 @@ class Categorie
             </div>
 
             <div class='card-content'>"
-                . $data["nom"] . "<br>"
+                . "<strong>" . $data["nom"] . "</strong> <br>"
                 . $data["prix"] . " euros
             </div>
           </div>";
       }
 
-    
+
     }
   }
 
