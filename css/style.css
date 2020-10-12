@@ -44,8 +44,7 @@ header > h2{
   width:70%;
 }
 .link_header{
-  color: black !important;
-  font-weight:bold;
+  color: lightgrey !important;
 }
 .liens_navbar{
   transition : font-weight .2s ease-in-out;

@@ -22,7 +22,7 @@
            <form class="header_recherche" method="post" action="recherche.php">
              <div class="input-field">
                <input id="search" type="search" name="search" placeholder ="Rechercher...">
-               <label class="label-icon" for="search"><i class="material-icons grey-text text-lighten-2">search</i></label>
+               <label class="label-icon" for="search"><i class="material-icons grey-text text-darken-3">search</i></label>
              </div>
            </form>
          </div>
@@ -30,7 +30,7 @@
      </div>
      <div class="col m2">
      <!-- Bouton Panier -->
-     <a href="panier.php" class="btn grey grey-text text-lighten-2"><i class="material-icons left">shopping_cart</i>Panier</a>
+     <a href="panier.php" class="btn grey grey-text text-darken-3"><i class="material-icons left">shopping_cart</i>Panier</a>
       </div>
 
 
