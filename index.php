@@ -109,7 +109,7 @@
         <div class="col m4 offset-m4">
           <h3> Qui sommes nous ?</h3>
           <p class="index_text">
-            Nous mettons à dispositions d'agriculteurs bio une plateforme leur permettant de faire de
+            Nous mettons à disposition d'agriculteurs bio une plateforme leur permettant de faire de
             la vente directe. Les consommateurs peuvent directement commander des produits frais sur le site,
             et ceux-ci leur seront livrés directement chez eux. Nous proposons ainsi une manière de supprimer les
             intermédiaires entre les agriculteurs et les consommateurs : c'est à la fois une plus grande marge pour les
