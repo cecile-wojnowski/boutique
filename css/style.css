@@ -214,5 +214,20 @@ main{
 /**** FOOTER ****/
 
 footer{
-  background-color: #68B989 !important;
+  background-color: #133f1c !important;
+}
+footer a {
+  color:white !important;
+  transition: color .2s ease-in-out;
+}
+.text-align{
+  margin-left:3%;
+}
+#icones_footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+footer i{
+  font-size:30px;
 }
