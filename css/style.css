@@ -223,11 +223,6 @@ footer a {
 .text-align{
   margin-left:3%;
 }
-#icones_footer{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
 footer i{
   font-size:30px;
 }

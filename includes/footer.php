@@ -10,18 +10,22 @@
           </div>
           <div class="footer-copyright">
             <div class="container">
-              <div class="row" id="icones_footer">
-                Boutique en ligne
-                <div>
+              <div class="row">
+                <div class="col m4">
+                  Boutique en ligne
+                </div>
+                <div class="col m2 offset-m5">
                   <i class="fab fa-instagram"></i>
                   <i class="fab fa-twitter"></i>
                   <i class="fab fa-facebook-square"></i>
                 </div>
               </div>
 
-            <div class="row" id="icones_footer">
-              Développé par Maxime Siegl et Cécile Wojnowski
-              <div>
+            <div class="row">
+              <div class="col m5">
+                Développé par Maxime Siegl et Cécile Wojnowski
+              </div>
+              <div class="col m3 offset-m4">
                 <i class="fab fa-cc-mastercard"></i>
                 <i class="fab fa-cc-amex"></i>
                 <i class="fab fa-cc-paypal"></i>
