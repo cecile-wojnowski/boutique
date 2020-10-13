@@ -66,9 +66,7 @@ class Panier
     # Si la requête fonctionne, on affiche un message de confirmation et on vide le panier
     if($request){
       $this->liste_produits = [];
-      var_dump($this->liste_produits);
       unset($_SESSION['panier']);
-      echo "Commande validée";
     }
 
     # Optionnel : Si la commande n'est pas passée, on enregistre le panier

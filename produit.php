@@ -49,7 +49,7 @@ session_start();
         <!-- Breadcrumb : doit s'adapter à sa catégorie-->
           <div class="nav-wrapper">
             <div class="col s12">
-              <a href="#!" class="breadcrumb grey-text">Accueil</a>
+              <a href="index.php" class="breadcrumb grey-text">Accueil</a>
               <a href="#!" class="breadcrumb grey-text">
                 <?php
                   # Affiche un nom différent en fonction de l'origine du lien sur lequel on a cliqué
@@ -57,9 +57,18 @@ session_start();
                     echo "Nouveautés";
                   }elseif(isset($_GET["promotion"])){
                     echo "Promotions";
+                  }elseif(isset($_GET['categorie'])){
+                    # On récupère l'id de la catégorie du produit pour afficher son nom dans le breadcrumb
+                    $id_categorie = $_GET['categorie'];
+                    $query = $db->query("SELECT * FROM categories WHERE id = '$id_categorie'");
+                    while ($data = $query->fetch(PDO::FETCH_ASSOC)){
+                      echo $data['nom_header'];
+                    }
+                  }else{
+                    echo "Produits";
                   }
                   ?>
-                </a> <!-- Cette partie devra varier aussi -->
+                </a>
               <a href="#!" class="breadcrumb grey-text"><?= $produit->nom(); ?></a>
             </div>
           </div>

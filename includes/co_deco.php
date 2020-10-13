@@ -2,8 +2,8 @@
     if(!isset($_SESSION['email']))
     {
         echo '<a class="link_header" href="connexion.php"> Connexion </a>';
-        echo 'ou ';
-        echo '<a class="link_header" href="inscription.php">créer un compte</a>';
+        echo '/';
+        echo '<a class="link_header" href="inscription.php"> Créer un compte</a>';
     }
     else
     {

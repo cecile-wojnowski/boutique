@@ -19,10 +19,10 @@
   <body>
     <?php include('includes/header.php'); ?>
     <main> <!-- Cette page permet de visualiser le contenu du panier de l'utilisateur -->
-      <h2 class="h2_produit"> Mon panier </h2>
+      <h2> Mon panier </h2>
 
         <?php
-        if(isset($_SESSION['panier']) & !isset($_GET["validation"])){
+        if(isset($_SESSION['panier'])){
           if(isset($_GET['supp_id'])){
             $key = $_GET['supp_id'];
             $panier->supprimer_produit($key);
@@ -40,8 +40,6 @@
               }
             }
 
-
-
           # Il faut récupérer l'id du produit dans le tableau $liste_produits
           # pour utiliser cet id en faisant une requête sql qui permettra d'afficher les infos du produits.
           # La quantité, quant à elle, proviendra du tableau lui-même.
@@ -53,7 +51,7 @@
           <div class="col s1 m2 offset-m1">
             <div class="card">
               <div class="card-image">
-                <a href="#"> <img src="img/<?= $data["image"] ?>"> </a>
+                <a href="produit.php?id=<?php echo $key; ?>"> <img src="img/<?= $data["image"] ?>"> </a>
               </div>
             </div>
           </div>
@@ -78,9 +76,10 @@
           </div>
         </div>
 
-      <?php } ?>
+      <?php }
 
-
+      # On affiche le prix et le bouton commander uniquement si le panier n'est pas vide
+      if(!empty($panier->liste_produits())){?>
       <div class="row">
         <div class="col m1 offset-m9" id="prix_total">
           <div class="row_panier">
@@ -97,22 +96,34 @@
       <div class="row">
         <div class="col m3 offset-m9">
         <div class= "boutons_produit">
-          <a href="panier.php?validation" class="waves-effect waves-green btn grey darken-4 lighten-3 white-text">
+          <a href="recapitulatif.php" class="waves-effect waves-green btn grey darken-4 lighten-3 white-text">
           Commander </a>
         </div>
       </div>
     </div>
 
+    <?php }else{
+      echo "<p class='p_panier'>Le panier est actuellement vide. <br>
+            <a href='index.php' class='link_color'> Retourner à la boutique. </a></p>";
+    } ?>
+
+
+
+
   <?php
-} elseif(isset($_SESSION["panier"]) & isset($_GET["validation"])) {
-  $panier->commander($db);
-} else {
+}elseif(isset($_GET['validation'])){
+      echo "<p class='p_panier'> Votre commande a bien été validée. <br>
+      Merci pour votre achat !</p>";
+    }elseif(!isset($_SESSION['panier'])) {
     ?>
-    <div class="row">
-      Pas de panier
-    </div>
+
+      <p class="p_panier"> Le panier est actuellement vide. </p>
+
+      <p class="lien_panier"><a class="link_color" href="index.php"> Retourner vers la boutique. </a></p>
+
     <?php
   }
+
    ?>
     </main>
 
