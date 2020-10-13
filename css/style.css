@@ -1,4 +1,4 @@
-/* couleur  grise : #F3F3F3 */
+
 /**** GENERAL ****/
 
 .card-image img{
@@ -6,10 +6,10 @@
 }
 .ancien_prix{
   text-decoration: line-through;
+}
 
 .section_index .row .col{
   padding: 2rem !important;
-
 }
 .row{
   margin-bottom: 0 !important;
