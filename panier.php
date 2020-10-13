@@ -105,7 +105,7 @@
     </div>
 
     <?php }else{
-      echo "<p class='p_panier'>Votre panier est vide. <br>
+      echo "<p class='p_panier'>Le panier est actuellement vide. <br>
             <a href='index.php'> Retourner à la boutique. </a></p>";
     } ?>
 
@@ -115,6 +115,7 @@
   <?php
 } elseif(isset($_SESSION["panier"]) & isset($_GET["validation"])) {
   $panier->commander($db);
+  header("Location:recapitulatif.php");
 } else {
     ?>
     <div class="row">
