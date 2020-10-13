@@ -10,11 +10,11 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-
-    <?php include('includes/links.php'); ?>
+    <?php include('includes/links.php');  ?>
   </head>
   <body>
     <?php
+
       include('includes/header.php');
       include('includes/bdd.php');
       include('classes/Produit.php');

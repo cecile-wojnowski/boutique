@@ -1,4 +1,4 @@
-/* couleur  grise : #F3F3F3 */
+
 /**** GENERAL ****/
 
 .card-image img{
@@ -10,7 +10,6 @@
 
 .section_index .row .col{
   padding: 2rem !important;
-
 }
 .row{
   margin-bottom: 0 !important;
@@ -215,5 +214,15 @@ main{
 /**** FOOTER ****/
 
 footer{
-  background-color: #68B989 !important;
+  background-color: #133f1c !important;
+}
+footer a {
+  color:white !important;
+  transition: color .2s ease-in-out;
+}
+.text-align{
+  margin-left:3%;
+}
+footer i{
+  font-size:30px;
 }
