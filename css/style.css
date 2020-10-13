@@ -13,13 +13,7 @@ a{
   color:black !important;
   transition: color .2s ease-in-out;
 }
-a:hover{
-  color: #f1f7d1 !important;
-}
-.link_color:hover{
-  font-weight:bold;
-  color:black !important;
-}
+
 h2{
   font-size:30px !important;
   text-align: center !important;
@@ -39,6 +33,13 @@ header{
 }
 header > h2{
   margin:0 !important;
+}
+header  a {
+  color:black !important;
+  transition: color .2s ease-in-out;
+}
+header  a:hover{
+  color: #f1f7d1 !important;
 }
 .img_header{
   width:70%;
@@ -61,10 +62,6 @@ header > h2{
   margin-top:0;
   padding-top:2%;
 }
-/*.logo{
-  font-size:25px !important;
-  margin-top: 0 !important;
-} */
 .nav_header{
   height:50px !important;
 }
@@ -125,6 +122,13 @@ main{
   text-align: center;
   font-size: 18px;
   margin-top:3%;
+}
+.link_color{
+  color:black !important;
+  transition: color .2s ease-in-out;
+}
+.link_color:hover{
+  color:grey !important;
 }
 .lien_panier{
   text-align: center;

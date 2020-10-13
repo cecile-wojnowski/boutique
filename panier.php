@@ -105,8 +105,8 @@
     </div>
 
     <?php }else{
-      echo "Votre panier est vide. <br>
-            <a href='index.php'> Retourner à la boutique. </a>";
+      echo "<p class='p_panier'>Votre panier est vide. <br>
+            <a href='index.php'> Retourner à la boutique. </a></p>";
     } ?>
 
 
