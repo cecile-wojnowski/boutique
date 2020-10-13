@@ -7,7 +7,8 @@
     }
     else
     {
-        echo '<form action="" method="POST">';
+        echo 'Bonjour '.$_SESSION['prenom'].' !';
+        echo '<form action="" method="POST" class="p_connexion">';
         echo '<button type="submit" name="deconnexion" id="deconnexion" class="link_header">';
         echo 'Déconnexion';
         echo '</button>';

@@ -1,10 +1,15 @@
 /* couleur  grise : #F3F3F3 */
 /**** GENERAL ****/
+
 .card-image img{
   max-height:200px;
 }
 .ancien_prix{
   text-decoration: line-through;
+
+.section_index .row .col{
+  padding: 2rem !important;
+
 }
 .row{
   margin-bottom: 0 !important;
@@ -18,6 +23,7 @@ h2{
   font-size:30px !important;
   text-align: center !important;
 }
+
 h3{
   font-size:25px !important;
   text-align: center !important;
@@ -57,7 +63,7 @@ header  a:hover{
   color: #f1f7d1 !important;
 }
 .p_connexion{
-  text-align: right;
+  text-align: right !important;
   margin-right: 10%;
   margin-top:0;
   padding-top:2%;
@@ -86,8 +92,8 @@ main{
 /**** INDEX *****/
 /** Section 1 : image **/
 .index_img{
-  width:80% !important;
-  height:500px !important;
+  width:70% !important;
+  height:30% !important;
   display: block;
 }
 
@@ -178,6 +184,33 @@ main{
   padding-right:20% !important;
   padding-left:20% !important;
 }
+
+/**** ADMIN ****/
+#admin img {
+  width: 4vw !important;
+  height: 7vh !important;
+}
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
+
 /**** FOOTER ****/
 
 footer{

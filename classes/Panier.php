@@ -1,13 +1,14 @@
 <?php
 class Panier
 {
-  private $id_utilisateur = 1; # valeur temporaire qui devra changer
+  private $id_utilisateur = ""; # valeur temporaire qui devra changer
   private $etat_panier = false; # true = rempli, false = vide
   private $liste_produits = []; # tableau rempli avec les id des produits
   private $prix_total = 0; # Prix du panier vide
 
   public function __construct(){
     $this->etat_panier = true;
+    $this->id_utilisateur = $_SESSION['id'];
   }
 
   public function ajouter_produit($produit, $quantite = 1){
