@@ -22,7 +22,7 @@
       <h2> Mon panier </h2>
 
         <?php
-        if(isset($_SESSION['panier']) & !isset($_GET["validation"])){
+        if(isset($_SESSION['panier'])){
           if(isset($_GET['supp_id'])){
             $key = $_GET['supp_id'];
             $panier->supprimer_produit($key);
@@ -39,8 +39,6 @@
                 header('Location:panier.php');
               }
             }
-
-
 
           # Il faut récupérer l'id du produit dans le tableau $liste_produits
           # pour utiliser cet id en faisant une requête sql qui permettra d'afficher les infos du produits.
@@ -98,7 +96,7 @@
       <div class="row">
         <div class="col m3 offset-m9">
         <div class= "boutons_produit">
-          <a href="panier.php?validation" class="waves-effect waves-green btn grey darken-4 lighten-3 white-text">
+          <a href="recapitulatif.php" class="waves-effect waves-green btn grey darken-4 lighten-3 white-text">
           Commander </a>
         </div>
       </div>
@@ -106,25 +104,26 @@
 
     <?php }else{
       echo "<p class='p_panier'>Le panier est actuellement vide. <br>
-            <a href='index.php'> Retourner à la boutique. </a></p>";
+            <a href='index.php' class='link_color'> Retourner à la boutique. </a></p>";
     } ?>
 
 
 
 
   <?php
-} elseif(isset($_SESSION["panier"]) & isset($_GET["validation"])) {
-  $panier->commander($db);
-  header("Location:recapitulatif.php");
-} else {
+}elseif(isset($_GET['validation'])){
+      echo "<p class='p_panier'> Votre commande a bien été validée. <br>
+      Merci pour votre achat !</p>";
+    }elseif(!isset($_SESSION['panier'])) {
     ?>
-    <div class="row">
+
       <p class="p_panier"> Le panier est actuellement vide. </p>
 
       <p class="lien_panier"><a class="link_color" href="index.php"> Retourner vers la boutique. </a></p>
-    </div>
+
     <?php
   }
+
    ?>
     </main>
 
