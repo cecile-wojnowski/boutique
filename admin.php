@@ -1,8 +1,10 @@
 <?php
   session_start();
   require "classes/autoloader.php";
-
+    include 'classes/ChromePhp.php';
   $db = App::getDatabase();
+
+  if (isset($_SESSION['email']) && $_SESSION['admin'] == 1){
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -21,9 +23,10 @@
     <?php include 'includes/header.php'; ?>
 
     <main id="admin">
-        <?php include 'includes/php_admin.php'; ?>
+      <?php include 'includes/php_modifier_produit.php'; ?>
+      <?php include 'includes/php_admin.php'; ?>
 
-        <div class="row">
+      <div class="row">
         <form id="form_ajout_produit" class="col s8 m8 offset-s3 offset-m3" action="admin.php" method="POST">
           <div class="row">
             <div class="col s4 m4 offset-s2 offset-m2">
@@ -115,6 +118,12 @@
       </div>
     </main>
 
-    <?php include 'includes/footer.php'; ?>
+    <?php 
+      include 'includes/footer.php'; 
+    }
+    else{
+      App::redirect('index.php');
+    }
+    ?>
 </body>
 </html>

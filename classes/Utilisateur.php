@@ -36,19 +36,18 @@
     }
 
     public function se_connecter($email, $mdp){
-      $recup_info = $this->db->query("SELECT * FROM utilisateurs WHERE email = ?", [$email]);
+      $recup_info = $this->db->prepare("SELECT * FROM utilisateurs WHERE email = '$email' ");
+      $recup_info->execute();
       $infos = $recup_info->fetch();
 
       if(!empty($infos)){
-        if(password_verify($mdp, $infos->password)){
-          // var_dump($infos);
-          $recuperation = get_object_vars($infos);
-          // var_dump($recuperation);
+        if(password_verify($mdp, $infos['password'])){
 
-          $_SESSION['id'] = $recuperation['id'];
-          $_SESSION['nom'] = $recuperation['nom'];
-          $_SESSION['prenom'] = $recuperation['prenom'];
-          $_SESSION['email'] = $recuperation['email'];
+          $_SESSION['id'] = $infos['id'];
+          $_SESSION['nom'] = $infos['nom'];
+          $_SESSION['prenom'] = $infos['prenom'];
+          $_SESSION['email'] = $infos['email'];
+          $_SESSION['admin'] = $infos['admin'];
           App::redirect('index.php');
         }
       }
