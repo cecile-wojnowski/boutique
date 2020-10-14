@@ -122,7 +122,6 @@ main{
 .row_panier{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
 }
 .p_panier{
   text-align: center;
@@ -142,10 +141,8 @@ main{
 }
 /* Aligne le Total avec le prix */
 .row_panier > p{
-  margin: 0 !important;
-}
-.row_panier > h2{
-  margin : 0 !important;
+  margin: 0 0 5% 0 !important;
+  font-size:20px !important;
 }
 /***** PRODUIT ****/
 .boutons_produit{
