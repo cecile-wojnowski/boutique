@@ -261,6 +261,12 @@ footer .row{
     margin-bottom:5%;
   }
 
+  nav .sidenav-trigger{
+    margin-left:50% !important;
+  }
+  nav .sidenav-trigger:hover{
+    color:grey !important;
+  }
   /*** Index ***/
 
   .section_index h3{
