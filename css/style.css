@@ -104,7 +104,9 @@ main{
 .index_text{
   text-align: justify;
 }
-
+.section_index .row{
+  margin-bottom: 0 !important;
+}
 /**** RECHERCHE ****/
 .barre_recherche input::placeholder {
   color: grey !important;
@@ -235,4 +237,38 @@ footer a {
 }
 footer i{
   font-size:30px;
+}
+footer .row{
+  margin-bottom: 0 !important;
+}
+
+/******************************************** Responsive ***********************************************/
+@media (max-width:600px){
+  /*** Header ***/
+  .index_img{
+    width:90% !important;
+  }
+  .img_header{
+    width:30%;
+  }
+  header .row{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  .nav_header{
+    width:100%;
+    margin-bottom:5%;
+  }
+
+  /*** Index ***/
+
+  .section_index h3{
+    display: none;
+  }
+
+  /** Footer **/
+  .page-footer i{
+    display: none;
+  }
 }
