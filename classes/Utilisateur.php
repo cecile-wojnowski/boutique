@@ -93,10 +93,11 @@
 
     public function stocker_historique($id_utilisateur){
       // Insertion de l'achat dans la table sql
-      $requete = $this->db->query("SELECT * FROM historique INNER JOIN produits
+      $requete = $this->db->prepare("SELECT * FROM historique INNER JOIN produits
                               ON id_produit = produits.id
                               WHERE id_utilisateur = ?
-                              ORDER BY date_achat DESC", [$id_utilisateur]);
+                              ORDER BY date_achat DESC");
+      $requete->execute([$id_utilisateur]);
       $historique = $requete->fetchall(PDO::FETCH_ASSOC);
 
       // afficher résultat dans un tab

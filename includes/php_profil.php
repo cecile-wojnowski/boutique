@@ -3,9 +3,11 @@
     {
         // recup données bdd
         $utilisateur = new Utilisateur($db);
-        $infos = $db->query("SELECT * FROM utilisateurs WHERE email = ? ", [$_SESSION['email']]);
+        $infos = $db->prepare("SELECT * FROM utilisateurs WHERE email = ? ");
+        $infos->execute([$_SESSION['email']]);
         $info = $infos->fetch();
-        $infos_perso = get_object_vars($info);
+
+        $infos_perso = var_dump($info);
         // var_dump($infos_perso);
 
         if(isset($_POST['modifier']) && !empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email']) && !empty($_POST['password'])){
