@@ -8,6 +8,11 @@
     $panier = unserialize($_SESSION['panier']);
   }
 ?>
+<?php
+if(isset($_SESSION["panier"]) & isset($_GET["validation"])) {
+  $panier->commander($db);
+  header("Location:panier.php?validation");
+} ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
@@ -80,11 +85,7 @@
           <a href="recapitulatif.php?validation" class="waves-effect waves-green btn grey darken-4 lighten-3 white-text">
           Valider la commande </a>
 
-          <?php
-          if(isset($_SESSION["panier"]) & isset($_GET["validation"])) {
-            $panier->commander($db);
-            header("Location:panier.php?validation");
-          } ?>
+
         </div>
       </div>
     </div>
