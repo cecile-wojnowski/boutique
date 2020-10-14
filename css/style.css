@@ -46,7 +46,7 @@ header  a:hover{
   color: #f1f7d1 !important;
 }
 header .btn:hover{
-  background-color: white !important;
+  background-color: lightgrey !important;
 }
 .img_header{
   width:70%;
