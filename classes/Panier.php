@@ -8,7 +8,9 @@ class Panier
 
   public function __construct(){
     $this->etat_panier = true;
-    $this->id_utilisateur = $_SESSION['id'];
+    if(isset($_SESSION['id'])){
+      $this->id_utilisateur = $_SESSION['id'];
+    }
   }
 
   public function ajouter_produit($produit, $quantite = 1){
