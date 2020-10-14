@@ -46,7 +46,7 @@ header  a:hover{
   color: #f1f7d1 !important;
 }
 header .btn:hover{
-  background-color: lightgrey !important;
+  background-color: #f1f7d1 !important;
 }
 .img_header{
   width:70%;
@@ -96,6 +96,8 @@ main{
   width:70% !important;
   height:30% !important;
   display: block;
+  margin-top:5%;
+  margin-bottom:5%;
 }
 
 /** Section 3 : texte **/
