@@ -37,9 +37,10 @@
     if(isset($_GET['id_client_modif'])){
         // modifier un client en admin
         $id_client = $_GET['id_client_modif'];
-        $req = $db->query("SELECT * FROM utilisateurs WHERE id=?", [$id_client]);
+        $req = $db->prepare("SELECT * FROM utilisateurs WHERE id=?");
+        $req->execute([$id_client]);
         $info = $req->fetch();
-        $infos = get_object_vars($info);
+        $infos = var_dump($info);
         if($infos['admin'] == 1){
             $boleen = 0;
         }
