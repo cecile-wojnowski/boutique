@@ -1,7 +1,7 @@
 <?php
     session_start();
     require "classes/autoloader.php";
-    $db = App::getDatabase();
+    require "includes/bdd.php";
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">

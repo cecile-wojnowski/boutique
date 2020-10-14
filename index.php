@@ -1,8 +1,7 @@
 <?php
   session_start();
   require "classes/autoloader.php";
-
-  $db = App::getDatabase();
+  require "includes/bdd.php";
 
 ?>
 <!DOCTYPE html>
@@ -17,7 +16,6 @@
 
       include('includes/header.php');
       include('includes/bdd.php');
-      include('classes/Produit.php');
     ?>
 
     <main>

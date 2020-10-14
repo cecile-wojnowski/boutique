@@ -1,10 +1,16 @@
 <?php
+include 'includes/bdd.php';
+
   session_start();
   require "classes/autoloader.php";
-    include 'classes/ChromePhp.php';
-  $db = App::getDatabase();
 
-  if (isset($_SESSION['email']) && $_SESSION['admin'] == 1){
+  if (!isset($_SESSION['email']) || $_SESSION['admin'] != 1){
+
+    header("Location:index.php");
+
+  }
+
+  include 'includes/php_admin.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -21,10 +27,11 @@
 </head>
 <body>
     <?php include 'includes/header.php'; ?>
+    <?php include 'includes/php_admin_tab_user.php'; ?>
+    <?php include 'includes/php_admin_tab_produits.php'; ?>
 
     <main id="admin">
       <?php include 'includes/php_modifier_produit.php'; ?>
-      <?php include 'includes/php_admin.php'; ?>
 
       <div class="row">
         <form id="form_ajout_produit" class="col s8 m8 offset-s3 offset-m3" action="admin.php" method="POST">
@@ -118,12 +125,8 @@
       </div>
     </main>
 
-    <?php 
-      include 'includes/footer.php'; 
-    }
-    else{
-      App::redirect('index.php');
-    }
+    <?php
+      include 'includes/footer.php';
     ?>
 </body>
 </html>

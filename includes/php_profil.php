@@ -50,7 +50,7 @@
     }
     else
     {
-        App::redirect('index.php');
+      header("Location:index.php");
     }
     $id_utilisateur = $_SESSION['id'];
     $utilisateur->stocker_historique($id_utilisateur);

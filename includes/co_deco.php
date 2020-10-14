@@ -24,6 +24,6 @@
     {
         // var_dump('entrer dans la deco');
         session_destroy();
-        App::redirect('index.php');
+        header("Location:index.php");
     }
 ?>
