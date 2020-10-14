@@ -1,6 +1,4 @@
-
 /**** GENERAL ****/
-
 .card-image img{
   max-height:200px;
 }
@@ -46,6 +44,9 @@ header  a {
 }
 header  a:hover{
   color: #f1f7d1 !important;
+}
+header .btn:hover{
+  background-color: white !important;
 }
 .img_header{
   width:70%;
@@ -155,6 +156,9 @@ main{
 }
 #bouton_produit1{
   margin-bottom:5%;
+}
+.boutons_produit .btn:hover{
+  background-color: dimgrey !important;
 }
 /* Couleur arrow breadcrumb */
 .breadcrumb:before {
