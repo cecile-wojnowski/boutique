@@ -16,22 +16,20 @@
 
     public function creer_compte($nom, $prenom, $email, $mdp){
       // verif si mail (nom utilisateur de la boutique) n'existe pas deja !!
-      $req = $this->db->query("SELECT * FROM utilisateurs WHERE email = ?", [$email]);
-      $verif_log = $req->fetch();
+      $req = $this->db->prepare("SELECT * FROM utilisateurs WHERE email = ?");
+      $req->execute([$email]);
 
-      if(empty($verif_log)){
+      if($req->fetchColumn() == 0){
         $mdp_crypt = password_hash($mdp, PASSWORD_BCRYPT); // cryptage mdp
 
-        $inscription = $this->db->query("INSERT INTO utilisateurs (nom, prenom, email, password) VALUES (?, ?, ?, ?)",
-          [$nom,
-          $prenom,
-          $email,
-          $mdp_crypt]);
+        $inscription = $this->db->prepare("INSERT INTO utilisateurs (nom, prenom, email, password) VALUES (?, ?, ?, ?)");
+        $inscription->execute([$nom, $prenom, $email, $mdp_crypt]);
+
           $location = App::redirect('connexion.php');
       }
       else{
         // systeme de message d'erreur a étudier
-        var_dump("Cet email existe déjà chez nous !");
+        echo "Cet email existe déjà chez nous !";
       }
     }
 
