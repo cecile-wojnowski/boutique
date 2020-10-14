@@ -40,7 +40,7 @@
         </div>
 
         <!-- Affiche les produits -->
-        <div class='row'>
+        <div class='row' id="produits_espace">
         <?php  $categorie->afficher_produits($db); ?>
        </div>
 

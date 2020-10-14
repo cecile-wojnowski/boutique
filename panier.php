@@ -72,7 +72,7 @@
 
           <!-- Cliquer sur l'icone doit permettre de supprimer le bon index dans le tableau -->
           <div class="col s1 m2">
-            <a href="panier.php?supp_id=<?php echo $key ?>"> <i class="material-icons">delete</i></a>
+            <a class="delete_icon" href="panier.php?supp_id=<?php echo $key ?>"> <i class="material-icons">delete</i></a>
           </div>
         </div>
 
@@ -81,10 +81,9 @@
       # On affiche le prix et le bouton commander uniquement si le panier n'est pas vide
       if(!empty($panier->liste_produits())){?>
       <div class="row">
-        <div class="col m1 offset-m9" id="prix_total">
+        <div class="col m2 offset-m9" id="prix_total">
           <div class="row_panier">
-            <h2 class="h2_produit"> Total </h2>
-            <p> <?php
+            <p>Total : <?php
               /* Calcul du prix total */
               $panier->calculer_prix_total($db);
               ?> euros</p>

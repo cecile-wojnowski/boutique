@@ -8,6 +8,11 @@
     $panier = unserialize($_SESSION['panier']);
   }
 ?>
+<?php
+if(isset($_SESSION["panier"]) & isset($_GET["validation"])) {
+  $panier->commander($db);
+  header("Location:panier.php?validation");
+} ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
@@ -66,8 +71,7 @@
   <div class="row">
     <div class="col m2 offset-m9" id="prix_total">
       <div class="row_panier">
-        <h2 class="h2_produit"> Total </h2>
-        <p> <?php
+        <p>Total: <?php
           /* Calcul du prix total */
           $panier->calculer_prix_total($db);
           ?> euros</p>
@@ -81,11 +85,7 @@
           <a href="recapitulatif.php?validation" class="waves-effect waves-green btn grey darken-4 lighten-3 white-text">
           Valider la commande </a>
 
-          <?php
-          if(isset($_SESSION["panier"]) & isset($_GET["validation"])) {
-            $panier->commander($db);
-            header("Location:panier.php?validation");
-          } ?>
+
         </div>
       </div>
     </div>

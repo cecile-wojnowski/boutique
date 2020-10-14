@@ -23,8 +23,8 @@
     <main>
       <!-- Section 1 -->
       <div class="row">
-        <div class="col offset-m2">
-        <img class="index_img" src="img/apples.jpg">
+        <div class="col offset-m3">
+        <img class="index_img" src="img/img_accueil.jpg">
       </div>
     </div>
 
