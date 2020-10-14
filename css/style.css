@@ -9,9 +9,9 @@
 .section_index .row .col{
   padding: 2rem !important;
 }
-.row{
+/*.row{
   margin-bottom: 0 !important;
-}
+}*/
 a{
   color:black !important;
   transition: color .2s ease-in-out;
@@ -178,6 +178,10 @@ main{
 }
 .link_categ_parente:hover{
   color:grey !important;
+}
+#produits_espace{
+  margin-top: 5%;
+  margin-bottom : 5%;
 }
 /***** INSCRIPTION *****/
 #form_inscription{

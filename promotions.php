@@ -21,7 +21,7 @@
     <?php include('includes/header.php'); ?>
     <main>
       <h2> Promotions </h2>
-      <div class="row">
+      <div class="row" id="produits_espace">
         <?php
         afficher_promotions($db);
         ?>
