@@ -18,6 +18,11 @@
     ?>
     <main>
         <div class="row">
+          <?php
+          if(isset($erreur)) {
+            echo $erreur;
+          }
+           ?>
             <form id="form_inscription" class="col s8 m8 offset-s3 offset-m3" action="" method="POST">
                 <div class="row">
                     <div class="col s4 m4 offset-s2 offset-m2">

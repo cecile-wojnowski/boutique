@@ -3,11 +3,10 @@
     {
         // recup données bdd
         $utilisateur = new Utilisateur($db);
-        $infos = $db->prepare("SELECT * FROM utilisateurs WHERE email = ? ");
-        $infos->execute([$_SESSION['email']]);
-        $info = $infos->fetch();
+        $infos_perso = $db->prepare("SELECT * FROM utilisateurs WHERE email = ? ");
+        $infos_perso->execute([$_SESSION['email']]);
+        $infos_perso = $infos_perso->fetch();
 
-        $infos_perso = var_dump($info);
         // var_dump($infos_perso);
 
         if(isset($_POST['modifier']) && !empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email']) && !empty($_POST['password'])){
@@ -35,8 +34,15 @@
                 if($new_mdp != $infos_perso['password'] && $new_mdp == $_POST['conf_password'] && !empty($new_mdp)){
                     $utilisateur->modifier_mdp($new_mdp);
                 }
-            }
 
+                // Il est nécessaire de refaire la recherche des infos perso en cas de modification
+                $infos_perso = $db->prepare("SELECT * FROM utilisateurs WHERE email = ? ");
+                $infos_perso->execute([$_SESSION['email']]);
+                $infos_perso = $infos_perso->fetch();
+
+            } else {
+                $erreur = "Le mot de passe n'est pas bon !";
+            }
 
         }
         // $utilisateur = new Utilisateur;
