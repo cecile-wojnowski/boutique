@@ -72,7 +72,7 @@
 
           <!-- Cliquer sur l'icone doit permettre de supprimer le bon index dans le tableau -->
           <div class="col s1 m2">
-            <a href="panier.php?supp_id=<?php echo $key ?>"> <i class="material-icons">delete</i></a>
+            <a class="delete_icon" href="panier.php?supp_id=<?php echo $key ?>"> <i class="material-icons">delete</i></a>
           </div>
         </div>
 

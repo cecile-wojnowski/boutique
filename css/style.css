@@ -139,6 +139,9 @@ main{
   text-align: center;
   margin-bottom:8%;
 }
+.delete_icon:hover{
+  color: #E81800 !important;
+}
 /* Aligne le Total avec le prix */
 .row_panier > p{
   margin: 0 0 5% 0 !important;
