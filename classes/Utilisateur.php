@@ -16,19 +16,20 @@
 
     public function creer_compte($nom, $prenom, $email, $mdp){
       // verif si mail (nom utilisateur de la boutique) n'existe pas deja !!
-      $req = $this->db->query("SELECT * FROM utilisateurs WHERE email = ?", [$email]);
-      $verif_log = $req->fetch();
+      $req = $this->db->prepare("SELECT * FROM utilisateurs WHERE email = ?");
+      $req->execute([$email]);
 
-      if(empty($verif_log)){
+      if($req->fetchColumn() == 0){
         $mdp_crypt = password_hash($mdp, PASSWORD_BCRYPT); // cryptage mdp
 
-        $inscription = $this->db->prepare("INSERT INTO utilisateurs (nom, prenom, email, password) VALUES ('$nom', '$prenom, '$email, '$mdp_crypt)");
-        $inscription->execute();
-        $location = App::redirect('connexion.php');
+        $inscription = $this->db->prepare("INSERT INTO utilisateurs (nom, prenom, email, password) VALUES (?, ?, ?, ?)");
+        $inscription->execute([$nom, $prenom, $email, $mdp_crypt]);
+
+          $location = App::redirect('connexion.php');
       }
       else{
         // systeme de message d'erreur a étudier
-        var_dump("Cet email existe déjà chez nous !");
+        echo "Cet email existe déjà chez nous !";
       }
     }
 
@@ -54,29 +55,26 @@
     }
 
     public function modifier_nom($new_nom){
-      $is_session = $_SESSION['id'];
-      $update_nom = $this->db->prepare("UPDATE utilisateurs SET nom = '$new_nom' WHERE id = '$id_session' ");
-      $update_nom->execute();
+      $update_nom = $this->db->prepare("UPDATE utilisateurs SET nom = ? WHERE id = ?");
+       $update_nom->execute([$new_nom, $_SESSION['id']]);
 
       $_SESSION['nom'] = $new_nom;
     }
 
     public function modifier_prenom($new_prenom){
-      $id_session = $_SESSION['id'];
-      $update_prenom = $this->db->prepare("UPDATE utilisateurs SET prenom = '$new_prenom' WHERE id = '$id_session'");
-      $update_prenom->execute();
+      $update_prenom = $this->db->prepare("UPDATE utilisateurs SET prenom = ? WHERE id = ?");
+      $update_prenom->execute([$new_prenom, $_SESSION['id']]);
 
       $_SESSION['prenom'] = $new_prenom;
     }
 
     public function modifier_email($new_email){
-      $id_session = $_SESSION['id'];
-      $reqbdd = $this->db->prepare("SELECT * FROM utilisateurs WHERE email = '$new_email' ");
-      $reqbdd->execute();
+      $reqbdd = $db->prepare("SELECT * FROM utilisateurs WHERE email = ?");
+      $reqbdd->execute([$new_email]);
       $result = $reqbdd->fetch();
       if(empty($result)){
-        $update_email = $this->db->prepare("UPDATE utilisateurs SET email = '$new_email' WHERE id = '$id_session'");
-        $update_email->execute();
+        $update_email = $this->db->prepare("UPDATE utilisateurs SET email = ? WHERE id = ?");
+        $update_email->execute([$new_email, $_SESSION['id']]);
         $_SESSION['email'] = $new_email;
       }
       else
@@ -86,17 +84,23 @@
     }
 
     public function modifier_mdp($new_mdp){
-      $id_session = $_SESSION['id'];
       $mdp_up = password_hash($new_mdp, PASSWORD_BCRYPT);
-      $update_mdp = $this->db->prepare("UPDATE utilisateurs SET password = '$mdp_up' WHERE id = '$id_session' ");
-      $update_mdp->execute();
+      $update_mdp = $this->db->prepare("UPDATE utilisateurs SET password = ? WHERE id = ?");
+      $update_mdp->execute([$mdp_up, $_SESSION['id']]);
+
       $_SESSION['mdp'] = $new_mdp;
     }
 
+    function modifier_adresse($adresse){
+      $update_adresse = $this->db->prepare("UPDATE utilisateurs SET adresse = ? WHERE id = ?");
+      $update_adresse->execute([$adresse, $_SESSION['id']]);
+
+      $_SESSION['mdp'] = $adresse;
+    }
+
     public function supprimer_son_compte(){
-      $id_session = $_SESSION['id'];
-      $supp_utilisateur = $this->db->prepare("DELETE FROM utilisateurs WHERE id = '$id_session'");
-      $supp_utilisateur->execute();
+      $supp_utilisateur = $this->db->prepare("DELETE FROM utilisateurs WHERE id = ? ");
+      $supp_utilisateur->execute([$_SESSION['id']]);
       //changer les info dans historique d'achat
     }
 
@@ -104,14 +108,14 @@
       // Insertion de l'achat dans la table sql
       $requete = $this->db->prepare("SELECT * FROM historique INNER JOIN produits
                               ON id_produit = produits.id
-                              WHERE id_utilisateur = $id_utilisateur
+                              WHERE id_utilisateur = ?
                               ORDER BY date_achat DESC");
-      $requete->execute();
+      $requete->execute([$id_utilisateur]);
       $historique = $requete->fetchall(PDO::FETCH_ASSOC);
 
       // afficher résultat dans un tab
       // var_dump($historique);
-      echo '<table>';
+      echo '<table class="tableau_historique">';
       echo '<thead>';
       echo '<th> Produit </th>';
       echo '<th> Prix </th>';
@@ -135,24 +139,24 @@
 
     public function afficher_historique(){
       $id_log = $_SESSION['id'];
-      $historique = $this->db->prepare("SELECT nom_produit, date_achat FROM historique WHERE id_utilisateur = '$id_log'");
-      $historique->execute();
+      $historique = $this->db->prepare("SELECT nom_produit, date_achat FROM historique WHERE id_utilisateur = ?");
+      $historique->execute([$id_log]);
       $historique->fetchall(PDO::FETCH_ASSOC);
     }
 
     public function devenir_admin(){
       # Permet de changer le statut de $admin en true
       $id_log = $_SESSION['id'];
-      $admin = $this->db->prepare("UPDATE utilisateurs SET admin = 'true' WHERE id = '$id_log'");
-      $admin->execute();
+      $admin = $this->db->prepare("UPDATE utilisateurs SET admin = 'true' WHERE id = ?");
+      $admin->execute($id_log);
 
       $_SESSION['admin'] = true;
     }
 
     public function changer_statut(){
       $id_log = $_SESSION['id'];
-      $membre = $this->db->prepare("UPDATE utilisateurs SET admin = 'false' WHERE id = '$id_log'");
-      $membre->execute();
+      $membre = $this->db->prepare("UPDATE utilisateurs SET admin = 'false' WHERE id = ? ");
+      $membre->execute([$id_log]);
 
       $_SESSION['admin'] = false;
     }
