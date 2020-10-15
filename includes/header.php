@@ -57,7 +57,11 @@
         <?php }
         if(isset($_SESSION['email'])){ ?>
           <li><a href="profil.php"> Profil </a></li>
-        <?php }
+          <?php
+            if($_SESSION['admin'] == 1){ ?>
+              <li><a href="admin.php"> Admin </a></li>
+            <?php }
+         }
          ?>
 
     </div>
@@ -78,6 +82,11 @@
     <?php }
     if(isset($_SESSION['email'])){ ?>
       <li><a href="profil.php"> Profil </a></li>
+      <?php
+        if($_SESSION['admin'] == 1){ ?>
+          <li><a href="admin.php"> Admin </a></li>
+        <?php }
+       ?>
     <?php }
      ?>
   </ul>
