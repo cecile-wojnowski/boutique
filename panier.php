@@ -90,14 +90,25 @@
           </div>
         </div>
       </div>
-
-      <div class="row">
-        <div class="col m3 offset-m9">
-        <div class= "boutons_produit">
-          <a href="recapitulatif.php" class="waves-effect waves-green btn grey darken-4 lighten-3 white-text">
-          Commander </a>
+      <?php if(isset($_SESSION['email'])){ ?>
+        <div class="row">
+          <div class="col m3 offset-m9">
+          <div class= "boutons_produit">
+            <a href="recapitulatif.php" class="waves-effect waves-green btn grey darken-4 lighten-3 white-text">
+            Commander </a>
+          </div>
         </div>
-      </div>
+      <?php }else{ ?>
+        <div class="row">
+          <div class="col m3 offset-m9">
+          <div class= "boutons_produit">
+            <a href="connexion.php?mustbeconnected" class="waves-effect waves-green btn grey darken-4 lighten-3 white-text">
+            Commander </a>
+          </div>
+        </div>
+      <?php } ?>
+
+
     </div>
 
     <?php }else{
