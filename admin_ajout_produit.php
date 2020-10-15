@@ -28,21 +28,6 @@ include 'includes/bdd.php';
     <?php include 'includes/header.php'; ?>
 
     <main id="admin">
-      <?php include 'includes/php_admin_tab_user.php'; ?>
-      <?php include 'includes/php_admin_tab_produits.php'; ?>
-      <section id="cat_souscat">
-        <form id="cont_filtre" action="" method="POST">
-          <button type="submit" class="filtrer" id="cat" name="cat">Catégories</button>
-          <button type="submit" class="filtrer" id="sous_cat" name="sous_cat">Sous Catégories</button>
-        </form>
-      </section>
-      <?php include 'cat_souscat.php'; ?>
-      <?php include 'includes/php_modifier_produit.php'; ?>
-
-      <div class="row">
-        <a href="admin_ajout_produit.php">Ajouter un produit</a>
-      </div>
-
       <div class="row">
         <form id="form_ajout_produit" class="col s8 m8 offset-s3 offset-m3" action="admin.php" method="POST">
           <div class="row">
