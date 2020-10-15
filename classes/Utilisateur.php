@@ -22,12 +22,9 @@
       if(empty($verif_log)){
         $mdp_crypt = password_hash($mdp, PASSWORD_BCRYPT); // cryptage mdp
 
-        $inscription = $this->db->query("INSERT INTO utilisateurs (nom, prenom, email, password) VALUES (?, ?, ?, ?)",
-          [$nom,
-          $prenom,
-          $email,
-          $mdp_crypt]);
-          $location = App::redirect('connexion.php');
+        $inscription = $this->db->prepare("INSERT INTO utilisateurs (nom, prenom, email, password) VALUES ('$nom', '$prenom, '$email, '$mdp_crypt)");
+        $inscription->execute();
+        $location = App::redirect('connexion.php');
       }
       else{
         // systeme de message d'erreur a étudier
@@ -57,22 +54,29 @@
     }
 
     public function modifier_nom($new_nom){
-      $update_nom = $this->db->query("UPDATE utilisateurs SET nom = ? WHERE id = ?", [$new_nom, $_SESSION['id']]);
+      $is_session = $_SESSION['id'];
+      $update_nom = $this->db->prepare("UPDATE utilisateurs SET nom = '$new_nom' WHERE id = '$id_session' ");
+      $update_nom->execute();
 
       $_SESSION['nom'] = $new_nom;
     }
 
     public function modifier_prenom($new_prenom){
-      $update_prenom = $this->db->query("UPDATE utilisateurs SET prenom = ? WHERE id = ?", [$new_prenom, $_SESSION['id']]);
+      $id_session = $_SESSION['id'];
+      $update_prenom = $this->db->prepare("UPDATE utilisateurs SET prenom = '$new_prenom' WHERE id = '$id_session'");
+      $update_prenom->execute();
 
       $_SESSION['prenom'] = $new_prenom;
     }
 
     public function modifier_email($new_email){
-      $reqbdd = $db->query("SELECT * FROM utilisateurs WHERE email = ?", [$new_email]);
+      $id_session = $_SESSION['id'];
+      $reqbdd = $this->db->prepare("SELECT * FROM utilisateurs WHERE email = '$new_email' ");
+      $reqbdd->execute();
       $result = $reqbdd->fetch();
       if(empty($result)){
-        $update_email = $this->db->query("UPDATE utilisateurs SET email = ? WHERE id = ?", [$new_email, $_SESSION['id']]);
+        $update_email = $this->db->prepare("UPDATE utilisateurs SET email = '$new_email' WHERE id = '$id_session'");
+        $update_email->execute();
         $_SESSION['email'] = $new_email;
       }
       else
@@ -82,23 +86,27 @@
     }
 
     public function modifier_mdp($new_mdp){
+      $id_session = $_SESSION['id'];
       $mdp_up = password_hash($new_mdp, PASSWORD_BCRYPT);
-      $update_mdp = $this->db->query("UPDATE utilisateurs SET password = ? WHERE id = ?", [$mdp_up, $_SESSION['id']]);
-
+      $update_mdp = $this->db->prepare("UPDATE utilisateurs SET password = '$mdp_up' WHERE id = '$id_session' ");
+      $update_mdp->execute();
       $_SESSION['mdp'] = $new_mdp;
     }
 
     public function supprimer_son_compte(){
-      $supp_utilisateur = $this->db->query("DELETE FROM utilisateurs WHERE id = ? ", [$_SESSION['id']]);
+      $id_session = $_SESSION['id'];
+      $supp_utilisateur = $this->db->prepare("DELETE FROM utilisateurs WHERE id = '$id_session'");
+      $supp_utilisateur->execute();
       //changer les info dans historique d'achat
     }
 
     public function stocker_historique($id_utilisateur){
       // Insertion de l'achat dans la table sql
-      $requete = $this->db->query("SELECT * FROM historique INNER JOIN produits
+      $requete = $this->db->prepare("SELECT * FROM historique INNER JOIN produits
                               ON id_produit = produits.id
-                              WHERE id_utilisateur = ?
-                              ORDER BY date_achat DESC", [$id_utilisateur]);
+                              WHERE id_utilisateur = $id_utilisateur
+                              ORDER BY date_achat DESC");
+      $requete->execute();
       $historique = $requete->fetchall(PDO::FETCH_ASSOC);
 
       // afficher résultat dans un tab
@@ -127,21 +135,24 @@
 
     public function afficher_historique(){
       $id_log = $_SESSION['id'];
-      $historique = $this->db->query("SELECT nom_produit, date_achat FROM historique WHERE id_utilisateur = ?", "$id_log");
+      $historique = $this->db->prepare("SELECT nom_produit, date_achat FROM historique WHERE id_utilisateur = '$id_log'");
+      $historique->execute();
       $historique->fetchall(PDO::FETCH_ASSOC);
     }
 
     public function devenir_admin(){
       # Permet de changer le statut de $admin en true
       $id_log = $_SESSION['id'];
-      $admin = $this->db->query("UPDATE utilisateurs SET admin = 'true' WHERE id = ?", "$id_log");
+      $admin = $this->db->prepare("UPDATE utilisateurs SET admin = 'true' WHERE id = '$id_log'");
+      $admin->execute();
 
       $_SESSION['admin'] = true;
     }
 
     public function changer_statut(){
       $id_log = $_SESSION['id'];
-      $membre = $this->db->query("UPDATE utilisateurs SET admin = 'false' WHERE id = ? ", "$id_log");
+      $membre = $this->db->prepare("UPDATE utilisateurs SET admin = 'false' WHERE id = '$id_log'");
+      $membre->execute();
 
       $_SESSION['admin'] = false;
     }

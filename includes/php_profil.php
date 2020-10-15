@@ -1,12 +1,13 @@
 <?php
     if(isset($_SESSION['email']))
     {
+        $email_actuel = $_SESSION['email'];
         // recup données bdd
         $utilisateur = new Utilisateur($db);
-        $infos = $db->query("SELECT * FROM utilisateurs WHERE email = ? ", [$_SESSION['email']]);
-        $info = $infos->fetch();
-        $infos_perso = get_object_vars($info);
-        // var_dump($infos_perso);
+        $infos = $db->prepare("SELECT * FROM utilisateurs WHERE email = '$email_actuel' ");
+        $infos->execute();
+        $infos_perso = $infos->fetch();
+        var_dump($infos_perso);
 
         if(isset($_POST['modifier']) && !empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email']) && !empty($_POST['password'])){
             $nom = $_POST['nom'];
