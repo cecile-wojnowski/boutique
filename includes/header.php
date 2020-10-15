@@ -5,7 +5,7 @@
           <img src="img/logo_boutique" class="img_header">
         </a>
       </div>
-      <div class="col m3 offset-m5">
+      <div class="col m3 offset-m4">
       <p class="p_connexion">
         <?php include 'includes/co_deco.php' ?>
         <?php include('bdd.php'); ?>
