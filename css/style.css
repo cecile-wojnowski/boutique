@@ -165,7 +165,7 @@ main{
 }
 /***** PRODUIT ****/
 .form_produit{
-  width:20%;
+  width:10%;
 }
 .boutons_produit{
   display: flex;
