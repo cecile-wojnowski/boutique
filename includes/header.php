@@ -55,10 +55,10 @@
 
         <?php }
         if(isset($_SESSION['email'])){ ?>
-          <li><a href="profil.php"> Profil </a></li>
+          <li><a class="liens_navbar" href="profil.php"> Profil </a></li>
           <?php
             if($_SESSION['admin'] == 1){ ?>
-              <li><a href="admin.php"> Admin </a></li>
+              <li><a class="liens_navbar" href="admin.php"> Admin </a></li>
             <?php }
          }
          ?>
@@ -80,10 +80,10 @@
 
     <?php }
     if(isset($_SESSION['email'])){ ?>
-      <li><a href="profil.php"> Profil </a></li>
+      <li><a class="liens_navbar" href="profil.php"> Profil </a></li>
       <?php
         if($_SESSION['admin'] == 1){ ?>
-          <li><a href="admin.php"> Admin </a></li>
+          <li><a class="liens_navbar" href="admin.php"> Admin </a></li>
         <?php }
        ?>
     <?php }
