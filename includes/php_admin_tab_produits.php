@@ -28,7 +28,7 @@ foreach($produits as $produit){
     }
 
     echo '<tr>';
-    echo '<td>'.'<img src="img/'.$produit['image'].'">'.'</td>';
+    echo '<td>'."<img class='img_admin' src='img/".$produit['image']."'>"."</td>";
     echo '<td>'.$produit['nom'].'</td>';
     echo '<td>'.$produit['description'].'</td>';
     echo '<td>'.$produit['id_categorie'].'</td>'; // associé catégorie et id catégorie

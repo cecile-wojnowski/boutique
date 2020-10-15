@@ -216,7 +216,9 @@ main{
   width: 4vw !important;
   height: 7vh !important;
 }
-
+.img_admin{
+  width:100px !important;
+}
 .btn-file {
   position: relative;
   overflow: hidden;
