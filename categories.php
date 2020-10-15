@@ -16,6 +16,10 @@
     <?php include('includes/header.php'); ?>
     <main>
       <?php
+      if(!isset($_GET['souscategorie']) AND !isset($_GET['id'])){
+        header("location:index.php");
+      }
+
       if(!isset($_GET['souscategorie'])){
       if(isset($_GET['id'])){
         # Lie l'id provenant d'un GET et l'id de la catégorie
