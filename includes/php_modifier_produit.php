@@ -8,7 +8,6 @@
                                           INNER JOIN categories ON sous_categories.id_categorie = categories.id
                                           WHERE produits.id = $id_produit");
     $result_modif = $req_produit->fetch();
-    // var_dump($result_modif);
     echo '<div class="row form_prod">
     <form id="form_ajout_produit" class="col s8 m8 offset-s4 offset-m2" action="admin_modifier_produit.php" method="POST">
       <div class="row">
