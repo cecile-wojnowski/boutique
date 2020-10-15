@@ -5,7 +5,7 @@
     $requete = $db->query("SELECT * FROM utilisateurs");
     $users = $requete->fetchall(PDO::FETCH_ASSOC);
 
-    echo '<table>';
+    echo '<table id="tab_client" class="tableau_historique">';
     echo '<thead>';
     echo '<th>Nom</th>';
     echo '<th>Prenom</th>';
@@ -31,8 +31,8 @@
         echo '<td>'.'<a href="admin.php?id_client_modif='.$user['id'].'"><i class="material-icons"> assignment_ind </i></a>'.'<a href="admin.php?id_client_over='.$user['id'].'"><i class="material-icons"> delete_forever </i></a>'.'</td>';
         echo '</tr>';
     }
-    echo '<tbody>';
-    echo '<table>';
+    echo '</tbody>';
+    echo '</table>';
     // var_dump($users);
     if(isset($_GET['id_client_modif'])){
         // modifier un client en admin
@@ -40,8 +40,8 @@
         $req = $db->prepare("SELECT * FROM utilisateurs WHERE id=?");
         $req->execute([$id_client]);
         $info = $req->fetch();
-        $infos = var_dump($info);
-        if($infos['admin'] == 1){
+
+        if($info['admin'] == 1){
             $boleen = 0;
         }
         else{
@@ -60,7 +60,7 @@
     $requete = $db->query("SELECT * FROM produits");
     $produits = $requete->fetchall(PDO::FETCH_ASSOC);
 
-    echo '<table>';
+    echo '<table class="tableau_historique">';
     echo '<thead>';
     echo '<th>Image</th>';
     echo '<th>Nom</th>';
@@ -96,8 +96,8 @@
         echo '<td>'.'<a href="admin.php?id_produit='.$produit['id'].'"><i class="material-icons"> delete_forever </i></a>'.'<a href="admin.php?id_produit='.$produit['id'].'"><i class="material-icons"> edit </i></a>'.'</td>';
         echo '</tr>';
     }
-    echo '<tbody>';
-    echo '<table>';
+    echo '</tbody>';
+    echo '</table>';
     // var_dump($produits);
 
     if(isset($_POST['ajouter_produit'])){

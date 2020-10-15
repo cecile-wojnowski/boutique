@@ -91,6 +91,13 @@
       $_SESSION['mdp'] = $new_mdp;
     }
 
+    function modifier_adresse($adresse){
+      $update_adresse = $this->db->prepare("UPDATE utilisateurs SET adresse = ? WHERE id = ?");
+      $update_adresse->execute([$adresse, $_SESSION['id']]);
+
+      $_SESSION['mdp'] = $adresse;
+    }
+
     public function supprimer_son_compte(){
       $supp_utilisateur = $this->db->prepare("DELETE FROM utilisateurs WHERE id = ? ");
       $supp_utilisateur->execute([$_SESSION['id']]);
@@ -108,7 +115,7 @@
 
       // afficher résultat dans un tab
       // var_dump($historique);
-      echo '<table>';
+      echo '<table class="tableau_historique">';
       echo '<thead>';
       echo '<th> Produit </th>';
       echo '<th> Prix </th>';

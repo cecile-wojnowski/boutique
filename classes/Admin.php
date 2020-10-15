@@ -29,7 +29,8 @@ class Admin extends Utilisateur # La classe Admin hérite des propriétés de la
 
   public function delete($id_client){
     $supp = $this->db->prepare("DELETE FROM utilisateurs WHERE id = ?");
-     $supp->execute([$id_client]);
+    $supp->execute([$id_client]);
+
     $location = App::redirect('admin.php');
   }
 

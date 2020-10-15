@@ -9,12 +9,14 @@
 
         // var_dump($infos_perso);
 
-        if(isset($_POST['modifier']) && !empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email']) && !empty($_POST['password'])){
+        if(isset($_POST['modifier']) && !empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['adresse'])){
             $nom = $_POST['nom'];
             $prenom = $_POST['prenom'];
             $email = $_POST['email'];
             $mdp = $_POST['password'];
             $new_mdp = $_POST['new_password'];
+            $adresse = $_POST['adresse'];
+
             if(password_verify($mdp, $infos_perso['password'])){
                 if($nom != $infos_perso['nom']){
                     $utilisateur->modifier_nom($nom);
@@ -33,6 +35,12 @@
 
                 if($new_mdp != $infos_perso['password'] && $new_mdp == $_POST['conf_password'] && !empty($new_mdp)){
                     $utilisateur->modifier_mdp($new_mdp);
+                }
+
+                if($adresse != $infos_perso['adresse']){
+                    $utilisateur->modifier_adresse($adresse);
+
+                    $_SESSION['adresse'] = $adresse;
                 }
 
                 // Il est nécessaire de refaire la recherche des infos perso en cas de modification

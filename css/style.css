@@ -223,6 +223,67 @@ main{
   display: block;
 }
 
+#cont_filtre{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 3%;
+}
+.filtrer{
+  color: white;
+  font-weight: bold;
+  background-color: #133f1c;
+  border-radius: 50%;
+  width: 15vw;
+  height: 20vh;
+}
+.filtrer:hover{
+  cursor: pointer;
+  background-color: #f1f7d1;
+  color: #133f1c;
+}
+
+.tab_title{
+  font-weight: bold;
+  color: #133f1c;
+}
+
+#tab_client{
+  background-color: #9e9e9e5e !important;
+  border-radius: 15px;
+
+}
+#tab_client td,
+#tab_client th{
+  padding: 2%;
+  border-radius: 15px;
+}
+
+.tb_centrer td,
+.tb_centrer th{
+  text-align: center;
+  width: 30%;
+}
+
+.form_prod{
+  /* display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  align-self: center !important;
+  align-content: center !important;
+  justify-content: center !important;
+  justify-self: center !important;
+  justify-items: center !important; */
+}
+/**** PROFIL ****/
+.tableau_historique{
+  margin: 4%;
+  width: 90% !important;
+}
+
+.texte_aligne{
+  text-align: center;
+}
 /**** FOOTER ****/
 
 footer{
