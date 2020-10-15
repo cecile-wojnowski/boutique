@@ -6,24 +6,18 @@
         echo '<a class="link_header" href="inscription.php"> Créer un compte</a>';
     }
     else
-    {
-        echo 'Bonjour '.$_SESSION['prenom'].' !';
-        if($_SESSION['admin'] == 1){
-            echo '<div class="row">';
-            echo '<a class="link_header" href="admin.php"> Page Admin </a>';
-        }
-        echo '<form action="" method="POST" class="p_connexion">';
-        echo '<button type="submit" name="deconnexion" id="deconnexion" class="link_header">';
-        echo 'Déconnexion';
-        echo '</button>';
-        echo '</form>';
-        echo '</div>';
-    }
+    { ?>
+      <form action="" method="POST" class="form_deconnexion">
+      <button type="submit" name="deconnexion" id="deconnexion" class="btn_deco"> <i class="material-icons">power_settings_new</i>
+      </button>
+      </form>
+
+  <?php  }
 
     if (isset($_POST['deconnexion']))
     {
         // var_dump('entrer dans la deco');
         session_destroy();
-        App::redirect('index.php');
+        header("Location:index.php");
     }
 ?>

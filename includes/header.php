@@ -5,7 +5,7 @@
           <img src="img/logo_boutique" class="img_header">
         </a>
       </div>
-      <div class="col m3 offset-m5">
+      <div class="col m3 offset-m4">
       <p class="p_connexion">
         <?php include 'includes/co_deco.php' ?>
         <?php include('bdd.php'); ?>
@@ -35,7 +35,6 @@
      <a href="panier.php" class="btn grey grey-text text-darken-3"><i class="material-icons left">shopping_cart</i>Panier</a>
       </div>
 
-
    </div>
 
  <nav class="nav_header2">
@@ -57,7 +56,11 @@
         <?php }
         if(isset($_SESSION['email'])){ ?>
           <li><a href="profil.php"> Profil </a></li>
-        <?php }
+          <?php
+            if($_SESSION['admin'] == 1){ ?>
+              <li><a href="admin.php"> Admin </a></li>
+            <?php }
+         }
          ?>
 
     </div>
@@ -78,6 +81,11 @@
     <?php }
     if(isset($_SESSION['email'])){ ?>
       <li><a href="profil.php"> Profil </a></li>
+      <?php
+        if($_SESSION['admin'] == 1){ ?>
+          <li><a href="admin.php"> Admin </a></li>
+        <?php }
+       ?>
     <?php }
      ?>
   </ul>

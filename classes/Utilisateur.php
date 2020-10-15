@@ -24,8 +24,7 @@
 
         $inscription = $this->db->prepare("INSERT INTO utilisateurs (nom, prenom, email, password) VALUES (?, ?, ?, ?)");
         $inscription->execute([$nom, $prenom, $email, $mdp_crypt]);
-
-          $location = App::redirect('connexion.php');
+        header("Location:connexion.php");
       }
       else{
         // systeme de message d'erreur a étudier
@@ -46,7 +45,7 @@
           $_SESSION['prenom'] = $infos['prenom'];
           $_SESSION['email'] = $infos['email'];
           $_SESSION['admin'] = $infos['admin'];
-          App::redirect('index.php');
+          header("Location:index.php");
         }
       }
       else{

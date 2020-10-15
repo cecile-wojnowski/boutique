@@ -18,7 +18,7 @@ a{
 }
 
 h2{
-  font-size:30px !important;
+  font-size:20px !important;
   text-align: center !important;
 }
 
@@ -65,7 +65,6 @@ header .btn:hover{
 }
 .p_connexion{
   text-align: right !important;
-  margin-right: 10%;
   margin-top:0;
   padding-top:2%;
 }
@@ -82,7 +81,19 @@ header .btn:hover{
   margin-top:1%;
   border-bottom: solid 1px grey;
 }
-
+.btn_deco{
+  background-color: #9e9e9e !important;
+  border:none !important;
+  cursor: pointer;
+  transition : color .2s ease-in-out;
+  margin-left:6%;
+}
+.btn_deco:hover{
+  background-color: #f1f7d1 !important;
+}
+.form_deconnexion{
+  margin-left:125%;
+}
 /****** MAIN ******/
 main{
   background-color: #F3F3F3 !important;
@@ -153,6 +164,9 @@ main{
   font-size:20px !important;
 }
 /***** PRODUIT ****/
+.form_produit{
+  width:10%;
+}
 .boutons_produit{
   display: flex;
   flex-direction: column !important;

@@ -2,8 +2,7 @@
   session_start();
 
   include('includes/bdd.php');
-  include('classes/Produit.php');
-  include('classes/Panier.php');
+  include("classes/autoloader.php");
   if(isset($_SESSION["panier"])) {
     $panier = unserialize($_SESSION['panier']);
   }

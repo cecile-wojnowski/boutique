@@ -1,11 +1,7 @@
 <?php
   session_start();
-
+  include("classes/autoloader.php");
   include('includes/bdd.php');
-  include('classes/Produit.php');
-  include('classes/Panier.php');
-  include('classes/Categorie.php');
-  include('classes/SousCategorie.php');
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">

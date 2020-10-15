@@ -2,10 +2,7 @@
   session_start();
 
   include('includes/bdd.php');
-  include('classes/Produit.php');
-  include('classes/Panier.php');
-  include('classes/Categorie.php');
-  include('classes/SousCategorie.php');
+  include("classes/autoloader.php");
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -19,6 +16,10 @@
     <?php include('includes/header.php'); ?>
     <main>
       <?php
+      if(!isset($_GET['souscategorie']) AND !isset($_GET['id'])){
+        header("location:index.php");
+      }
+
       if(!isset($_GET['souscategorie'])){
       if(isset($_GET['id'])){
         # Lie l'id provenant d'un GET et l'id de la catégorie

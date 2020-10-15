@@ -1,7 +1,7 @@
 <?php
   session_start();
   require "classes/autoloader.php";
-  $db = App::getDatabase();
+  require "includes/bdd.php";
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -18,6 +18,11 @@
       <?php
         include 'includes/php_connexion.php';
       ?>
+      <?php
+      if(isset($_GET['mustbeconnected'])){
+        echo "<p class='p_panier'>Veuillez vous connecter pour passer commande.</p>";
+      } ?>
+
       <div class="row">
         <form id="form_connexion" class="col s8 m8 offset-s3 offset-m3" action="" method="POST">
           <div class="row">
@@ -41,7 +46,7 @@
           <div class="row">
             <div class="input-field col m3 s3 offset-m3 offset-s3">
               <button class="btn waves-effect waves-light grey darken-4" type="submit" name="connexion" id="connexion">
-                Se Connecter<i class="material-icons right">send</i>
+                Se connecter<i class="material-icons right">send</i>
               </button>
             </div>
           </div>
