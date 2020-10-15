@@ -82,7 +82,15 @@ header .btn:hover{
   margin-top:1%;
   border-bottom: solid 1px grey;
 }
-
+.btn_deco{
+  background-color: #9e9e9e !important;
+  border:none !important;
+  cursor: pointer;
+  transition : color .2s ease-in-out;
+}
+.btn_deco:hover{
+  background-color: #f1f7d1 !important;
+}
 /****** MAIN ******/
 main{
   background-color: #F3F3F3 !important;
