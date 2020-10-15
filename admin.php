@@ -10,6 +10,14 @@ include 'includes/bdd.php';
       header("Location:index.php");
     }
   }
+
+  $admin = new Admin($db);
+
+  // Suppression d'un produit
+  if(isset($_GET["id_produit_supp"])) {
+    $admin->delete_produit($_GET["id_produit_supp"]);
+  }
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">

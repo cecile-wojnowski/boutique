@@ -30,6 +30,12 @@ class Admin extends Utilisateur # La classe Admin hérite des propriétés de la
      header("Location:admin.php");
   }
 
+  public function delete_produit($id_produit){
+    $supp = $this->db->prepare("DELETE FROM produits WHERE id = ?");
+     $supp->execute([$id_produit]);
+     header("Location:admin.php");
+  }
+
   public function change_admin($boleen, $id_client){
     $change = $this->db->prepare("UPDATE utilisateurs SET admin = ? WHERE id = ?");
     $change->execute([$boleen, $id_client]);
