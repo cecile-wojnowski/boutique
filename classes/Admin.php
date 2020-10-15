@@ -8,17 +8,14 @@ class Admin extends Utilisateur # La classe Admin hérite des propriétés de la
   }
 
   /****** Gestion des produits ******/
-  public function ajouter_produit($nom, $prix, $description, $image, $stock, $valorisation, $id_categorie, $id_sous_categorie, $date_ajout){
+  public function ajouter_produit($nom, $prix, $description, $image, $stock, $valorisation, $id_categorie, $id_sous_categorie){
     # Ajoute un produit dans le site sans nécessairement le mettre dans une catégorie
 
-     var_dump($id_categorie);
-     var_dump($id_sous_categorie);
-    $produit = $this->db->prepare("INSERT INTO produits(nom, prix, description, image, date_ajout, stock, valorisation, id_categorie, id_sous_categorie) VALUES (:nom, :prix, :description, :image, :date_ajout, :stock, :valorisation, :id_categorie, :id_sous_categorie) ");
+    $produit = $this->db->prepare("INSERT INTO produits(nom, prix, description, image, date_ajout, stock, valorisation, id_categorie, id_sous_categorie) VALUES (:nom, :prix, :description, :image, NOW(), :stock, :valorisation, :id_categorie, :id_sous_categorie) ");
     $produit->bindParam(':nom', $nom);
     $produit->bindParam(':prix', $prix);
     $produit->bindParam(':description', $description);
     $produit->bindParam(':image', $image);
-    $produit->bindParam(':date_ajout', $date_ajout);
     $produit->bindParam(':stock', $stock);
     $produit->bindParam(':valorisation', $valorisation);
     $produit->bindParam(':id_categorie', $id_categorie);

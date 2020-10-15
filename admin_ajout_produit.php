@@ -10,6 +10,37 @@ include 'includes/bdd.php';
       header("Location:index.php");
     }
   }
+
+  // Si le formulaire a été validé
+  if(isset($_POST["nom"])) {
+    $admin = new Admin($db);
+
+    if($_POST["new_categorie"] == "") {
+      $admin->creer_categorie($_POST["new_categorie"]);
+      $id_categorie = $db->lastInsertId();
+    } else {
+      $id_categorie = $_POST["categorie"];
+    }
+
+    if($_POST["new_sous_categorie"] != "") {
+      // Gérer l'erreur : une sous-catégorie sans catégorie parente doit renvoyer une erreur
+      $admin->creer_sous_categorie($_POST["new_sous_categorie"], $id_categorie);
+      $id_sous_categorie = $db->lastInsertId();
+    } else {
+      $id_sous_categorie = $_POST["sous_categorie"];
+    }
+
+    $admin->ajouter_produit(
+      $_POST["nom"],
+      $_POST["prix"],
+      $_POST["description"],
+      $_POST["image"],
+      $_POST["stock"],
+      $_POST["valorisation"],
+      $id_categorie,
+      $id_sous_categorie
+    );
+  }
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -29,7 +60,7 @@ include 'includes/bdd.php';
 
     <main id="admin">
       <div class="row">
-        <form id="form_ajout_produit" class="col s8 m8 offset-s3 offset-m3" action="admin.php" method="POST">
+        <form id="form_ajout_produit" class="col s8 m8 offset-s3 offset-m3" action="admin_ajout_produit.php" method="POST">
           <div class="row">
             <div class="col s8 m8">
               <h2 > Ajouter un Produit </h2>
@@ -78,6 +109,14 @@ include 'includes/bdd.php';
             <input type="text" name="new_sous_categorie" id="new_sous_categorie">
             <label for="new_sous_categorie">Nouvelle sous-catégorie</label>
           </div>
+          <div class="input-field col s4 m6 offset-s3 offset-m3">
+            <label for="categorie"></label>
+              <select class="browser-default" name="new_parent_categorie" id="new_parent_categorie">
+                <option value="" selected>Dans quelle catégorie ?</option>
+                <?php require 'includes/foreach_categorie.php'; ?>
+              </select>
+          </div>
+
           <div class="row">
             <div class="input-field col s4 m6 offset-s3 offset-m3">
               <input id="stock" type="text" class="validate" name="stock" required>
