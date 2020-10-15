@@ -41,7 +41,7 @@
           <div class="row">
             <div class="input-field col m3 s3 offset-m3 offset-s3">
               <button class="btn waves-effect waves-light grey darken-4" type="submit" name="connexion" id="connexion">
-                Se Connecter<i class="material-icons right">send</i>
+                Se connecter<i class="material-icons right">send</i>
               </button>
             </div>
           </div>

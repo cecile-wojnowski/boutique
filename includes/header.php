@@ -35,6 +35,11 @@
      <a href="panier.php" class="btn grey grey-text text-darken-3"><i class="material-icons left">shopping_cart</i>Panier</a>
       </div>
 
+      <form action="" method="POST" class="p_connexion">
+      <button type="submit" name="deconnexion" id="deconnexion" class="link_header"> <i class="material-icons">power_settings_new</i>
+      </button>
+      </form>
+      </div>
 
    </div>
 
