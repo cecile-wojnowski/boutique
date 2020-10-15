@@ -4,6 +4,7 @@
     include 'classes/ChromePhp.php';
   $db = App::getDatabase();
 
+
   if (isset($_SESSION['email']) && $_SESSION['admin'] == 1){
 ?>
 <!DOCTYPE html>
