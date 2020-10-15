@@ -91,6 +91,9 @@ header .btn:hover{
 .btn_deco:hover{
   background-color: #f1f7d1 !important;
 }
+.form_deconnexion{
+  margin-left:125%;
+}
 /****** MAIN ******/
 main{
   background-color: #F3F3F3 !important;
