@@ -26,10 +26,10 @@ include 'includes/bdd.php';
 </head>
 <body>
     <?php include 'includes/header.php'; ?>
-    <?php include 'includes/php_admin_tab_user.php'; ?>
-    <?php include 'includes/php_admin_tab_produits.php'; ?>
 
     <main id="admin">
+      <?php include 'includes/php_admin_tab_user.php'; ?>
+      <?php include 'includes/php_admin_tab_produits.php'; ?>
       <section id="cat_souscat">
         <form id="cont_filtre" action="" method="POST">
           <button type="submit" class="filtrer" id="cat" name="cat">Catégories</button>
