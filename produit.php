@@ -109,12 +109,9 @@ session_start();
               <p> Quantité <input type="text" name="quantite" value="1" required> </p>
 
               <div class= "boutons_produit">
-                <button id="bouton_produit1" class="waves-effect waves-green btn grey lighten-3 grey-text text-darken-2" type="submit">
+                <button id="bouton_produit1" class="waves-effect waves-green btn grey darken-4 lighten-3 white-text" type="submit">
                   <i class="material-icons left">shopping_cart</i>Panier
                 </button>
-
-                <a class="waves-effect waves-green btn grey darken-4 lighten-3 white-text">
-                  Acheter maintenant</a>
               </div>
 
             <?php }else{
