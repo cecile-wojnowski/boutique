@@ -1,6 +1,6 @@
 <?php
-  if (isset($_GET['id_produit'])){
-    $id_produit = $_GET['id_produit'];
+  if (isset($_GET['id_produit_modif'])){
+    $id_produit = $_GET['id_produit_modif'];
 
     $_SESSION['identite_produit'] = $id_produit;
 
@@ -10,7 +10,7 @@
     $result_modif = $req_produit->fetch();
     // var_dump($result_modif);
     echo '<div class="row form_prod">
-    <form id="form_ajout_produit" class="col s8 m8 offset-s4 offset-m2" action="admin.php" method="POST">
+    <form id="form_ajout_produit" class="col s8 m8 offset-s4 offset-m2" action="admin_modifier_produit.php" method="POST">
       <div class="row">
         <div class="col s8 m8 offset-s2 offset-m2">
           <h2 > Modifier le Produit: '.$result_modif[1].' </h2>
@@ -109,75 +109,5 @@
   </div>';
 }
 
-  if(isset($_POST['modifier_produit'])){
-      $identite_produit = $_SESSION['identite_produit'];
-      $req = $db->prepare("SELECT * FROM produits WHERE id = $identite_produit");
-      $result = $req->execute();
-
-      var_dump($result);
-      var_dump($_POST);
-
-      $image = $_POST['image_update'];
-      $nom = $_POST['nom_update'];
-      $description = $_POST['description_update'];
-      $categorie = $_POST['categorie_update'];
-      $sous_categorie = $_POST['sous_categorie_update'];
-      $stock = $_POST['stock_update'];
-      $prix = $_POST['prix_update'];
-      $prix_solde = $_POST['prix_solde_update'];
-      $valorisation = $_POST['valorisation_update'];
-
-      $date_actu = date("Y-m-d H:i:s");
-
-      $new_categorie = $_POST['new_categorie_update'];
-      $new_sous_categorie = $_POST['new_sous_categorie_update'];
-
-
-      // update image
-      if ($image != $result['image'] && !empty($image)){
-        $req = $db->query("UPDATE produits SET image = '$image' WHERE produits.id = $identite_produit ");
-      }
-
-      // update nom
-      if ($nom != $result['nom'] && !empty($nom)){
-        $req = $db->query("UPDATE produits SET nom = '$nom' WHERE produits.id = $identite_produit ");
-      }
-
-      // update description
-      if ($description != $result['description'] && !empty($description)){
-        $req = $db->query("UPDATE produits SET description = '$description' WHERE produits.id = $identite_produit ");
-      }
-
-      // update categorie
-      if ($categorie != $result['id_categorie'] && !empty($categorie)){
-        $req = $db->query("UPDATE produits SET categorie = '$categorie' WHERE produits.id = $identite_produit ");
-      }
-
-      // update sous_categorie
-      if ($sous_categorie != $result['id_sous_categorie'] && !empty($sous_categorie)){
-        $req = $db->query("UPDATE produits SET sous_categorie = '$sous_categorie' WHERE produits.id = $identite_produit ");
-      }
-
-      // update stock
-      if ($stock != $result['stock'] && !empty($stock)){
-        $req = $db->query("UPDATE produits SET stock = '$stock' WHERE produits.id = $identite_produit ");
-      }
-
-      // update prix
-      if ($prix != $result['prix'] && !empty($prix)){
-        $req = $db->query("UPDATE produits SET prix = '$prix' WHERE produits.id = $identite_produit ");
-      }
-
-      // update prix_solde
-      if ($prix_solde != $result['prix_solde']){
-        $req = $db->query("UPDATE produits SET prix_solde = '$prix' WHERE produits.id = $identite_produit ");
-      }
-
-      // update valorisation
-      if($valorisation != $result['valorisation'] && !empty($valorisation)){
-        $req = $db->query("UPDATE produits SET valorisation = '$valorisation' WHERE produits.id = $identite_produit ");
-      }
-
-  }
 
 ?>

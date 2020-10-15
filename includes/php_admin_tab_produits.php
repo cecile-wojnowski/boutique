@@ -37,7 +37,7 @@ foreach($produits as $produit){
     echo '<td>'.$produit['stock'].' Kg</td>';
     echo '<td>'.$solde.'</td>';
     echo '<td>'.$produit['prix_solde'].' €/Kg </td>';
-    echo '<td>'.'<a href="admin.php?id_produit_supp='.$produit['id'].'"><i class="material-icons"> delete_forever </i></a>'.'<a href="admin.php?id_produit='.$produit['id'].'"><i class="material-icons"> edit </i></a>'.'</td>';
+    echo '<td>'.'<a href="admin.php?id_produit_supp='.$produit['id'].'"><i class="material-icons"> delete_forever </i></a>'.'<a href="admin_modifier_produit.php?id_produit_modif='.$produit['id'].'"><i class="material-icons"> edit </i></a>'.'</td>';
     echo '</tr>';
 }
 echo '</tbody>';

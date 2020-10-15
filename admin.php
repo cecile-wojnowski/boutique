@@ -45,7 +45,6 @@ include 'includes/bdd.php';
         </form>
       </section>
       <?php include 'cat_souscat.php'; ?>
-      <?php include 'includes/php_modifier_produit.php'; ?>
 
       <div class="row">
         <a href="admin_ajout_produit.php">Ajouter un produit</a>
