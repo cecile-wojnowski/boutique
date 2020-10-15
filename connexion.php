@@ -20,9 +20,9 @@
       ?>
       <?php
       if(isset($_GET['mustbeconnected'])){
-        echo "Veuillez vous connecter pour passer commande.";
+        echo "<p class='p_panier'>Veuillez vous connecter pour passer commande.</p>";
       } ?>
-      
+
       <div class="row">
         <form id="form_connexion" class="col s8 m8 offset-s3 offset-m3" action="" method="POST">
           <div class="row">
