@@ -164,6 +164,9 @@ main{
   font-size:20px !important;
 }
 /***** PRODUIT ****/
+.form_produit{
+  width:20%;
+}
 .boutons_produit{
   display: flex;
   flex-direction: column !important;

@@ -98,7 +98,7 @@ session_start();
 
           <p> <?php echo $produit->stock(); ?> </p>
 
-          <form class="" action="produit.php?id=<?php echo $produit->id(); ?>" method="post">
+          <form class="form_produit" action="produit.php?id=<?php echo $produit->id(); ?>" method="post">
 
 
             <!-- Boutons -->
