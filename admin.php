@@ -4,13 +4,8 @@ include 'includes/bdd.php';
   session_start();
   require "classes/autoloader.php";
 
-  if (!isset($_SESSION['email']) || $_SESSION['admin'] != 1){
 
-    header("Location:index.php");
-
-  }
-
-  include 'includes/php_admin.php';
+  if (isset($_SESSION['email']) && $_SESSION['admin'] == 1){
 ?>
 <!DOCTYPE html>
 <html lang="fr">

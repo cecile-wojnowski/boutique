@@ -19,12 +19,6 @@
     <main>
         <div class="row">
           <?php
-          if(isset($_SESSION['email'])){ ?>
-            <p>Bonjour <?php echo $_SESSION['prenom']; ?> ! </p>
-
-          <?php
-        }
-
 
           if(isset($erreur)) {
             echo $erreur;
