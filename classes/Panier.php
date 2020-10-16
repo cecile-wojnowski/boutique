@@ -22,10 +22,6 @@ class Panier
     }
 
   }
-  public function afficher_produits(){
-    # Afficher tous les produits contenus dans l'array
-    # mettre le code se trouvant dans panier.php plus tard ici ?
-  }
 
   public function supprimer_produit($key){
     # Retire un produit de la liste
