@@ -308,6 +308,10 @@ table{
 .texte_aligne{
   text-align: center;
 }
+/**** RECAPITULATIF ****/
+#titres_recap p {
+  text-align: center;
+}
 /**** FOOTER ****/
 
 footer{
