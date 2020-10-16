@@ -28,7 +28,7 @@
       }
       else{
         // systeme de message d'erreur a étudier
-        echo "Cet email existe déjà chez nous !";
+        echo "<p class='p_panier'> Cet email existe déjà chez nous !</p>";
       }
     }
 
