@@ -7,6 +7,7 @@
     public $prenom = "";
     public $email = "";
     public $mdp = "";
+    public $adresse = "";
     private $etat_panier = false; # true = rempli (pas vide), false = vide
     private $admin = false; # Un nouvel utilisateur n'est pas un admin
 
@@ -14,7 +15,7 @@
       return $this->db = $db;
     }
 
-    public function creer_compte($nom, $prenom, $email, $mdp){
+    public function creer_compte($nom, $prenom, $email, $mdp, $adresse){
       // verif si mail (nom utilisateur de la boutique) n'existe pas deja !!
       $req = $this->db->prepare("SELECT * FROM utilisateurs WHERE email = ?");
       $req->execute([$email]);
@@ -22,8 +23,8 @@
       if($req->fetchColumn() == 0){
         $mdp_crypt = password_hash($mdp, PASSWORD_BCRYPT); // cryptage mdp
 
-        $inscription = $this->db->prepare("INSERT INTO utilisateurs (nom, prenom, email, password) VALUES (?, ?, ?, ?)");
-        $inscription->execute([$nom, $prenom, $email, $mdp_crypt]);
+        $inscription = $this->db->prepare("INSERT INTO utilisateurs (nom, prenom, email, password, adresse) VALUES (?, ?, ?, ?, ?)");
+        $inscription->execute([$nom, $prenom, $email, $mdp_crypt, $adresse]);
         header("Location:connexion.php");
       }
       else{

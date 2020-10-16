@@ -5,9 +5,10 @@
         $prenom = $_POST['prenom'];
         $email = $_POST['email'];
         $mdp = $_POST['password'];
+        $adresse = $_POST['adresse'];
 
         // appel a la classe et ses methodes
         $utilisateur = new Utilisateur($db);
-        $utilisateur->creer_compte($nom, $prenom, $email, $mdp);
+        $utilisateur->creer_compte($nom, $prenom, $email, $mdp, $adresse);
     }
 ?>

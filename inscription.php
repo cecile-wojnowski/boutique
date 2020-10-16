@@ -57,6 +57,12 @@
               <label for="conf_password"> Confirmation du mot de passe </label>
             </div>
           </div>
+          <div class="row">
+              <div class="input-field col s8 m8 texte_aligne">
+                  <input id="adresse" type="text" class="validate" name="adresse">
+                  <label for="adresse"> Adresse postale complète</label>
+              </div>
+          </div>
 
           <div class="row">
             <div class="input-field col m3 s3 offset-m3 offset-s3">

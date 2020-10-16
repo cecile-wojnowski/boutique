@@ -87,18 +87,6 @@ include 'includes/bdd.php';
               <label for="description">Description</label>
           </div>
           <div class="input-field col s4 m6 offset-s3 offset-m3">
-            <label for="categorie"></label>
-              <select class="browser-default" name="categorie" id="categorie">
-                <option value="" selected>Choisir une Catégorie</option>
-                <?php require 'includes/foreach_categorie.php'; ?>
-              </select>
-          </div>
-          <div class="input-field col s4 m6 offset-s3 offset-m3">
-            <input type="text" name="new_categorie" id="new_categorie">
-            <label for="new_categorie">Nouvelle Catégorie</label>
-          </div>
-
-          <div class="input-field col s4 m6 offset-s3 offset-m3">
             <label for="sous_categorie"></label>
               <select class="browser-default" name="sous_categorie" id="sous_categorie">
                 <option value="" selected>Choisir une Sous-Catégorie</option>
@@ -115,6 +103,10 @@ include 'includes/bdd.php';
                 <option value="" selected>Dans quelle catégorie ?</option>
                 <?php require 'includes/foreach_categorie.php'; ?>
               </select>
+          </div>
+          <div class="input-field col s4 m6 offset-s3 offset-m3">
+            <input type="text" name="new_categorie" id="new_categorie">
+            <label for="new_categorie">Nouvelle Catégorie</label>
           </div>
 
           <div class="row">

@@ -54,6 +54,9 @@
             }
 
         }
+        else{
+            $erreur = "Certaines les informations ne sont pas remplis correctement !";
+        }
         // $utilisateur = new Utilisateur;
 
     }
