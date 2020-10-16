@@ -51,7 +51,7 @@ class Panier
     echo $prix_total;
   }
 
-  public function commander($db){
+  public function commander($db, $id_utilisateur){
     # Stocke la commande dans l'historique
     foreach($this->liste_produits() as $key => $value){
       $request = $db->query("INSERT INTO historique (id_produit, quantite, date_achat, id_utilisateur)

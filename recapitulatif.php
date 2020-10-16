@@ -9,7 +9,7 @@
 ?>
 <?php
 if(isset($_SESSION["panier"]) & isset($_GET["validation"])) {
-  $panier->commander($db);
+  $panier->commander($db, $id_utilisateur);
   header("Location:panier.php?validation");
 } ?>
 <!DOCTYPE html>
