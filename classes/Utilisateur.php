@@ -28,7 +28,7 @@
       }
       else{
         // systeme de message d'erreur a étudier
-        echo "Cet email existe déjà chez nous !";
+        echo "<p class='p_panier'> Cet email existe déjà chez nous !</p>";
       }
     }
 
@@ -49,7 +49,7 @@
         }
       }
       else{
-        var_dump("Vos infos ne figurent pas sur notre site, veuillez les modifier ou vous inscrire !");
+        echo "<p class='p_panier'> Vos informations ne figurent pas sur notre site, veuillez les modifier ou vous inscrire.</p>";
       }
     }
 
@@ -78,7 +78,7 @@
       }
       else
       {
-        var_dump("cet email est déjà utilisé chez nous");
+        echo "<p class='p_panier'> Cet email est déjà utilisé. </p>";
       }
     }
 

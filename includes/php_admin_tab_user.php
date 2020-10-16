@@ -1,8 +1,7 @@
 <?php
     $admin = new Admin($db);
 
-    $requete = $db->query("SELECT * FROM utilisateurs");
-    $users = $requete->fetchall(PDO::FETCH_ASSOC);
+$users = $requete->fetchall(PDO::FETCH_ASSOC);
 
 echo '<table>';
 echo '<thead>';

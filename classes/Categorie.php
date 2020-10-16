@@ -49,7 +49,7 @@ class Categorie
           "<div class='col s2 m3'>
             <div class='card'>
               <div class='card-image'>
-                <a href='produit.php?id=" . $data['id'] . "'>" .
+                <a href='produit.php?id=" . $data['id'] . "&categorie=" . $data['id_categorie'] . "'>" .
                 "<img src='img/" . $data['image']. "'></a>
               </div>
             </div>

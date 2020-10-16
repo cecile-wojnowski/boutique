@@ -16,9 +16,6 @@ class Produit
   private $stock;
   private $est_valorise = false;
 
-# Cette fonction pourrait être simplifiée grâce à des variables
-# Voir le cours d'OpenClassrooms : Manipulation de données stockées
-# Hydratation des attributs
   public function hydrate(array $donnees)
   {
     if (isset($donnees['id']))

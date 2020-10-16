@@ -221,7 +221,7 @@ main{
 }
 table{
   width:80% !important;
-  margin: 2% 5% 10% 10% !important;
+  margin: 2% 5% 5% 10% !important;
 
 }
 .img_admin{
@@ -307,11 +307,16 @@ table{
 }
 /**** PROFIL ****/
 .tableau_historique{
-  margin: 4%;
+  margin:4% !important;
   width: 90% !important;
+  background-color:  #F3F3F3 !important;
 }
 
 .texte_aligne{
+  text-align: center;
+}
+/**** RECAPITULATIF ****/
+#titres_recap p {
   text-align: center;
 }
 /**** FOOTER ****/

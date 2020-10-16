@@ -2,6 +2,8 @@
   session_start();
   require "classes/autoloader.php";
   require "includes/bdd.php";
+
+
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -16,7 +18,7 @@
 
     <main>
       <?php
-        include 'includes/php_connexion.php';
+      include 'includes/php_connexion.php';
       ?>
       <?php
       if(isset($_GET['mustbeconnected'])){

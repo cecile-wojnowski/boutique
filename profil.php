@@ -14,9 +14,15 @@
 <body>
     <?php
         include('includes/header.php');
-        include 'includes/php_profil.php';
+
     ?>
     <main>
+      <h3>Historique d'achat</h3>
+      <div class="row">
+        <div class="col m6 offset-m3">
+          <?php include 'includes/php_profil.php'; ?>
+        </div>
+      </div>
         <div class="row">
           <?php
 
@@ -28,7 +34,7 @@
                 <div class="row">
                     <div class="row">
                         <div class="col s8 m8 offset-s2 offset-m2">
-                        <h2 > Informations Personnelles </h2>
+                        <h3> Informations Personnelles </h3>
                         </div>
                     </div>
                     <div class="row">

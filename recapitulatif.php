@@ -31,7 +31,15 @@ if(isset($_SESSION["panier"]) & isset($_GET["validation"])) {
         </div>
         <div class="col s2 m3 offset-m4">
           <h3>Adresse de livraison</h3>
-          <p> Ici apparaîtra l'adresse de livraison du client. </p>
+          <p>
+            <?php
+            $id = $_SESSION['id'];
+            $request = $db->query("SELECT adresse FROM utilisateurs WHERE id ='$id'");
+            $data = $request->fetch();
+            echo $data['adresse'];
+             ?>
+
+           </p>
         </div>
       </div>
 
