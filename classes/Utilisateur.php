@@ -78,7 +78,7 @@
       }
       else
       {
-        var_dump("cet email est déjà utilisé chez nous");
+        echo "<p class='p_panier'> Cet email est déjà utilisé. </p>";
       }
     }
 
