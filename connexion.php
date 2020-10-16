@@ -5,6 +5,9 @@
 
 
 ?>
+<?php
+include 'includes/php_connexion.php';
+?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
@@ -17,9 +20,7 @@
     <?php include('includes/header.php'); ?>
 
     <main>
-      <?php
-      include 'includes/php_connexion.php';
-      ?>
+
       <?php
       if(isset($_GET['mustbeconnected'])){
         echo "<p class='p_panier'>Veuillez vous connecter pour passer commande.</p>";
