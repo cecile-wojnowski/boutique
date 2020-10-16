@@ -3,7 +3,7 @@
   require "classes/autoloader.php";
   require "includes/bdd.php";
 
-  include 'includes/php_connexion.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
@@ -18,7 +18,7 @@
 
     <main>
       <?php
-
+      include 'includes/php_connexion.php';
       ?>
       <?php
       if(isset($_GET['mustbeconnected'])){

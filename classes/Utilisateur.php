@@ -49,7 +49,7 @@
         }
       }
       else{
-        var_dump("Vos infos ne figurent pas sur notre site, veuillez les modifier ou vous inscrire !");
+        echo "<p class='p_panier'> Vos informations ne figurent pas sur notre site, veuillez les modifier ou vous inscrire.</p>";
       }
     }
 
