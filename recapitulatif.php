@@ -36,18 +36,21 @@ if(isset($_SESSION["panier"]) & isset($_GET["validation"])) {
             $id = $_SESSION['id'];
             $request = $db->query("SELECT adresse FROM utilisateurs WHERE id ='$id'");
             $data = $request->fetch();
-            echo '<div class="row">';
             echo '<form method="POST" action="">';
-            echo '<div class="input-field col m12 s12">';
-            echo '<input type="text" name="adress_up" class="validate" id="adress_up">';
-            echo '<label>';
-            echo $data['adresse'];
-            echo '</label>';
+            echo '<input type="text" name="adress_up" class="validate" id="adress_up" value="'.$data['adresse'].'">';
+            echo '<label for="adress_up"></label>';
             echo '</input>';
-            echo '</div>';
-
+            echo '<button id="modif_adress" class="btn waves-effect waves-light grey darken-4" type="submit" name="modifier_adresse">
+                    Modifier<i class="material-icons right">cloud</i>
+                  </button>';
             echo '</form>';
-            echo '</div>';
+
+            if(isset($_POST['modifier_adresse']) && !empty($_POST['modifier_adresse'])){
+              $adress = $_POST['modifier_adresse'];
+              modifier_adresse($adresse);
+
+              $data['adresse'] = $_SESSION['adresse'];
+            }
              ?>
 
            </p>

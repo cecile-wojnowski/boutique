@@ -95,7 +95,7 @@
       $update_adresse = $this->db->prepare("UPDATE utilisateurs SET adresse = ? WHERE id = ?");
       $update_adresse->execute([$adresse, $_SESSION['id']]);
 
-      $_SESSION['mdp'] = $adresse;
+      $_SESSION['adresse'] = $adresse;
     }
 
     public function supprimer_son_compte(){

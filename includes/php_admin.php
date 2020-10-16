@@ -28,18 +28,22 @@
         echo '<td>'.$user['prenom'].'</td>';
         echo '<td>'.$user['email'].'</td>';
         echo '<td>'.$droit.'</td>';
-        echo '<td>'.'<a href="admin.php?id_client_modif='.$user['id'].'"><i class="material-icons"> assignment_ind </i></a>'.'<a href="admin.php?id_client_over='.$user['id'].'"><i class="material-icons"> delete_forever </i></a>'.'</td>';
+        echo '<td>'.'<a href="admin.php?id_client_modif='.$user['id'].'"><i class="material-icons"> assignment_ind </i></a>'
+                    .'<a href="admin.php?id_client_over='.$user['id'].'"><i class="material-icons"> delete_forever </i></a>'.'</td>';
         echo '</tr>';
     }
     echo '</tbody>';
     echo '</table>';
     // var_dump($users);
+    var_dump($_GET);
     if(isset($_GET['id_client_modif'])){
         // modifier un client en admin
         $id_client = $_GET['id_client_modif'];
         $req = $db->prepare("SELECT * FROM utilisateurs WHERE id=?");
         $req->execute([$id_client]);
         $info = $req->fetch();
+
+        var_dump($info);
 
         if($info['admin'] == 1){
             $boleen = 0;
@@ -54,6 +58,7 @@
         // delete client
         $id_client = $_GET['id_client_over'];
         $supp_user = $admin->delete($id_client);
+        header('Location:admin.php');
     }
 
     //recup produits
