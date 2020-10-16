@@ -35,7 +35,7 @@
     echo '</tbody>';
     echo '</table>';
     // var_dump($users);
-    var_dump($_GET);
+
     if(isset($_GET['id_client_modif'])){
         // modifier un client en admin
         $id_client = $_GET['id_client_modif'];

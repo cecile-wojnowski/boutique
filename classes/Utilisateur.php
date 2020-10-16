@@ -46,6 +46,7 @@
           $_SESSION['prenom'] = $infos['prenom'];
           $_SESSION['email'] = $infos['email'];
           $_SESSION['admin'] = $infos['admin'];
+          $_SESSION['adresse'] = $infos ['adresse'];
           header("Location:index.php");
         }
       }
