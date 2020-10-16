@@ -30,13 +30,16 @@ include 'includes/bdd.php';
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <!-- <script src="https://kit.fontawesome.com/eaf570753d.js" crossorigin="anonymous"></script> -->
+    <script src="https://kit.fontawesome.com/eaf570753d.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <?php include 'includes/header.php'; ?>
 
     <main id="admin">
+      <h3> Gestion des utilisateurs </h3>
       <?php include 'includes/php_admin_tab_user.php'; ?>
+
+      <h3> Gestion des produits </h3>
       <?php include 'includes/php_admin_tab_produits.php'; ?>
       <section id="cat_souscat">
         <form id="cont_filtre" action="" method="POST">
