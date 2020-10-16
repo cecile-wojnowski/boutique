@@ -29,32 +29,6 @@ if(isset($_SESSION["panier"]) & isset($_GET["validation"])) {
         <div class="col s2 m3 offset-m1">
           <h3>Produits sélectionnés</h3>
         </div>
-        <div class="col s2 m3 offset-m4">
-          <h3>Adresse de livraison</h3>
-          <p>
-            <?php
-            $id = $_SESSION['id'];
-            $request = $db->query("SELECT adresse FROM utilisateurs WHERE id ='$id'");
-            $data = $request->fetch();
-            echo '<form method="POST" action="">';
-            echo '<input type="text" name="adress_up" class="validate" id="adress_up" value="'.$data['adresse'].'">';
-            echo '<label for="adress_up"></label>';
-            echo '</input>';
-            echo '<button id="modif_adress" class="btn waves-effect waves-light grey darken-4" type="submit" name="modifier_adresse">
-                    Modifier<i class="material-icons right">cloud</i>
-                  </button>';
-            echo '</form>';
-
-            if(isset($_POST['modifier_adresse']) && !empty($_POST['modifier_adresse'])){
-              $adress = $_POST['modifier_adresse'];
-              modifier_adresse($adresse);
-
-              $data['adresse'] = $_SESSION['adresse'];
-            }
-             ?>
-
-           </p>
-        </div>
       </div>
 
       <?php
@@ -100,8 +74,37 @@ if(isset($_SESSION["panier"]) & isset($_GET["validation"])) {
     </div>
   </div>
 <?php } ?>
+<div class="row">
+
+<div class="col s2 m3 offset-m9">
+  <h3>Adresse de livraison</h3>
+  <p>
+    <?php
+    $id = $_SESSION['id'];
+    $request = $db->query("SELECT adresse FROM utilisateurs WHERE id ='$id'");
+    $data = $request->fetch();
+    echo '<form method="POST" action="">';
+    echo '<input type="text" name="adress_up" class="validate" id="adress_up" value="'.$data['adresse'].'">';
+    echo '<label for="adress_up"></label>';
+    echo '</input>';
+    echo '<button id="modif_adress" class="btn waves-effect waves-light grey darken-4" type="submit" name="modifier_adresse">
+            Modifier<i class="material-icons right">cloud</i>
+          </button>';
+    echo '</form>';
+
+    if(isset($_POST['modifier_adresse']) && !empty($_POST['modifier_adresse'])){
+      $adress = $_POST['modifier_adresse'];
+      modifier_adresse($adresse);
+
+      $data['adresse'] = $_SESSION['adresse'];
+    }
+     ?>
+
+   </p>
+</div>
+</div>
       <div class="row">
-        <div class="col m3 offset-m9">
+        <div class="col m3 offset-m5">
         <div class= "boutons_produit">
           <a href="recapitulatif.php?validation" class="waves-effect waves-green btn grey darken-4 lighten-3 white-text">
           Valider la commande </a>
