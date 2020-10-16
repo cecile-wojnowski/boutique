@@ -37,9 +37,10 @@ class Admin extends Utilisateur # La classe Admin hérite des propriétés de la
   }
 
   public function change_admin($boleen, $id_client){
-    $change = $this->db->prepare("UPDATE utilisateurs SET admin = ? WHERE id = ?");
-    $change->execute([$boleen, $id_client]);
-    header("Location:admin.php");
+    $change = $this->db->prepare("UPDATE utilisateurs SET admin = ':boleen' WHERE id = ':id_client'");
+    $change->bindParam(':boleen', $boleen);
+    $change->bindParam(':id_client', $id_client);
+    $change->execute();
   }
 
   public function creer_categorie($new_categorie){

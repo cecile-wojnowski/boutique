@@ -1,7 +1,8 @@
 <?php
+    $admin = new Admin($db);
 
-$requete = $db->query("SELECT * FROM utilisateurs");
-$users = $requete->fetchall(PDO::FETCH_ASSOC);
+    $requete = $db->query("SELECT * FROM utilisateurs");
+    $users = $requete->fetchall(PDO::FETCH_ASSOC);
 
 echo '<table>';
 echo '<thead>';
@@ -39,5 +40,28 @@ foreach($users as $user){
 }
 echo '</tbody>';
 echo '</table>';
+
+if(isset($_GET['id_client_modif'])){
+    // modifier un client en admin
+    $id_client = $_GET['id_client_modif'];
+    $req = $db->prepare("SELECT * FROM utilisateurs WHERE id = ':id_client'");
+    $req->bindParam(':id_client', $id_client);
+    $req->execute();
+    $info = $req->fetch();
+
+    if($info['admin'] == 1){
+        $boleen = 0;
+    }
+    else{
+        $boleen = 1;
+    }
+    $modif_admin = $admin->change_admin($boleen, $id_client);
+}
+
+if(isset($_GET['id_client_over'])){
+    // delete client
+    $id_client = $_GET['id_client_over'];
+    $supp_user = $admin->delete($id_client);
+}
 
 ?>

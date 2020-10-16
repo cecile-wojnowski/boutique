@@ -46,8 +46,10 @@ include 'includes/bdd.php';
       </section>
       <?php include 'cat_souscat.php'; ?>
 
-      <div class="row">
-        <a href="admin_ajout_produit.php">Ajouter un produit</a>
+      <div class="row" id="bouton_ajout">
+        <form action="admin_ajout_produit.php" method="POST">
+          <a href="admin_ajout_produit.php"><button type="submit" name="ajout_produit" id="ajout_produit" class="filtrer"> Ajouter un produit </button></a>
+        </form>
       </div>
 
     </main>
