@@ -40,4 +40,20 @@ foreach($users as $user){
 echo '</tbody>';
 echo '</table>';
 
+if(isset($_GET['id_client_modif'])){
+        // modifier un client en admin
+        $id_client = $_GET['id_client_modif'];
+        $req = $db->prepare("SELECT * FROM utilisateurs WHERE id=?");
+        $req->execute([$id_client]);
+        $info = $req->fetch();
+
+        if($info['admin'] == 1){
+            $boleen = 0;
+        }
+        else{
+            $boleen = 1;
+        }
+        $modif_admin = $admin->change_admin($boleen, $id_client);
+    }
+
 ?>
