@@ -301,8 +301,9 @@ table{
 }
 /**** PROFIL ****/
 .tableau_historique{
-  margin: 4%;
+  margin:4% !important;
   width: 90% !important;
+  background-color:  #F3F3F3 !important;
 }
 
 .texte_aligne{
