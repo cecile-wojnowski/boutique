@@ -57,6 +57,11 @@ include 'includes/bdd.php';
 
       <h3> Gestion des produits </h3>
       <?php include 'includes/php_admin_tab_produits.php'; ?>
+      <div class="row">
+        <div class="col m2 s2 offset-m5">
+          <a class="waves-effect waves-green btn grey darken-4 lighten-3 white-text" href="admin_ajout_produit.php">Ajouter un produit</a>
+        </div>
+      </div>
       <section id="cat_souscat">
         <form id="cont_filtre" action="" method="POST">
           <button type="submit" class="filtrer" id="cat" name="cat">Catégories</button>
@@ -65,9 +70,7 @@ include 'includes/bdd.php';
       </section>
       <?php include 'cat_souscat.php'; ?>
 
-      <div class="row">
-        <a href="admin_ajout_produit.php">Ajouter un produit</a>
-      </div>
+
 
     </main>
 
